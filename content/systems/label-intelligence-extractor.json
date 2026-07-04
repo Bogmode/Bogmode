@@ -1,0 +1,10 @@
+{
+  "title": "Label intelligence extractor",
+  "order": 2,
+  "cat": "DATA TOOL · LIVE",
+  "status": "LIVE",
+  "live": true,
+  "body": "Agentic pipeline that reads supplement facts panels into a queryable dataset.",
+  "chips": ["React", "AI pipeline", "Extraction"],
+  "detail": "This is the live-demo project. Its detail page has a demo slot — drop the interactive React component in there when it's ready."
+}

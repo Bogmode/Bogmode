@@ -1,0 +1,28 @@
+{
+  "headline": "I build the systems you can't afford to hire for yet.",
+  "subhead": "Digital infrastructure for founders and creatives coming up from nothing.",
+  "lede": "Marketing ops, data, and AI tooling — the machinery big companies pay whole teams for, handed to the people building from scratch. I came up building my own, so I'm not guessing at what you need. I back builders before it's obvious. That's who the future belongs to.",
+  "telemetry": [
+    { "k": "ROLE", "v": "marketing systems builder" },
+    { "k": "STACK", "v": "React · Supabase · Vercel" },
+    { "k": "LANG", "v": "EN · UK · RU" },
+    { "k": "MODE", "v": "building" }
+  ],
+  "about": [
+    "I'm Bogdan — Ukrainian, Winnipeg-based, trilingual. I've got a BCom from the Asper School of Business, management information systems and marketing, which is the long way of saying I studied the exact seam I work on now: where the systems meet the story.",
+    "I build the digital infrastructure young businesses run on. CRM and automation, dashboards, data pipelines, AI tooling — shipped end to end, mostly solo, built not bought. No inherited runway, no team handed to me. I learned by making the thing until it worked.",
+    "I work with the people coming up: founders and creatives building from nothing, who need the machinery before they can afford the headcount. I back them early because I know what it's like from that spot. It tastes different when you got it out the mud.",
+    "This site is one of the systems. Look around."
+  ],
+  "portrait": null,
+  "workshop": null,
+  "links": {
+    "linkedin": null,
+    "youtube": null,
+    "github": null
+  },
+  "contact": {
+    "email": "hello@bogmode.ca",
+    "formIntro": "No forms-into-the-void. This lands in my inbox and I answer it myself. Tell me what you're building."
+  }
+}

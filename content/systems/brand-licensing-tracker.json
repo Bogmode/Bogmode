@@ -1,0 +1,10 @@
+{
+  "title": "Brand licensing tracker",
+  "order": 3,
+  "cat": "APP · INTERNAL",
+  "status": "DEPLOYED",
+  "live": false,
+  "body": "Contract-expiration alerts and a brand-first product registry across 47 partners.",
+  "chips": ["React", "Supabase", "Vercel"],
+  "detail": "Built and shipped for internal use, not mocked up."
+}
