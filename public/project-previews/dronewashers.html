@@ -1,0 +1,658 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta name="robots" content="noindex,nofollow"/>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<meta name="description" content="DroneWashers.ca — Safe, efficient, eco-friendly drone cleaning for roofs, solar panels, grain elevators and more. Serving Manitoba and beyond."/>
+<meta name="keywords" content="drone cleaning Canada, roof cleaning, solar panel cleaning, grain elevator cleaning, drone wash, DroneWashers"/>
+<meta property="og:title" content="DroneWashers — Interactive website concept"/>
+<meta property="og:description" content="No scaffolding. Access planned around the property. Canada's drone exterior cleaning network."/>
+<meta property="og:type" content="website"/>
+<title>DroneWashers — Interactive website concept</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet"/>
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --sky: #0B1E3D; --sky2: #0E2A52; --sky3: #0A1830;
+  --ice: #C8E8FF; --ice2: #88CCEE;
+  --gold: #F5A623; --gold2: #E8941A;
+  --white: #F4F2EC; --muted: #8A9EB5;
+  --card-bg: rgba(255,255,255,0.04);
+  --card-border: rgba(200,232,255,0.12);
+  --card-hover: rgba(200,232,255,0.28);
+  --radius: 12px; --radius-lg: 16px;
+}
+html { scroll-behavior: smooth; }
+body { background: var(--sky); color: var(--white); font-family: 'DM Sans', sans-serif; font-weight: 300; line-height: 1.65; overflow-x: hidden; }
+.container { max-width: 1080px; margin: 0 auto; padding: 0 1.5rem; }
+.sep { width: 48px; height: 2px; background: var(--gold); border-radius: 2px; margin-bottom: 1.25rem; }
+.tag { font-size: 0.7rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold); font-weight: 500; margin-bottom: 0.5rem; }
+.section-title { font-family: 'Bebas Neue', sans-serif; font-size: clamp(2rem, 5vw, 3.2rem); letter-spacing: 0.02em; line-height: 1; margin-bottom: 0.85rem; }
+.section-desc { color: var(--muted); font-size: 0.93rem; max-width: 520px; margin-bottom: 2.5rem; line-height: 1.7; }
+
+/* NAV */
+#nav { position: sticky; top: 0; z-index: 200; background: rgba(11,30,61,0.95); backdrop-filter: blur(14px); border-bottom: 0.5px solid var(--card-border); transition: box-shadow 0.3s; }
+#nav.scrolled { box-shadow: 0 4px 40px rgba(0,0,0,0.4); }
+.nav-inner { display: flex; align-items: center; justify-content: space-between; padding: 1.1rem 1.5rem; max-width: 1080px; margin: 0 auto; }
+.logo { font-family: 'Bebas Neue', sans-serif; font-size: 1.55rem; letter-spacing: 0.06em; color: var(--ice); text-decoration: none; }
+.logo span { color: var(--gold); }
+.nav-links { display: flex; align-items: center; gap: 2rem; list-style: none; }
+.nav-links a { color: var(--muted); text-decoration: none; font-size: 0.82rem; letter-spacing: 0.07em; text-transform: uppercase; transition: color 0.2s; }
+.nav-links a:hover { color: var(--white); }
+.btn-gold { background: var(--gold); color: var(--sky); border: none; padding: 0.5rem 1.3rem; border-radius: 6px; font-family: 'DM Sans', sans-serif; font-size: 0.82rem; font-weight: 500; text-transform: uppercase; letter-spacing: 0.07em; cursor: pointer; transition: background 0.2s, transform 0.15s; text-decoration: none; display: inline-block; }
+.btn-gold:hover { background: var(--gold2); transform: translateY(-1px); }
+.hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; background: none; border: none; }
+.hamburger span { display: block; width: 22px; height: 1.5px; background: var(--ice); border-radius: 2px; transition: all 0.3s; }
+.mobile-menu { display: none; flex-direction: column; background: var(--sky3); border-top: 0.5px solid var(--card-border); }
+.mobile-menu a { display: block; padding: 0.9rem 1.5rem; color: var(--muted); text-decoration: none; font-size: 0.88rem; letter-spacing: 0.06em; text-transform: uppercase; border-bottom: 0.5px solid var(--card-border); transition: color 0.2s; }
+.mobile-menu a:hover { color: var(--white); }
+.mobile-menu .btn-gold { margin: 1rem 1.5rem; text-align: center; }
+
+/* HERO */
+#hero { position: relative; min-height: 92vh; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 5rem 1.5rem 4rem; overflow: hidden; }
+#hero::before { content: ''; position: absolute; inset: 0; background-image: linear-gradient(rgba(200,232,255,0.035) 1px,transparent 1px),linear-gradient(90deg,rgba(200,232,255,0.035) 1px,transparent 1px); background-size: 64px 64px; pointer-events: none; }
+#hero::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 200px; background: linear-gradient(transparent,var(--sky)); pointer-events: none; }
+.drone-wrap { position: relative; width: 200px; height: 130px; margin-bottom: 2rem; animation: hoverfloat 3.5s ease-in-out infinite; z-index: 1; }
+@keyframes hoverfloat { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-14px)} }
+.drops { position: absolute; bottom: -8px; left: 50%; transform: translateX(-50%); display: flex; gap: 7px; }
+.drop { width: 3px; height: 9px; background: var(--ice2); border-radius: 0 0 3px 3px; opacity: 0; animation: dropfall 1.4s ease-in infinite; }
+.drop:nth-child(1){animation-delay:0s}.drop:nth-child(2){animation-delay:0.35s}.drop:nth-child(3){animation-delay:0.7s}.drop:nth-child(4){animation-delay:1.05s}
+@keyframes dropfall { 0%{opacity:0;transform:translateY(-4px)} 25%{opacity:0.85} 100%{opacity:0;transform:translateY(20px)} }
+.hero-eyebrow { font-size: 0.72rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); margin-bottom: 1rem; font-weight: 500; z-index: 1; }
+#hero h1 { font-family: 'Bebas Neue', sans-serif; font-size: clamp(3.8rem, 10vw, 7.5rem); line-height: 0.92; letter-spacing: 0.02em; z-index: 1; }
+#hero h1 em { font-style: normal; color: var(--ice2); }
+.hero-sub { max-width: 500px; font-size: 1rem; color: var(--muted); margin: 1.3rem auto 2.2rem; z-index: 1; }
+.hero-btns { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; z-index: 1; }
+.btn-outline { background: transparent; color: var(--ice); border: 1px solid rgba(200,232,255,0.28); padding: 0.75rem 1.8rem; border-radius: 8px; font-family: 'DM Sans', sans-serif; font-size: 0.88rem; cursor: pointer; letter-spacing: 0.04em; transition: border-color 0.2s, transform 0.15s; text-decoration: none; display: inline-block; }
+.btn-outline:hover { border-color: var(--ice2); transform: translateY(-2px); }
+.hero-stats { display: flex; gap: 2.5rem; flex-wrap: wrap; justify-content: center; margin-top: 3.5rem; padding-top: 2rem; border-top: 0.5px solid var(--card-border); z-index: 1; }
+.stat-num { font-family: 'Bebas Neue', sans-serif; font-size: 2.4rem; color: var(--ice); line-height: 1; }
+.stat-label { font-size: 0.7rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.1em; margin-top: 0.15rem; }
+
+/* TRUST BAR */
+#trust { background: rgba(200,232,255,0.04); border-top: 0.5px solid var(--card-border); border-bottom: 0.5px solid var(--card-border); padding: 1.2rem 1.5rem; }
+.trust-inner { max-width: 1080px; margin: 0 auto; display: flex; flex-wrap: wrap; gap: 1.5rem; align-items: center; justify-content: center; }
+.trust-item { display: flex; align-items: center; gap: 0.5rem; font-size: 0.8rem; color: var(--muted); letter-spacing: 0.04em; }
+.trust-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--gold); flex-shrink: 0; }
+
+/* SECTIONS */
+.section { padding: 5rem 0; }
+.section-alt { background: rgba(200,232,255,0.025); border-top: 0.5px solid var(--card-border); border-bottom: 0.5px solid var(--card-border); }
+
+/* SERVICES */
+.services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.25rem; }
+.service-card { background: var(--card-bg); border: 0.5px solid var(--card-border); border-radius: var(--radius); padding: 1.5rem; transition: border-color 0.25s, transform 0.2s; }
+.service-card:hover { border-color: var(--card-hover); transform: translateY(-4px); }
+.svc-icon { font-size: 1.8rem; margin-bottom: 1rem; display: block; }
+.service-card h3 { font-family: 'Bebas Neue', sans-serif; font-size: 1.3rem; letter-spacing: 0.04em; color: var(--ice); margin-bottom: 0.4rem; }
+.service-card p { font-size: 0.84rem; color: var(--muted); line-height: 1.65; }
+.svc-price { margin-top: 1.1rem; font-size: 0.82rem; color: var(--gold); font-weight: 500; display: flex; align-items: center; justify-content: space-between; }
+.svc-cta { font-size: 0.75rem; color: var(--ice2); cursor: pointer; }
+.svc-cta:hover { color: var(--white); }
+
+/* HOW IT WORKS */
+.how-wrap { background: var(--card-bg); border: 0.5px solid var(--card-border); border-radius: var(--radius-lg); padding: 2.5rem; }
+.steps-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2rem; }
+.step { display: flex; gap: 1rem; align-items: flex-start; }
+.step-num { font-family: 'Bebas Neue', sans-serif; font-size: 2.8rem; color: rgba(200,232,255,0.1); line-height: 1; flex-shrink: 0; width: 38px; }
+.step h4 { font-size: 0.92rem; font-weight: 500; color: var(--ice); margin-bottom: 0.3rem; }
+.step p { font-size: 0.81rem; color: var(--muted); line-height: 1.6; }
+
+/* WHY */
+.why-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1rem; }
+.why-card { background: var(--card-bg); border: 0.5px solid var(--card-border); border-radius: var(--radius); padding: 1.25rem 1.5rem; display: flex; gap: 0.9rem; align-items: flex-start; }
+.why-dot { width: 7px; height: 7px; background: var(--gold); border-radius: 50%; margin-top: 8px; flex-shrink: 0; }
+.why-card h4 { font-size: 0.9rem; font-weight: 500; color: var(--ice); margin-bottom: 0.2rem; }
+.why-card p { font-size: 0.81rem; color: var(--muted); }
+
+/* MAP */
+.map-wrap { border-radius: var(--radius-lg); overflow: hidden; border: 0.5px solid var(--card-border); background: var(--sky2); }
+.map-svg-wrap { width: 100%; max-width: 680px; margin: 0 auto; display: block; padding: 2rem; }
+.city-pin { cursor: pointer; }
+.city-pin:hover circle:last-of-type { r: 5; }
+.city-pulse { animation: pulse 2.5s ease-out infinite; transform-box: fill-box; transform-origin: center; }
+@keyframes pulse { 0%{opacity:0.6;transform:scale(1)} 100%{opacity:0;transform:scale(2.4)} }
+.map-legend { display: flex; flex-wrap: wrap; gap: 1rem; justify-content: center; padding: 0.5rem 2rem 1.5rem; }
+.legend-item { display: flex; align-items: center; gap: 0.5rem; font-size: 0.78rem; color: var(--muted); }
+.legend-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--gold); }
+.legend-dot.secondary { background: var(--ice2); }
+
+/* TESTIMONIALS */
+.tgrid { display: grid; grid-template-columns: repeat(auto-fit, minmax(270px, 1fr)); gap: 1.25rem; }
+.tcard { background: var(--card-bg); border: 0.5px solid var(--card-border); border-radius: var(--radius); padding: 1.5rem; }
+.stars { color: var(--gold); font-size: 0.85rem; letter-spacing: 2px; margin-bottom: 0.75rem; }
+.tcard blockquote { font-size: 0.87rem; color: var(--white); font-style: italic; margin-bottom: 1rem; line-height: 1.65; }
+.tcard-author { font-size: 0.76rem; color: var(--muted); }
+.tcard-author strong { color: var(--ice2); font-weight: 500; }
+
+/* FAQ */
+.faq-list { display: flex; flex-direction: column; max-width: 720px; }
+.faq-item { border-bottom: 0.5px solid var(--card-border); }
+.faq-q { display: flex; align-items: center; justify-content: space-between; padding: 1.2rem 0; cursor: pointer; font-size: 0.93rem; color: var(--ice); gap: 1rem; background: none; border: none; width: 100%; text-align: left; }
+.faq-q:hover { color: var(--white); }
+.faq-arrow { font-size: 1.1rem; color: var(--muted); transition: transform 0.25s; flex-shrink: 0; }
+.faq-a { max-height: 0; overflow: hidden; transition: max-height 0.35s ease; }
+.faq-a-inner { padding-bottom: 1.1rem; font-size: 0.85rem; color: var(--muted); line-height: 1.7; }
+.faq-item.open .faq-arrow { transform: rotate(180deg); }
+.faq-item.open .faq-a { max-height: 300px; }
+
+/* CTA */
+#cta-band { text-align: center; padding: 5rem 1.5rem; background: linear-gradient(180deg,rgba(200,232,255,0.05) 0%,transparent 100%); border-top: 0.5px solid var(--card-border); border-bottom: 0.5px solid var(--card-border); }
+#cta-band h2 { font-family: 'Bebas Neue', sans-serif; font-size: clamp(2.5rem, 7vw, 5rem); letter-spacing: 0.02em; line-height: 0.95; margin-bottom: 1rem; }
+#cta-band p { color: var(--muted); font-size: 0.95rem; margin-bottom: 2rem; }
+
+/* FORM */
+#quote { padding: 5rem 0 6rem; }
+.form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.85rem; max-width: 600px; }
+.form-grid .full { grid-column: 1 / -1; }
+.form-grid input, .form-grid select, .form-grid textarea { width: 100%; background: rgba(255,255,255,0.05); border: 0.5px solid rgba(200,232,255,0.18); border-radius: 8px; padding: 0.75rem 1rem; color: var(--white); font-family: 'DM Sans', sans-serif; font-size: 0.88rem; outline: none; transition: border-color 0.2s; appearance: none; }
+.form-grid input::placeholder { color: var(--muted); }
+.form-grid input:focus, .form-grid select:focus, .form-grid textarea:focus { border-color: rgba(200,232,255,0.42); }
+.form-grid select option { background: #0B1E3D; color: var(--white); }
+.form-grid textarea { resize: vertical; min-height: 90px; }
+.form-submit { background: var(--gold); color: var(--sky); border: none; padding: 0.9rem 2rem; border-radius: 8px; font-family: 'DM Sans', sans-serif; font-size: 0.95rem; font-weight: 500; cursor: pointer; width: 100%; transition: background 0.2s; }
+.form-submit:hover { background: var(--gold2); }
+.form-success { display: none; text-align: center; padding: 2rem; background: rgba(200,232,255,0.06); border: 0.5px solid rgba(200,232,255,0.2); border-radius: var(--radius); max-width: 600px; }
+.form-success h3 { font-family: 'Bebas Neue', sans-serif; font-size: 1.8rem; color: var(--ice); margin-bottom: 0.5rem; }
+.form-success p { color: var(--muted); font-size: 0.88rem; }
+
+/* FOOTER */
+footer { background: var(--sky3); border-top: 0.5px solid var(--card-border); }
+.footer-top { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 3rem; padding: 3.5rem 1.5rem 2.5rem; max-width: 1080px; margin: 0 auto; }
+.footer-brand p { font-size: 0.83rem; color: var(--muted); margin-top: 0.75rem; max-width: 260px; line-height: 1.65; }
+.footer-contact { margin-top: 1.25rem; display: flex; flex-direction: column; gap: 0.4rem; }
+.footer-contact a { font-size: 0.82rem; color: var(--ice2); text-decoration: none; }
+.footer-contact a:hover { color: var(--white); }
+.footer-col h4 { font-family: 'Bebas Neue', sans-serif; font-size: 1rem; letter-spacing: 0.08em; color: var(--ice); margin-bottom: 1rem; }
+.footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 0.55rem; }
+.footer-col ul a { font-size: 0.82rem; color: var(--muted); text-decoration: none; }
+.footer-col ul a:hover { color: var(--white); }
+.footer-bottom { border-top: 0.5px solid var(--card-border); padding: 1.25rem 1.5rem; max-width: 1080px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 0.75rem; font-size: 0.76rem; color: var(--muted); }
+.footer-bottom a { color: var(--muted); text-decoration: none; }
+.footer-bottom a:hover { color: var(--white); }
+.tc-badge { font-size: 0.72rem; background: rgba(200,232,255,0.07); border: 0.5px solid var(--card-border); padding: 0.25rem 0.75rem; border-radius: 20px; }
+
+/* SCROLL TOP */
+#scrolltop { position: fixed; bottom: 2rem; right: 2rem; z-index: 300; width: 40px; height: 40px; background: var(--gold); color: var(--sky); border: none; border-radius: 50%; font-size: 1.1rem; cursor: pointer; display: none; align-items: center; justify-content: center; box-shadow: 0 4px 20px rgba(0,0,0,0.3); }
+#scrolltop:hover { background: var(--gold2); }
+#scrolltop.visible { display: flex; }
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .nav-links { display: none; }
+  .hamburger { display: flex; }
+  .mobile-menu.open { display: flex; }
+  .hero-stats { gap: 1.5rem; }
+  .form-grid { grid-template-columns: 1fr; }
+  .form-grid .full { grid-column: 1; }
+  .footer-top { grid-template-columns: 1fr; gap: 2rem; }
+  .map-svg-wrap { padding: 1rem; }
+}
+@media (max-width: 480px) {
+  #hero h1 { font-size: 3.2rem; }
+  .hero-stats { gap: 1.2rem; }
+  .stat-num { font-size: 1.9rem; }
+}
+
+:focus-visible { outline: 2px solid var(--gold); outline-offset: 4px; }
+section[id] { scroll-margin-top: 90px; }
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important;}}
+</style>
+</head>
+<body>
+<aside style="padding:14px 24px;background:#f5a623;color:#0b1e3d;font:14px sans-serif;line-height:1.5"><strong>Website concept.</strong> Illustrative service copy only. This preview does not offer bookings, verify operating capabilities, or send quote requests. <a href="/projects/dronewashers" target="_top" style="color:inherit">About this project</a></aside>
+
+<!-- NAV -->
+<header id="nav">
+  <div class="nav-inner">
+    <a href="#" class="logo">Drone<span>Washers</span></a>
+    <ul class="nav-links">
+      <li><a href="#services">Services</a></li>
+      <li><a href="#how">Process</a></li>
+      <li><a href="#area">Coverage</a></li>
+      <li><a href="#faq">FAQ</a></li>
+      <li><a href="#quote" class="btn-gold">Free Quote</a></li>
+    </ul>
+    <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false" aria-controls="mobile-menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <div class="mobile-menu" id="mobile-menu">
+    <a href="#services" onclick="closeMobile()">Services</a>
+    <a href="#how" onclick="closeMobile()">Process</a>
+    <a href="#area" onclick="closeMobile()">Coverage</a>
+    <a href="#faq" onclick="closeMobile()">FAQ</a>
+    <a href="#quote" class="btn-gold" onclick="closeMobile()">Free Quote</a>
+  </div>
+</header>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="drone-wrap">
+    <svg viewBox="0 0 220 118" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%">
+      <line x1="72" y1="62" x2="28" y2="38" stroke="#4A7FA5" stroke-width="2.5" stroke-linecap="round"/>
+      <line x1="148" y1="62" x2="192" y2="38" stroke="#4A7FA5" stroke-width="2.5" stroke-linecap="round"/>
+      <line x1="72" y1="62" x2="28" y2="88" stroke="#4A7FA5" stroke-width="2.5" stroke-linecap="round"/>
+      <line x1="148" y1="62" x2="192" y2="88" stroke="#4A7FA5" stroke-width="2.5" stroke-linecap="round"/>
+      <ellipse cx="28" cy="38" rx="22" ry="4.5" fill="none" stroke="#C8E8FF" stroke-width="1.5" opacity="0.65"/>
+      <ellipse cx="192" cy="38" rx="22" ry="4.5" fill="none" stroke="#C8E8FF" stroke-width="1.5" opacity="0.65"/>
+      <ellipse cx="28" cy="88" rx="22" ry="4.5" fill="none" stroke="#C8E8FF" stroke-width="1.5" opacity="0.65"/>
+      <ellipse cx="192" cy="88" rx="22" ry="4.5" fill="none" stroke="#C8E8FF" stroke-width="1.5" opacity="0.65"/>
+      <rect x="66" y="50" width="88" height="26" rx="10" fill="#1A3A5C"/>
+      <rect x="66" y="50" width="88" height="26" rx="10" fill="none" stroke="#4A7FA5" stroke-width="0.75"/>
+      <rect x="99" y="76" width="22" height="12" rx="4" fill="#0E2A52" stroke="#4A7FA5" stroke-width="0.75"/>
+      <circle cx="110" cy="82" r="3.5" fill="#1A3A5C" stroke="#88CCEE" stroke-width="0.75"/>
+      <rect x="107" y="88" width="7" height="10" rx="2" fill="#4A7FA5"/>
+      <circle cx="76" cy="63" r="2.5" fill="#F5A623" opacity="0.9"/>
+      <circle cx="144" cy="63" r="2.5" fill="#88CCEE" opacity="0.9"/>
+      <text x="85" y="68" font-family="'Bebas Neue', sans-serif" font-size="7" fill="#C8E8FF" opacity="0.4" letter-spacing="1">DRONEWASH MB</text>
+    </svg>
+    <div class="drops">
+      <div class="drop"></div><div class="drop"></div><div class="drop"></div><div class="drop"></div>
+    </div>
+  </div>
+  <div class="hero-eyebrow">Canada's Drone Cleaning Network</div>
+  <h1>Rooftops.<br><em>Solar. Silos.</em><br>Spotless.</h1>
+  <p class="hero-sub">Autonomous drone technology delivers safe, eco-friendly exterior cleaning across Canada. No scaffolding. Access planned around the property. Just results.</p>
+  <div class="hero-btns">
+    <a href="#quote" class="btn-gold" style="padding:0.8rem 2.2rem;font-size:0.95rem;border-radius:8px;">Get a Free Quote</a>
+    <a href="#services" class="btn-outline">Explore Services</a>
+  </div>
+  <div class="hero-stats">
+    <div><div class="stat-num">0</div><div class="stat-label">Scaffolding needed</div></div>
+    <div><div class="stat-num">60%</div><div class="stat-label">Less water used</div></div>
+    <div><div class="stat-num">48h</div><div class="stat-label">Quote turnaround</div></div>
+    <div><div class="stat-num">−40°C</div><div class="stat-label">Winter-rated fleet</div></div>
+  </div>
+</section>
+
+<!-- TRUST BAR -->
+<div id="trust">
+  <div class="trust-inner">
+    <div class="trust-item"><div class="trust-dot"></div>Transport Canada Advanced RPAS Certified</div>
+    <div class="trust-item"><div class="trust-dot"></div>$5M Liability Insurance</div>
+    <div class="trust-item"><div class="trust-dot"></div>Biodegradable Cleaning Agents</div>
+    <div class="trust-item"><div class="trust-dot"></div>Before &amp; After Photo Report Included</div>
+    <div class="trust-item"><div class="trust-dot"></div>National Coverage</div>
+  </div>
+</div>
+
+<!-- SERVICES -->
+<section id="services" class="section">
+  <div class="container">
+    <div class="tag">What We Clean</div>
+    <div class="sep"></div>
+    <div class="section-title">Our Services</div>
+    <p class="section-desc">From Prairie grain elevators to Winnipeg commercial rooftops — if it's hard to reach, we can clean it safely.</p>
+    <div class="services-grid">
+      <div class="service-card">
+        <span class="svc-icon">🏠</span>
+        <h3>Residential Roofs</h3>
+        <p>Moss, lichen, and algae removal from shingles, metal, and flat roofs. Prevents premature wear from harsh Canadian freeze-thaw cycles.</p>
+        <div class="svc-price"><span>From $299</span><span class="svc-cta" onclick="document.getElementById('quote').scrollIntoView({behavior:'smooth'})">Get quote →</span></div>
+      </div>
+      <div class="service-card">
+        <span class="svc-icon">☀️</span>
+        <h3>Solar Panel Cleaning</h3>
+        <p>Restore peak energy output. Prairie dust and bird fouling can reduce solar efficiency by up to 25% — precision drone washing fixes it.</p>
+        <div class="svc-price"><span>From $149</span><span class="svc-cta" onclick="document.getElementById('quote').scrollIntoView({behavior:'smooth'})">Get quote →</span></div>
+      </div>
+      <div class="service-card">
+        <span class="svc-icon">🏢</span>
+        <h3>Commercial Facades</h3>
+        <p>Safe exterior washing for office towers, warehouses, and industrial facilities. Zero operational disruption to tenants or staff.</p>
+        <div class="svc-price"><span>Custom quote</span><span class="svc-cta" onclick="document.getElementById('quote').scrollIntoView({behavior:'smooth'})">Get quote →</span></div>
+      </div>
+      <div class="service-card">
+        <span class="svc-icon">🌾</span>
+        <h3>Grain Elevators &amp; Silos</h3>
+        <p>Prairie and coast expertise. Tall agricultural structures cleaned safely — no crane rental, no confined space entry required.</p>
+        <div class="svc-price"><span>Custom quote</span><span class="svc-cta" onclick="document.getElementById('quote').scrollIntoView({behavior:'smooth'})">Get quote →</span></div>
+      </div>
+      <div class="service-card">
+        <span class="svc-icon">❄️</span>
+        <h3>Post-Winter Wash</h3>
+        <p>Spring salt, sand, and debris removal from rooftops and parking structures after harsh Canadian winters. Book early — slots fill fast.</p>
+        <div class="svc-price"><span>From $199</span><span class="svc-cta" onclick="document.getElementById('quote').scrollIntoView({behavior:'smooth'})">Get quote →</span></div>
+      </div>
+      <div class="service-card">
+        <span class="svc-icon">🏗️</span>
+        <h3>Construction Hoarding</h3>
+        <p>Keep site hoarding, fencing, and signage clean throughout long Winnipeg build seasons. Flexible scheduling around active worksites.</p>
+        <div class="svc-price"><span>From $249</span><span class="svc-cta" onclick="document.getElementById('quote').scrollIntoView({behavior:'smooth'})">Get quote →</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section id="how" class="section section-alt">
+  <div class="container">
+    <div class="tag">The Process</div>
+    <div class="sep"></div>
+    <div class="section-title">How It Works</div>
+    <p class="section-desc">From first contact to spotless result in as little as 48 hours.</p>
+    <div class="how-wrap">
+      <div class="steps-grid">
+        <div class="step">
+          <div class="step-num">01</div>
+          <div><h4>Request &amp; Site Survey</h4><p>Submit your address and structure type. We assess via satellite imagery and send a detailed quote within 24 hours — no site visit needed.</p></div>
+        </div>
+        <div class="step">
+          <div class="step-num">02</div>
+          <div><h4>Flight Plan &amp; RPAS Notice</h4><p>Our Transport Canada-certified pilots file the required RPAS notices and design a precision flight path for your property.</p></div>
+        </div>
+        <div class="step">
+          <div class="step-num">03</div>
+          <div><h4>Drone Deployment</h4><p>Eco-certified biodegradable solutions applied precisely by drone. No workers on your roof. No scaffolding. Minimal site disruption.</p></div>
+        </div>
+        <div class="step">
+          <div class="step-num">04</div>
+          <div><h4>Photo Report Delivery</h4><p>You receive timestamped before/after drone footage confirming every area cleaned to standard. Full accountability, every time.</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY US -->
+<section class="section">
+  <div class="container">
+    <div class="tag">Our Advantage</div>
+    <div class="sep"></div>
+    <div class="section-title">Built for Canada</div>
+    <p class="section-desc">Purpose-built for Canadian conditions, regulations, and property owners coast to coast.</p>
+    <div class="why-grid">
+      <div class="why-card"><div class="why-dot"></div><div><h4>Transport Canada Certified</h4><p>All operators hold Advanced RPAS certificates. Fully insured to $5M. Compliant with all Canadian aviation regulations.</p></div></div>
+      <div class="why-card"><div class="why-dot"></div><div><h4>Cold-Weather Rated Fleet</h4><p>Our drones operate reliably at −40°C. No delays waiting for spring — we work year-round in Canada's harshest climates.</p></div></div>
+      <div class="why-card"><div class="why-dot"></div><div><h4>Eco-Certified Solutions</h4><p>Biodegradable cleaning agents safe for Canadian lakes, rivers, wetlands, and ecosystems.</p></div></div>
+      <div class="why-card"><div class="why-dot"></div><div><h4>Zero Access Risk</h4><p>No workers on your roof. Eliminates fall hazards, liability exposure, and costly scaffolding or lift rental.</p></div></div>
+      <div class="why-card"><div class="why-dot"></div><div><h4>National Coverage</h4><p>Serving communities across Canada — currently expanding province by province.</p></div></div>
+      <div class="why-card"><div class="why-dot"></div><div><h4>Photographic Accountability</h4><p>Every job includes timestamped before/after drone imagery delivered to your inbox. You see exactly what was done.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICE AREA MAP -->
+<section id="area" class="section section-alt">
+  <div class="container">
+    <div class="tag">Live Coverage Map</div>
+    <div class="sep"></div>
+    <div class="section-title">Where We Operate</div>
+    <p class="section-desc">Currently serving Manitoba with national expansion underway. Click a city to learn more.</p>
+    <div class="map-wrap">
+      <div class="map-svg-wrap">
+        <svg viewBox="0 0 500 600" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-height:460px">
+          <path d="M120 40 L370 40 L370 80 L410 80 L410 200 L440 200 L440 480 L400 480 L400 560 L240 560 L200 520 L160 520 L120 480 L80 480 L80 360 L60 300 L60 200 L100 180 L100 80 L120 40 Z" fill="rgba(14,42,82,0.7)" stroke="rgba(200,232,255,0.2)" stroke-width="1.5"/>
+          <path d="M370 40 L410 80 L440 200 L440 480" stroke="rgba(136,204,238,0.12)" stroke-width="1" stroke-dasharray="4 4" fill="none"/>
+          <text x="416" y="330" font-size="8" fill="rgba(136,204,238,0.2)" font-family="sans-serif" writing-mode="vertical-rl">Hudson Bay</text>
+          <ellipse cx="270" cy="260" rx="22" ry="58" fill="rgba(136,204,238,0.1)" stroke="rgba(136,204,238,0.18)" stroke-width="0.75"/>
+          <text x="248" y="246" font-size="7" fill="rgba(136,204,238,0.3)" font-family="sans-serif">Lake Winnipeg</text>
+          <ellipse cx="196" cy="280" rx="11" ry="36" fill="rgba(136,204,238,0.08)" stroke="rgba(136,204,238,0.15)" stroke-width="0.75"/>
+          <!-- 200km ring -->
+          <circle cx="260" cy="392" r="108" fill="none" stroke="rgba(245,166,35,0.1)" stroke-width="1" stroke-dasharray="6 4"/>
+          <text x="268" y="288" font-size="7" fill="rgba(245,166,35,0.3)" font-family="sans-serif">200km standard zone</text>
+          <!-- Winnipeg HQ -->
+          <g class="city-pin" onclick="showCity('winnipeg')">
+            <circle class="city-pulse" cx="260" cy="392" r="10" fill="rgba(245,166,35,0.15)"/>
+            <circle cx="260" cy="392" r="7" fill="rgba(245,166,35,0.2)" stroke="#F5A623" stroke-width="1.5"/>
+            <circle cx="260" cy="392" r="3.5" fill="#F5A623"/>
+            <text x="272" y="390" font-size="11" font-weight="500" fill="#F5A623" font-family="sans-serif">Winnipeg</text>
+            <text x="272" y="401" font-size="8" fill="rgba(245,166,35,0.6)" font-family="sans-serif">HQ</text>
+          </g>
+          <!-- Brandon -->
+          <g class="city-pin" onclick="showCity('brandon')">
+            <circle cx="152" cy="398" r="5.5" fill="rgba(136,204,238,0.18)" stroke="#88CCEE" stroke-width="1.2"/>
+            <circle cx="152" cy="398" r="2.5" fill="#88CCEE"/>
+            <text x="162" y="402" font-size="9" fill="#88CCEE" font-family="sans-serif">Brandon</text>
+          </g>
+          <!-- Portage -->
+          <g class="city-pin" onclick="showCity('portage')">
+            <circle cx="208" cy="386" r="5" fill="rgba(136,204,238,0.15)" stroke="#88CCEE" stroke-width="1"/>
+            <circle cx="208" cy="386" r="2.2" fill="#88CCEE"/>
+            <text x="172" y="376" font-size="8" fill="#88CCEE" font-family="sans-serif">Portage la Prairie</text>
+          </g>
+          <!-- Steinbach -->
+          <g class="city-pin" onclick="showCity('steinbach')">
+            <circle cx="296" cy="408" r="5" fill="rgba(136,204,238,0.15)" stroke="#88CCEE" stroke-width="1"/>
+            <circle cx="296" cy="408" r="2.2" fill="#88CCEE"/>
+            <text x="305" y="412" font-size="9" fill="#88CCEE" font-family="sans-serif">Steinbach</text>
+          </g>
+          <!-- Winkler -->
+          <g class="city-pin" onclick="showCity('winkler')">
+            <circle cx="250" cy="434" r="4.5" fill="rgba(136,204,238,0.12)" stroke="#88CCEE" stroke-width="1"/>
+            <circle cx="250" cy="434" r="2" fill="#88CCEE"/>
+            <text x="205" y="444" font-size="8" fill="#88CCEE" font-family="sans-serif">Winkler / Morden</text>
+          </g>
+          <!-- Dauphin -->
+          <g class="city-pin" onclick="showCity('dauphin')">
+            <circle cx="158" cy="314" r="4.5" fill="rgba(136,204,238,0.12)" stroke="#88CCEE" stroke-width="1"/>
+            <circle cx="158" cy="314" r="2" fill="#88CCEE"/>
+            <text x="166" y="318" font-size="8" fill="#88CCEE" font-family="sans-serif">Dauphin</text>
+          </g>
+          <!-- Thompson -->
+          <g class="city-pin" onclick="showCity('thompson')">
+            <circle cx="270" cy="178" r="5" fill="rgba(136,204,238,0.12)" stroke="#88CCEE" stroke-width="1"/>
+            <circle cx="270" cy="178" r="2" fill="#88CCEE"/>
+            <text x="280" y="182" font-size="9" fill="#88CCEE" font-family="sans-serif">Thompson</text>
+          </g>
+          <!-- Flin Flon -->
+          <g class="city-pin" onclick="showCity('flinflon')">
+            <circle cx="138" cy="184" r="4.5" fill="rgba(136,204,238,0.12)" stroke="#88CCEE" stroke-width="1"/>
+            <circle cx="138" cy="184" r="2" fill="#88CCEE"/>
+            <text x="148" y="188" font-size="8" fill="#88CCEE" font-family="sans-serif">Flin Flon</text>
+          </g>
+          <text x="145" y="510" font-family="'Bebas Neue',sans-serif" font-size="30" fill="rgba(200,232,255,0.05)" letter-spacing="6">MANITOBA</text>
+        </svg>
+      </div>
+      <div id="city-info" style="display:none;padding:0.5rem 2rem 1.25rem;text-align:center;border-top:0.5px solid var(--card-border);">
+        <p id="city-name" style="font-family:'Bebas Neue',sans-serif;font-size:1.2rem;color:var(--ice);letter-spacing:0.05em;"></p>
+        <p id="city-detail" style="font-size:0.82rem;color:var(--muted);margin-top:0.2rem;"></p>
+      </div>
+      <div class="map-legend">
+        <div class="legend-item"><div class="legend-dot"></div>Headquarters / Primary zone</div>
+        <div class="legend-item"><div class="legend-dot secondary"></div>Service cities</div>
+        <div class="legend-item" style="font-size:0.74rem;color:rgba(245,166,35,0.45);">&#8212; &#8212; 200km standard rate zone</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="section">
+  <div class="container">
+    <div class="tag">Client Stories</div>
+    <div class="sep"></div>
+    <div class="section-title">What Our Clients Say</div>
+    <div class="tgrid">
+      <div class="tcard">
+        <div class="stars">★★★★★</div>
+        <blockquote>"Our solar array output jumped 18% the week after cleaning. The drone was done in under two hours — zero disruption to the farm."</blockquote>
+        <div class="tcard-author"><strong>Glen Thiessen</strong> · Solar farm operator, Winkler MB</div>
+      </div>
+      <div class="tcard">
+        <div class="stars">★★★★★</div>
+        <blockquote>"40 years of algae on a heritage brick building. They sent before/after footage — stunning result, zero damage to the original masonry."</blockquote>
+        <div class="tcard-author"><strong>Carla Fontaine</strong> · Property manager, Winnipeg</div>
+      </div>
+      <div class="tcard">
+        <div class="stars">★★★★★</div>
+        <blockquote>"They flew in −25°C in February. The grain elevator looked brand new. Far cheaper than a crane and infinitely safer for the crew."</blockquote>
+        <div class="tcard-author"><strong>Murray Schroeder</strong> · Co-op manager, Portage la Prairie</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq" class="section section-alt">
+  <div class="container">
+    <div class="tag">Common Questions</div>
+    <div class="sep"></div>
+    <div class="section-title">FAQ</div>
+    <div class="faq-list">
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false" onclick="toggleFaq(this)">Do you need permission to fly over my property? <span class="faq-arrow">↓</span></button>
+        <div class="faq-a"><div class="faq-a-inner">Yes — and we handle all of it. Our pilots file Transport Canada RPAS Advanced Operational notices before every job. For residential properties your consent is obtained during booking. For commercial or multi-unit properties we coordinate with all required stakeholders.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false" onclick="toggleFaq(this)">Can you operate in Canadian winters? <span class="faq-arrow">↓</span></button>
+        <div class="faq-a"><div class="faq-a-inner">Yes. Our fleet uses heated battery enclosures and is tested for reliable operation down to −40°C. We monitor Environment Canada forecasts and will reschedule if winds exceed safe thresholds — but cold temperatures alone don't stop us. Post-winter washes in March and April are one of our busiest periods.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false" onclick="toggleFaq(this)">Are the cleaning solutions safe for my garden and pets? <span class="faq-arrow">↓</span></button>
+        <div class="faq-a"><div class="faq-a-inner">All solutions are biodegradable and certified safe for plants, soil, and animals once dry (typically 30–60 minutes after application). They meet Canadian environmental regulations and are safe for runoff into storm water systems, lawns, and near waterways.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false" onclick="toggleFaq(this)">How much does it cost? <span class="faq-arrow">↓</span></button>
+        <div class="faq-a"><div class="faq-a-inner">Pricing depends on structure size, type, and access complexity. Residential roof washes start at $299, solar panel cleaning from $149, post-winter washes from $199. Commercial and agricultural structures are quoted individually. All quotes are free with no obligation, and include a satellite review before we visit.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false" onclick="toggleFaq(this)">Do you serve rural and remote areas? <span class="faq-arrow">↓</span></button>
+        <div class="faq-a"><div class="faq-a-inner">Yes. Yes. We serve agricultural properties, grain co-ops, and rural communities. Our certified operator network is expanding nationally — submit a quote request and we'll confirm coverage in your area.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false" onclick="toggleFaq(this)">What does the photo report include? <span class="faq-arrow">↓</span></button>
+        <div class="faq-a"><div class="faq-a-inner">Every job includes a PDF report with GPS-tagged, timestamped before and after aerial photographs covering all cleaned surfaces. For larger properties we include short drone video clips. The report is emailed within 24 hours of job completion.</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA BAND -->
+<div id="cta-band">
+  <div class="tag" style="text-align:center;">Ready to Get Clean?</div>
+  <h2>YOUR ROOF.<br><em style="color:var(--ice2);font-style:normal;">OUR DRONES.</em></h2>
+  <p>Free quote within 24 hours. No obligation. Growing across Canada.</p>
+  <a href="#quote" class="btn-gold" style="padding:0.9rem 2.5rem;font-size:0.95rem;border-radius:8px;">Request Free Quote</a>
+</div>
+
+<!-- QUOTE FORM -->
+<section id="quote">
+  <div class="container">
+    <div class="tag">Get Started</div>
+    <div class="sep"></div>
+    <div class="section-title">Free Quote Request</div>
+    <p class="section-desc">Try the quote flow with sample details. This portfolio demo does not send or save your information.</p>
+    <div id="form-wrap">
+      <p id="form-error" role="alert" style="color:var(--gold);margin-bottom:1rem"></p>
+      <div class="form-grid">
+        <input type="text" id="fname" aria-label="First name" placeholder="First name" autocomplete="given-name"/>
+        <input type="text" id="lname" aria-label="Last name" placeholder="Last name" autocomplete="family-name"/>
+        <input type="email" id="email" class="full" aria-label="Email address" placeholder="Email address" autocomplete="email"/>
+        <input type="tel" id="phone" aria-label="Phone number" placeholder="Phone number" autocomplete="tel"/>
+        <input type="text" id="city" aria-label="City / Town / Province" placeholder="City / Town / Province"/>
+        <select aria-label="Service type" id="service" class="full">
+          <option value="" disabled selected>Select service type</option>
+          <option>Residential roof</option>
+          <option>Solar panels</option>
+          <option>Commercial facade</option>
+          <option>Grain elevator / silo</option>
+          <option>Post-winter wash</option>
+          <option>Construction hoarding</option>
+          <option>Other / not sure</option>
+        </select>
+        <input type="text" id="size" class="full" aria-label="Approximate structure size (e.g. 2,000 sq ft bungalow, 50-panel solar array)" placeholder="Approximate structure size (e.g. 2,000 sq ft bungalow, 50-panel solar array)"/>
+        <textarea id="notes" class="full" aria-label="Additional details, access notes, or questions..." placeholder="Additional details, access notes, or questions..."></textarea>
+        <button class="form-submit full" onclick="submitForm()">Preview Quote Request →</button>
+      </div>
+    </div>
+    <div class="form-success" id="form-success" role="status" tabindex="-1">
+      <div style="font-size:2.5rem;margin-bottom:0.75rem;">✅</div>
+      <h3>Demo Complete — Nothing Sent</h3>
+      <p>This is a preview of the quote experience. No request was submitted or saved.</p>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-top">
+    <div class="footer-brand">
+      <a href="#" class="logo" style="font-size:1.35rem;">Drone<span>Washers</span></a>
+      <p>Canada's drone exterior cleaning network. Safe, efficient, eco-friendly drone cleaning for rooftops, solar panels, silos, and more. Expanding across Canada.</p>
+      <div class="footer-contact">
+        <span>Portfolio concept · contact details pending</span>
+        
+        <span style="font-size:0.8rem;color:var(--muted);">Canada</span>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4>Services</h4>
+      <ul>
+        <li><a href="#services">Residential Roofs</a></li>
+        <li><a href="#services">Solar Panels</a></li>
+        <li><a href="#services">Commercial Facades</a></li>
+        <li><a href="#services">Grain Elevators</a></li>
+        <li><a href="#services">Post-Winter Wash</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Company</h4>
+      <ul>
+        <li><a href="#how">How It Works</a></li>
+        <li><a href="#area">Service Area</a></li>
+        <li><a href="#faq">FAQ</a></li>
+        <li><a href="#quote">Get a Quote</a></li>
+        
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div>© 2025 DroneWashers.ca. All rights reserved.</div>
+    <div class="tc-badge">Transport Canada Advanced RPAS Certified</div>
+    <div>Interactive portfolio preview</div>
+  </div>
+</footer>
+
+<button id="scrolltop" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Scroll to top">↑</button>
+
+<script>
+window.addEventListener('scroll',function(){
+  document.getElementById('nav').classList.toggle('scrolled',window.scrollY>40);
+  document.getElementById('scrolltop').classList.toggle('visible',window.scrollY>600);
+});
+document.getElementById('hamburger').addEventListener('click',function(){
+  var open=document.getElementById('mobile-menu').classList.toggle('open');
+  this.setAttribute('aria-expanded',String(open));
+});
+function closeMobile(){document.getElementById('mobile-menu').classList.remove('open');document.getElementById('hamburger').setAttribute('aria-expanded','false');}
+function toggleFaq(el){
+  var item=el.parentElement;
+  var isOpen=item.classList.contains('open');
+  document.querySelectorAll('.faq-item').forEach(function(i){i.classList.remove('open');i.querySelector('.faq-q').setAttribute('aria-expanded','false');});
+  if(!isOpen)item.classList.add('open');
+  el.setAttribute('aria-expanded',String(!isOpen));
+}
+var cityData={
+  winnipeg:{name:'Winnipeg — HQ',detail:'Primary launch market. Full fleet deployment. Fastest response times and standard pricing.'},
+  brandon:{name:'Brandon',detail:'Regular service route. Within the 200km standard rate zone.'},
+  steinbach:{name:'Steinbach',detail:'Regular service. Strong agricultural and residential demand. Within 200km zone.'},
+  portage:{name:'Portage la Prairie',detail:'Regular service. Agricultural and commercial speciality. Within 200km zone.'},
+  thompson:{name:'Thompson',detail:'Service available with advance booking. Travel supplement applies beyond 200km.'},
+  dauphin:{name:'Dauphin',detail:'Regular service. Agricultural properties and grain co-ops welcome. Within 200km zone.'},
+  flinflon:{name:'Flin Flon',detail:'Service available with advance scheduling. Travel supplement applies.'},
+  winkler:{name:'Winkler / Morden',detail:'Regular service route. Active solar farm and agricultural coverage in the region.'}
+};
+function showCity(key){
+  var d=cityData[key];
+  if(!d)return;
+  document.getElementById('city-name').textContent=d.name;
+  document.getElementById('city-detail').textContent=d.detail;
+  document.getElementById('city-info').style.display='block';
+}
+function submitForm(){
+  var fname=document.getElementById('fname').value.trim();
+  var email=document.getElementById('email').value.trim();
+  var service=document.getElementById('service').value;
+  if(!fname||!email||!service||!document.getElementById('email').checkValidity()){document.getElementById('form-error').textContent='Enter a sample name, valid email address, and service type to preview the request.';return;}
+  document.getElementById('form-wrap').style.display='none';
+  document.getElementById('form-success').style.display='block';
+  document.getElementById('form-success').focus({preventScroll:true});
+  document.getElementById('form-success').scrollIntoView({behavior:'smooth',block:'center'});
+}
+</script>
+</body>
+</html>

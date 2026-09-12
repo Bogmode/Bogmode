@@ -1,0 +1,30 @@
+{
+  "title": "Upstreams",
+  "order": 2,
+  "cat": "COMMUNITY PLATFORM",
+  "status": "LIVE PROTOTYPE",
+  "live": true,
+  "body": "A Winnipeg marketplace connecting business byproducts with people who can put them to use.",
+  "chips": [
+    "Marketplace",
+    "Community",
+    "Winnipeg"
+  ],
+  "detail": "Upstreams turns a local problem into a practical platform: helping useful materials find their next purpose. It brings my interest in systems and community building together.",
+  "projectUrl": "https://upstreams.ca/",
+  "projectLabel": "EXPLORE UPSTREAMS",
+  "sections": [
+    {
+      "label": "THE IDEA",
+      "copy": "One business’s byproduct can be another person’s starting point. Make those possibilities easier to discover and connect."
+    },
+    {
+      "label": "THE PROJECT",
+      "copy": "A live marketplace prototype exploring how local businesses and communities can exchange useful materials."
+    },
+    {
+      "label": "WHAT IT SHOWS",
+      "copy": "Turning a broad community ambition into a focused product people can explore. The prototype is a starting point, with room to learn from real use."
+    }
+  ]
+}

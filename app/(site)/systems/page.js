@@ -13,9 +13,10 @@ export default async function SystemsPage() {
         <div className="sec-head">
           <span className="xh"><Crosshair size={16} /></span>
           <h2>Systems</h2>
-          <span className="tag">THINGS I&apos;VE BUILT &amp; SHIPPED</span>
+          <span className="tag">WORK, PRODUCTS &amp; PROTOTYPES</span>
         </div>
       </Rise>
+      <p className="section-intro">Business systems, independent products, and service concepts. Different problems, brought into working form.</p>
       <div className="sys-grid">
         {systems.map((s, i) => (
           <Rise key={s.slug} mode="mount" delay={100 + i * 90}>

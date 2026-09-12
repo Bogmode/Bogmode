@@ -1,0 +1,166 @@
+<div id="skills-rose-preview"><skills-rose></skills-rose></div>
+<script>
+/* Skills Rose — dependency-free Canvas 2D with perspective-projected 3D geometry.
+   Embed: load skills-rose.js with a deferred script, then add a skills-rose element.
+   Public API: element.config = {...}; element.config returns a deep copy.
+   Optional attributes: compact (hide editor), paused (start without motion).
+*/
+(() => {
+  'use strict';
+  if (customElements.get('skills-rose')) return;
+  const DEFAULTS = {
+    title: 'A practice in becoming.',
+    subtitle: 'Three domains. Nine expressions. One evolving self.',
+    domains: [
+      {name: 'Physical', color: '#e7a175', skills: [
+        {name: 'Strength', value: 72}, {name: 'Endurance', value: 60}, {name: 'Coordination', value: 82}]},
+      {name: 'Social', color: '#c4b0ff', skills: [
+        {name: 'Empathy', value: 86}, {name: 'Communication', value: 75}, {name: 'Leadership', value: 62}]},
+      {name: 'Technological', color: '#83dcc6', skills: [
+        {name: 'Coding', value: 78}, {name: 'Systems thinking', value: 90}, {name: 'Automation', value: 84}]}
+    ]
+  };
+  const clone = x => JSON.parse(JSON.stringify(x));
+  const esc = x => String(x).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+  class SkillsRose extends HTMLElement {
+    constructor() {
+      super(); this.attachShadow({mode:'open'}); this._config = clone(DEFAULTS);
+      this._selected = 0; this._phase = 0; this._pointer = {x:0,y:0}; this._tilt = {x:0,y:0};
+      this._frame = 0; this._visible = true;
+    }
+    get config() { return clone(this._config); }
+    set config(next) {
+      const c = clone(next);
+      if (!c || !Array.isArray(c.domains) || c.domains.length !== 3) throw new Error('Use three domains.');
+      c.domains.forEach(d => {
+        if (!d || typeof d.name !== 'string' || !/^#[0-9a-f]{6}$/i.test(d.color) || !Array.isArray(d.skills) || d.skills.length !== 3) throw new Error('Each domain needs a name, #RRGGBB color, and three skills.');
+        d.skills.forEach(s => {if (!s || typeof s.name !== 'string' || !Number.isFinite(s.value) || s.value < 0 || s.value > 100) throw new Error('Each skill needs a name and a value from 0 to 100.');});
+      });
+      c.title = String(c.title ?? DEFAULTS.title); c.subtitle = String(c.subtitle ?? DEFAULTS.subtitle);
+      this._config = c; if (this.isConnected) this._render();
+    }
+    connectedCallback() {
+      this._reduced = matchMedia('(prefers-reduced-motion: reduce)');
+      this._playing = !this._reduced.matches && !this.hasAttribute('paused');
+      this._motionChange = () => {if (this._reduced.matches) {this._playing=false; this._syncPlay(); this._stop(); this._draw();}};
+      this._visibilityChange = () => {this._stop(); if (!document.hidden) this._start();};
+      this._reduced.addEventListener('change',this._motionChange);
+      document.addEventListener('visibilitychange',this._visibilityChange);
+      this._render();
+      this._intersection = new IntersectionObserver(entries => {
+        this._visible = entries[0].isIntersecting; this._stop(); if(this._visible) this._start();
+      }); this._intersection.observe(this);
+    }
+    disconnectedCallback() {
+      this._stop(); this._resize?.disconnect(); this._intersection?.disconnect();
+      this._reduced?.removeEventListener('change',this._motionChange);
+      document.removeEventListener('visibilitychange',this._visibilityChange);
+    }
+    _render() {
+      this._stop(); this._resize?.disconnect();
+      this.shadowRoot.innerHTML = `
+      <style>
+        :host{container-type:inline-size;display:block;color:#f1eee7;font-family:Inter,ui-sans-serif,system-ui,-apple-system,sans-serif;--line:#ffffff20;--muted:#aaaeb1;--accent:${this._config.domains[this._selected].color};color-scheme:dark}
+        *{box-sizing:border-box}button,input{font:inherit}button{cursor:pointer}button:focus-visible,input:focus-visible{outline:2px solid #f1eee7;outline-offset:4px}
+        .shell{background:#0b1014;border:1px solid #293037;border-radius:18px;overflow:hidden;max-width:1200px;margin:auto}
+        header{padding:30px 34px 0;display:flex;justify-content:space-between;gap:20px}.eyebrow{font-size:10px;letter-spacing:.23em;text-transform:uppercase;color:#bbbdbd;margin-bottom:13px}
+        h2{font-family:Georgia,'Times New Roman',serif;font-size:clamp(27px,4.5vw,44px);font-weight:400;letter-spacing:-.04em;margin:0 0 10px;line-height:1.1}
+        .sub{color:var(--muted);font-size:12px;line-height:1.6;margin:0}.edition{font-size:10px;letter-spacing:.1em;color:var(--muted);white-space:nowrap;padding-top:3px}
+        .main{display:grid;grid-template-columns:minmax(0,1fr) 230px;padding:0 34px 24px;gap:24px;align-items:center}
+        .stage{position:relative;min-width:0;height:450px}canvas{display:block;width:100%;height:100%}
+        .stage-label{position:absolute;bottom:7px;left:0;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+        .editor{border-left:1px solid var(--line);padding-left:24px;min-width:0}.domain-tabs{display:flex;flex-direction:column;gap:7px;margin-bottom:26px}
+        .domain{background:transparent;border:0;color:#aeb3b6;display:flex;align-items:center;gap:10px;text-align:left;padding:8px 0;font-size:12px;min-height:35px}
+        .domain[aria-pressed=true]{color:#fff}.dot{height:6px;width:6px;border-radius:50%;background:var(--c);box-shadow:0 0 10px color-mix(in srgb,var(--c),transparent 60%)}.num{margin-left:auto;color:#737d85;font-size:10px}.domain[aria-pressed=true] .num{color:var(--accent)}
+        .field{margin-top:19px}.field-top{display:flex;align-items:center;gap:7px}.name{width:100%;min-width:0;border:0;border-bottom:1px solid transparent;background:transparent;color:#e0e1df;padding:4px 0;font-size:12px}.name:hover,.name:focus{border-color:#67717a}.value{font-size:11px;font-variant-numeric:tabular-nums;color:var(--accent)}
+        input[type=range]{display:block;width:100%;height:18px;accent-color:var(--accent);margin:6px 0 0;cursor:pointer}
+        .small{font-size:10px;line-height:1.6;color:var(--muted);margin:18px 0 0}.color{display:flex;align-items:center;justify-content:space-between;font-size:11px;color:var(--muted);margin-top:23px}input[type=color]{width:30px;height:25px;border:0;padding:0;background:none;cursor:pointer}
+        footer{display:flex;justify-content:space-between;align-items:center;gap:14px;flex-wrap:wrap;padding:16px 34px;border-top:1px solid var(--line)}.footnote{font-size:10px;color:var(--muted);letter-spacing:.035em}.actions{display:flex;gap:8px;flex-wrap:wrap}.action{font-size:11px;border:1px solid #3a454d;border-radius:100px;background:transparent;color:#e4e7e5;padding:8px 13px;min-height:34px}.action:hover{background:#ffffff0d}.status{font-size:11px;color:var(--muted)}
+        :host([compact]) .editor{display:none}:host([compact]) .main{grid-template-columns:1fr}:host([compact]) .export{display:none}
+        @container(max-width:620px){header{padding:24px 20px 0}.edition{display:none}.main{grid-template-columns:1fr;padding:0 20px 24px;gap:10px}.stage{height:350px}.editor{border-left:0;padding-left:0;border-top:1px solid var(--line);padding-top:14px}.domain-tabs{flex-direction:row;gap:16px;flex-wrap:wrap;margin-bottom:12px}.domain{gap:7px}.num{display:none}.field{margin-top:10px}.name{font-size:16px}.color{margin-top:12px}.small{margin-top:12px}footer{padding:15px 20px}.stage-label{font-size:9px}}
+        @media(pointer:coarse){.domain,.action{min-height:44px}input[type=range]{height:30px}}
+      </style>
+      <section class="shell" aria-label="Interactive skills rose">
+        <header><div><div class="eyebrow">Personal atlas / 001</div><h2>${esc(this._config.title)}</h2><p class="sub">${esc(this._config.subtitle)}</p></div><span class="edition">SKILLS / IN BLOOM</span></header>
+        <div class="main"><div class="stage"><canvas role="img" aria-label="Nine animated petals in three skill domains. Petal length represents self-rated strength."></canvas><div class="stage-label">${this._reduced?.matches ? 'Still view' : 'Move your pointer to change perspective'}</div></div>
+        <aside class="editor" aria-label="Edit your skills"><div class="domain-tabs" role="group" aria-label="Skill domain">${this._config.domains.map((d,i)=>`<button type="button" class="domain" data-domain="${i}" aria-pressed="${i===this._selected}"><span class="dot" style="--c:${d.color}"></span>${esc(d.name)}<span class="num">0${i+1}</span></button>`).join('')}</div><div class="fields"></div><label class="color">Petal color<input type="color" aria-label="Domain color"></label><p class="small">Example profile · edit to make it yours.<br>Petal length = self-rating, 0–100.</p></aside></div>
+        <footer><span class="footnote">BODY ↔ PEOPLE ↔ POSSIBILITY</span><div class="actions"><span class="status" aria-live="polite"></span><button type="button" class="action play"></button><button type="button" class="action export">Export profile ↓</button></div></footer>
+      </section>`;
+      this._canvas=this.shadowRoot.querySelector('canvas'); this._ctx=this._canvas.getContext('2d');
+      this.shadowRoot.querySelectorAll('[data-domain]').forEach(b=>b.addEventListener('click',()=>{
+        this._selected=Number(b.dataset.domain); this._updateFields(); this._draw();
+      }));
+      this.shadowRoot.querySelector('.play').addEventListener('click',()=>{this._playing=!this._playing;this._syncPlay();this._stop();this._draw();this._start();});
+      this.shadowRoot.querySelector('.export').addEventListener('click',()=>{
+        const url=URL.createObjectURL(new Blob([JSON.stringify(this.config,null,2)],{type:'application/json'}));
+        const a=document.createElement('a');a.href=url;a.download='my-skills.json';a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);
+        this.shadowRoot.querySelector('.status').textContent='Profile exported';
+      });
+      this._canvas.addEventListener('pointermove',e=>{const r=this._canvas.getBoundingClientRect();this._pointer={x:(e.clientX-r.left)/r.width-.5,y:(e.clientY-r.top)/r.height-.5};});
+      this._canvas.addEventListener('pointerleave',()=>{this._pointer={x:0,y:0};});
+      this._resize=new ResizeObserver(()=>{const r=this._canvas.getBoundingClientRect();this._w=r.width;this._h=r.height;const dpr=Math.min(devicePixelRatio||1,2);this._canvas.width=Math.round(r.width*dpr);this._canvas.height=Math.round(r.height*dpr);this._ctx.setTransform(dpr,0,0,dpr,0,0);this._draw();});this._resize.observe(this._canvas);
+      this._updateFields();this._syncPlay();this._start();
+    }
+    _updateFields() {
+      const d=this._config.domains[this._selected];this.style.setProperty('--accent',d.color);
+      this.shadowRoot.querySelectorAll('[data-domain]').forEach(b=>b.setAttribute('aria-pressed',String(Number(b.dataset.domain)===this._selected)));
+      this.shadowRoot.querySelector('.fields').innerHTML=d.skills.map((s,i)=>`<div class="field"><div class="field-top"><input class="name" aria-label="Skill ${i+1} name" maxlength="40" value="${esc(s.name)}"><output class="value" for="strength-${i}">${s.value}</output></div><input id="strength-${i}" type="range" min="0" max="100" value="${s.value}" aria-label="${esc(s.name)} strength"></div>`).join('');
+      this.shadowRoot.querySelectorAll('.field').forEach((f,i)=>{
+        f.querySelector('.name').addEventListener('input',e=>{d.skills[i].name=e.target.value;f.querySelector('[type=range]').setAttribute('aria-label',e.target.value+' strength');this._changed();});
+        f.querySelector('[type=range]').addEventListener('input',e=>{d.skills[i].value=Number(e.target.value);f.querySelector('output').value=e.target.value;this._changed();});
+      });
+      const color=this.shadowRoot.querySelector('[type=color]');color.value=d.color;color.oninput=e=>{d.color=e.target.value;this.style.setProperty('--accent',d.color);this.shadowRoot.querySelectorAll('.dot')[this._selected].style.setProperty('--c',d.color);this._changed();};
+      this._describe();
+    }
+    _changed(){this._describe();this._draw();this.dispatchEvent(new CustomEvent('skills-change',{detail:this.config,bubbles:true,composed:true}));}
+    _describe(){this._canvas.setAttribute('aria-label',this._config.domains.map(d=>d.name+': '+d.skills.map(s=>s.name+' '+s.value+' out of 100').join(', ')).join('. '));}
+    _syncPlay(){const b=this.shadowRoot.querySelector('.play');b.textContent=this._playing?'Pause motion':'Play motion';b.setAttribute('aria-pressed',String(this._playing));}
+    _stop(){cancelAnimationFrame(this._frame);this._frame=0;this._last=0;}
+    _start(){if(this._frame||!this._playing||!this._visible||document.hidden||!this.isConnected)return;const tick=now=>{this._phase+=Math.min((now-(this._last||now))/1000,.05);this._last=now;this._tilt.x+=(this._pointer.x-this._tilt.x)*.04;this._tilt.y+=(this._pointer.y-this._tilt.y)*.04;this._draw();this._frame=requestAnimationFrame(tick);};this._frame=requestAnimationFrame(tick);}
+    _draw(){
+      const ctx=this._ctx,w=this._w,h=this._h;if(!ctx||!w||!h)return;
+      const t=this._phase,cx=w/2,cy=h/2-3,scale=Math.min(w*.34,h*.355);
+      ctx.clearRect(0,0,w,h);
+      const rot=.16+this._tilt.x*.3+Math.sin(t*.16)*.065,tilt=.38+this._tilt.y*.32;
+      const project=(x,y,z)=>{const xx=x*Math.cos(rot)-y*Math.sin(rot), yy=x*Math.sin(rot)+y*Math.cos(rot), yz=yy*Math.cos(tilt)-z*Math.sin(tilt), zz=yy*Math.sin(tilt)+z*Math.cos(tilt), p=3.8/(3.8-zz);return [cx+xx*scale*p,cy+yz*scale*p,zz];};
+      const path=(points)=>{ctx.beginPath();points.forEach((p,i)=>i?ctx.lineTo(p[0],p[1]):ctx.moveTo(p[0],p[1]));};
+      // Quiet orbital scaffolding: a coordinate system, not an extra score.
+      ctx.lineWidth=.6;ctx.strokeStyle='#afc5cc1c';
+      [0.44,.88,1.25].forEach(r=>{const pts=[];for(let j=0;j<=100;j++){const a=j/100*Math.PI*2;pts.push(project(Math.cos(a)*r,Math.sin(a)*r,-.1));}path(pts);ctx.stroke();});
+      for(let i=0;i<72;i++){const a=i/72*Math.PI*2;path([project(Math.cos(a)*1.27,Math.sin(a)*1.27,-.1),project(Math.cos(a)*(i%6===0?1.31:1.285),Math.sin(a)*(i%6===0?1.31:1.285),-.1)]);ctx.stroke();}
+      const petals=[];
+      this._config.domains.forEach((d,di)=>d.skills.forEach((skill,si)=>{
+        const n=di*3+si,angle=n/9*Math.PI*2-Math.PI/2;
+        const len=.39+skill.value*.0082;
+        const point=(u,v)=>{
+          const width=Math.pow(Math.sin(Math.PI*u),.88)*(.235+skill.value*.0004)*v;
+          const radial=.08+u*len;
+          const z=Math.sin(Math.PI*u)*(.27+di*.035)*(1-v*v)+.06*Math.sin(t*.8+n*.7)*Math.sin(Math.PI*u)+.15*u*u;
+          const a=angle+.08*Math.sin(t*.32+n)*u;
+          return project(Math.cos(a)*radial-Math.sin(a)*width,Math.sin(a)*radial+Math.cos(a)*width,z);
+        };
+        petals.push({di,si,d,skill,point,depth:point(.65,0)[2]});
+      }));
+      petals.sort((a,b)=>a.depth-b.depth);
+      petals.forEach(({di,si,d,point})=>{
+        const active=di===this._selected||this.hasAttribute('compact');
+        const edge=[];for(let j=0;j<=36;j++)edge.push(point(j/36,-1));for(let j=36;j>=0;j--)edge.push(point(j/36,1));
+        path(edge);ctx.closePath();const end=point(.8,0),grad=ctx.createLinearGradient(cx,cy,end[0],end[1]);grad.addColorStop(0,d.color+'05');grad.addColorStop(.6,d.color+(active?'20':'0c'));grad.addColorStop(1,d.color+'06');ctx.fillStyle=grad;ctx.fill();ctx.strokeStyle=d.color+(active?'a0':'50');ctx.lineWidth=.85;ctx.stroke();
+        for(let k=-5;k<=5;k++){const pts=[];for(let j=0;j<=34;j++)pts.push(point(j/34,k/6));path(pts);ctx.strokeStyle=d.color+(active?'70':'32');ctx.lineWidth=.5;ctx.stroke();}
+        for(let j=2;j<24;j++){const pts=[];for(let k=-10;k<=10;k++)pts.push(point(j/24,k/10));path(pts);ctx.strokeStyle=d.color+(active?'45':'20');ctx.lineWidth=.45;ctx.stroke();}
+        const pulse=(t*.12+si*.28+di*.15)%1, p=point(pulse,0);ctx.beginPath();ctx.arc(p[0],p[1],active?1.8:1.1,0,Math.PI*2);ctx.fillStyle=d.color;ctx.shadowBlur=8;ctx.shadowColor=d.color;ctx.fill();ctx.shadowBlur=0;
+        const tip=point(1,0);ctx.beginPath();ctx.arc(tip[0],tip[1],2,0,Math.PI*2);ctx.fillStyle=d.color;ctx.fill();
+      });
+      // Inner seed: translucent curved loops where the three domains meet.
+      for(let k=0;k<3;k++){const pts=[];for(let j=0;j<=90;j++){const a=j/90*Math.PI*2;pts.push(project(.135*Math.cos(a),.135*Math.sin(a),Math.sin(a*2+k*2+t*.35)*.09+.1));}path(pts);ctx.lineWidth=.9;ctx.strokeStyle=this._config.domains[k].color+'b0';ctx.stroke();}
+      ctx.beginPath();ctx.arc(cx,cy,2.5,0,Math.PI*2);ctx.fillStyle='#fff4df';ctx.fill();
+      // Domain labels stay outside the animated geometry, including at mobile sizes.
+      ctx.font='10px system-ui, sans-serif';
+      const labels=[{x:w*.85,y:27},{x:w*.86,y:h-37},{x:w*.08,y:27}];
+      this._config.domains.forEach((d,i)=>{const p=labels[i];ctx.fillStyle=d.color;ctx.textAlign=i<2?'right':'left';const name=d.name.length>19?d.name.slice(0,18)+'…':d.name;ctx.fillText(name.toUpperCase(),p.x,p.y);ctx.fillStyle='#849198';ctx.font='9px system-ui, sans-serif';ctx.fillText('0'+(i+1),p.x,p.y+16);ctx.font='10px system-ui, sans-serif';});
+    }
+  }
+  customElements.define('skills-rose',SkillsRose);
+})();
+
+</script>

@@ -1,0 +1,30 @@
+{
+  "title": "DroneWashers",
+  "order": 4,
+  "cat": "SERVICE BRAND",
+  "status": "WEBSITE CONCEPT",
+  "live": false,
+  "body": "A drone-cleaning service concept with a complete website, service discovery, and an interactive quote journey.",
+  "chips": [
+    "Brand development",
+    "Service design",
+    "Web experience"
+  ],
+  "detail": "DroneWashers explores how to turn a service idea into a clear customer-facing experience. The site gives the concept a visual identity and a path from first impression to inquiry.",
+  "projectUrl": "/projects/dronewashers",
+  "projectLabel": "OPEN INTERACTIVE PREVIEW",
+  "sections": [
+    {
+      "label": "THE IDEA",
+      "copy": "Make a drone-cleaning service easy to understand: what it could clean, how the process could work, and how a customer would inquire."
+    },
+    {
+      "label": "THE PROJECT",
+      "copy": "A complete website concept with an animated drone, service sections, a coverage map, FAQs, and a sample quote flow."
+    },
+    {
+      "label": "PROJECT STATUS",
+      "copy": "This is an interactive website concept. Service claims, prices, and testimonials are draft content; the quote form is a demonstration and does not send requests."
+    }
+  ]
+}

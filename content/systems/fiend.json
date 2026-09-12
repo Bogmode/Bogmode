@@ -1,0 +1,30 @@
+{
+  "title": "Fiend",
+  "order": 3,
+  "cat": "CONSUMER APP",
+  "status": "LIVE PROJECT",
+  "live": true,
+  "body": "A behavior-tracking app for noticing patterns through individual logs, stats, and weekly reports.",
+  "chips": [
+    "Product design",
+    "Behavior tracking",
+    "Interface"
+  ],
+  "detail": "Fiend explores how a direct, distinctive interface can make everyday patterns easier to see. It connects a clear product idea with a usable digital experience.",
+  "projectUrl": "https://bogmode.github.io/fiend/",
+  "projectLabel": "EXPLORE FIEND",
+  "sections": [
+    {
+      "label": "THE IDEA",
+      "copy": "Give people a way to record everyday behavior and look back at the patterns that emerge."
+    },
+    {
+      "label": "THE PROJECT",
+      "copy": "An app organized around individual logs, statistics, and weekly reports, with a distinctive visual identity."
+    },
+    {
+      "label": "WHAT IT SHOWS",
+      "copy": "Connecting product structure, interface design, and brand personality in one experience."
+    }
+  ]
+}

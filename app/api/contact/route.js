@@ -1,10 +1,3 @@
-// POST /api/contact — sends the form to your inbox via Resend.
-// Required env (set in .env.local and in Vercel → Project → Environment Variables):
-//   RESEND_API_KEY   — from https://resend.com (same account as the licensing tracker)
-//   CONTACT_TO       — where messages land, e.g. bogdan@bogmode.ca
-//   CONTACT_FROM     — verified sender, e.g. "БОГMODE <form@bogmode.ca>"
-//                      (verify the bogmode.ca domain in Resend first; until then
-//                       "onboarding@resend.dev" works for testing)
 import { Resend } from "resend";
 
 export async function POST(req) {
@@ -14,6 +7,8 @@ export async function POST(req) {
   } catch {
     return Response.json({ error: "Bad request." }, { status: 400 });
   }
+
+  if (!body || typeof body !== "object" || Array.isArray(body)) return Response.json({ error: "Bad request." }, { status: 400 });
 
   const { name = "", email = "", message = "", company_site = "" } = body;
 
@@ -32,7 +27,7 @@ export async function POST(req) {
   const { RESEND_API_KEY, CONTACT_TO, CONTACT_FROM } = process.env;
   if (!RESEND_API_KEY || !CONTACT_TO || !CONTACT_FROM) {
     return Response.json(
-      { error: "Form not wired yet — email direct instead." },
+      { error: "Please email me directly; online sending is unavailable." },
       { status: 503 }
     );
   }
@@ -49,7 +44,7 @@ export async function POST(req) {
     if (error) throw new Error(error.message || "Send failed.");
     return Response.json({ ok: true });
   } catch (err) {
-    console.error("contact form:", err);
+    console.error("Contact delivery failed.");
     return Response.json({ error: "Could not send — email direct instead." }, { status: 502 });
   }
 }

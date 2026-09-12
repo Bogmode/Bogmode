@@ -1,11 +1,14 @@
+import Dronewasheres from "@/components/Dronewasheres";
+import PlaygroundTile from "@/components/PlaygroundTile";
 import Crosshair from "@/components/Crosshair";
 import Rise from "@/components/Rise";
-import { getPlayground } from "@/lib/content";
+import SkillsRose from "@/components/SkillsRose";
+import { getPlayground, getSite } from "@/lib/content";
 
 export const metadata = { title: "Playground — БОГMODE" };
 
 export default async function PlaygroundPage() {
-  const playground = await getPlayground();
+  const [playground, site] = await Promise.all([getPlayground(), getSite()]);
   return (
     <section>
       <Rise mode="mount">
@@ -15,14 +18,17 @@ export default async function PlaygroundPage() {
           <span className="tag">RANGE / OFF-HOURS</span>
         </div>
       </Rise>
+      <Dronewasheres url={site.dronewasheresUrl} />
+      <Rise mode="mount" delay={80}>
+        <div className="play-experiment">
+          <div className="experiment-kicker"><span>LIVE EXPERIMENT / 001</span><span>SKILLS ROSE</span></div>
+          <SkillsRose />
+        </div>
+      </Rise>
       <div className="play-grid">
         {playground.map((p, i) => (
           <Rise key={p.slug} mode="mount" delay={100 + i * 90}>
-            <div className="tile">
-              <div className="glyph">{p.glyph}</div>
-              <h4>{p.title}</h4>
-              <p>{p.body}</p>
-            </div>
+            <PlaygroundTile item={p} />
           </Rise>
         ))}
       </div>

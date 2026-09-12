@@ -1,28 +1,38 @@
 {
-  "headline": "I build the systems you can't afford to hire for yet.",
-  "subhead": "Digital infrastructure for founders and creatives coming up from nothing.",
-  "lede": "Marketing ops, data, and AI tooling — the machinery big companies pay whole teams for, handed to the people building from scratch. I came up building my own, so I'm not guessing at what you need. I back builders before it's obvious. That's who the future belongs to.",
+  "headline": "Bring the problem.",
+  "subhead": "Let’s make it work.",
+  "lede": "I’m Bogdan. I connect business, technology, and people to build useful systems, move brands forward, and turn ideas into something people can use.",
   "telemetry": [
-    { "k": "ROLE", "v": "marketing systems builder" },
-    { "k": "STACK", "v": "React · Supabase · Vercel" },
-    { "k": "LANG", "v": "EN · UK · RU" },
-    { "k": "MODE", "v": "building" }
+    {
+      "k": "FOCUS",
+      "v": "systems · brands · execution"
+    },
+    {
+      "k": "BASED IN",
+      "v": "Winnipeg, Canada"
+    },
+    {
+      "k": "LANGUAGES",
+      "v": "English · Ukrainian · Russian"
+    }
   ],
   "about": [
-    "I'm Bogdan — Ukrainian, Winnipeg-based, trilingual. I've got a BCom from the Asper School of Business, management information systems and marketing, which is the long way of saying I studied the exact seam I work on now: where the systems meet the story.",
-    "I build the digital infrastructure young businesses run on. CRM and automation, dashboards, data pipelines, AI tooling — shipped end to end, mostly solo, built not bought. No inherited runway, no team handed to me. I learned by making the thing until it worked.",
-    "I work with the people coming up: founders and creatives building from nothing, who need the machinery before they can afford the headcount. I back them early because I know what it's like from that spot. It tastes different when you got it out the mud.",
-    "This site is one of the systems. Look around."
+    "I'm Bogdan, based in Winnipeg. I connect business, technology, and people to make things work. In my professional work, I’ve built shared systems from the ground up and kept essential information current and accessible to the team.",
+    "I still love aerial filming and videography. I used to fly FPV and camera drones, and I shoot short-form videos for social media and other formats with my reliable camera.",
+    "Away from work, I train Muay Thai, play video and card games—including Magic: The Gathering and Hearthstone—and spend plenty of time with memes and social media. My Instagram reposts are a running collection of things that catch my attention.",
+    "I love building communities, and I love Winnipeg. I want my work to help make this city stronger and more visible on the global map. БОГMODE brings those ambitions together: systems, stories, and people."
   ],
-  "portrait": null,
-  "workshop": null,
+  "portrait": "/photos/bogdan-orange-glasses.jpeg",
+  "workshop": "/photos/bogdan-muay-thai.jpeg",
   "links": {
-    "linkedin": null,
+    "linkedin": "https://www.linkedin.com/in/bogmode/",
     "youtube": null,
     "github": null
   },
   "contact": {
     "email": "hello@bogmode.ca",
-    "formIntro": "No forms-into-the-void. This lands in my inbox and I answer it myself. Tell me what you're building."
-  }
+    "formIntro": "What are you trying to make happen? Tell me about the problem, the people involved, and what a good outcome would look like. Let’s find a way forward."
+  },
+  "instagramUrl": "https://www.instagram.com/bogmoder/",
+  "dronewasheresUrl": "/projects/dronewashers"
 }

@@ -7,7 +7,7 @@ const mono = JetBrains_Mono({ subsets: ["latin", "cyrillic"], weight: ["400", "5
 
 export const metadata = {
   title: "БОГMODE — Bogdan builds systems",
-  description: "Marketing ops, data, and AI tooling — built, not outsourced.",
+  description: "Commercial systems, product data, CRM workflows, and internal tooling by Bogdan Tkachuk.",
 };
 
 export default function RootLayout({ children }) {

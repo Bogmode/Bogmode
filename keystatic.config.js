@@ -1,17 +1,16 @@
 // БОГMODE — Keystatic config.
 // Git-based CMS: everything writes to files in content/ and images to public/photos/.
+// Dev: `npm run dev` → open /keystatic to edit with a GUI.
+// Prod editing (optional later): switch storage to { kind: "github", repo: "you/bogmode" }.
 import { config, fields, singleton, collection } from "@keystatic/core";
-
-const imageField = (label) => fields.image({
-  label,
-  directory: "public/photos",
-  publicPath: "/photos/",
-  validation: { isRequired: false },
-});
 
 export default config({
   storage: { kind: "local" },
-  ui: { brand: { name: "БОГMODE" } },
+
+  ui: {
+    brand: { name: "БОГMODE" },
+  },
+
   singletons: {
     site: singleton({
       label: "Site",
@@ -21,15 +20,31 @@ export default config({
         headline: fields.text({ label: "Hero headline" }),
         subhead: fields.text({ label: "Hero subhead" }),
         lede: fields.text({ label: "Hero lede", multiline: true }),
-        telemetry: fields.array(fields.object({
-          k: fields.text({ label: "Key (UPPERCASE)" }),
-          v: fields.text({ label: "Value" }),
-        }), { label: "Telemetry", itemLabel: (p) => p.fields.k.value + " — " + p.fields.v.value }),
+        telemetry: fields.array(
+          fields.object({
+            k: fields.text({ label: "Key (UPPERCASE)" }),
+            v: fields.text({ label: "Value" }),
+          }),
+          { label: "Telemetry", itemLabel: (p) => `${p.fields.k.value} — ${p.fields.v.value}` }
+        ),
         about: fields.array(fields.text({ label: "Paragraph", multiline: true }), {
-          label: "About paragraphs", itemLabel: (p) => p.value.slice(0, 60) + "…",
+          label: "About paragraphs",
+          itemLabel: (p) => p.value.slice(0, 60) + "…",
         }),
-        portrait: imageField("Portrait photo"),
-        workshop: imageField("Second photo (desk / workshop / city)"),
+        dronewasheresUrl: fields.text({ label: "DroneWashers project URL or local path" }),
+        instagramUrl: fields.url({ label: "Instagram profile URL", validation: { isRequired: false } }),
+        portrait: fields.image({
+          label: "Portrait photo",
+          directory: "public/photos",
+          publicPath: "/photos/",
+          validation: { isRequired: false },
+        }),
+        workshop: fields.image({
+          label: "Second photo (desk / workshop / city)",
+          directory: "public/photos",
+          publicPath: "/photos/",
+          validation: { isRequired: false },
+        }),
         links: fields.object({
           linkedin: fields.url({ label: "LinkedIn", validation: { isRequired: false } }),
           youtube: fields.url({ label: "YouTube", validation: { isRequired: false } }),
@@ -42,6 +57,7 @@ export default config({
       },
     }),
   },
+
   collections: {
     systems: collection({
       label: "Systems",
@@ -51,26 +67,27 @@ export default config({
       schema: {
         title: fields.slug({ name: { label: "Title" } }),
         order: fields.integer({ label: "Order (lower = first)", defaultValue: 0 }),
-        cat: fields.text({ label: "Category label" }),
-        status: fields.text({ label: "Status tag" }),
-        live: fields.checkbox({ label: "Live demo card" }),
+        cat: fields.text({ label: "Category label (mono, e.g. DATA TOOL · LIVE)" }),
+        status: fields.text({ label: "Status tag (DEPLOYED / LIVE / BUILDING)" }),
+        live: fields.checkbox({ label: "Live project indicator" }),
         body: fields.text({ label: "Card body", multiline: true }),
         chips: fields.array(fields.text({ label: "Chip" }), {
-          label: "Chips", itemLabel: (p) => p.value,
+          label: "Chips",
+          itemLabel: (p) => p.value,
         }),
         detail: fields.text({ label: "Detail page write-up", multiline: true }),
-        role: fields.text({ label: "Your role", validation: { isRequired: false } }),
-        scope: fields.text({ label: "Scope", validation: { isRequired: false } }),
-        heroImage: imageField("Hero artifact image"),
-        context: fields.text({ label: "Context", multiline: true, validation: { isRequired: false } }),
-        problem: fields.text({ label: "Problem", multiline: true, validation: { isRequired: false } }),
-        approach: fields.text({ label: "Build / approach", multiline: true, validation: { isRequired: false } }),
-        system: fields.text({ label: "What now exists", multiline: true, validation: { isRequired: false } }),
-        results: fields.array(fields.object({
-          value: fields.text({ label: "Result value" }),
-          label: fields.text({ label: "What it measures" }),
-        }), { label: "Evidence / outcomes", itemLabel: (p) => p.fields.value.value + " — " + p.fields.label.value }),
-        gallery: fields.array(imageField("Artifact image"), { label: "Artifact gallery" }),
+        projectUrl: fields.text({ label: "Project URL or local path" }),
+        projectLabel: fields.text({ label: "Project link label" }),
+        sections: fields.array(
+          fields.object({
+            label: fields.text({ label: "Section label (UPPERCASE)" }),
+            copy: fields.text({ label: "Section copy", multiline: true }),
+          }),
+          {
+            label: "Case study sections",
+            itemLabel: (p) => p.fields.label.value || "Untitled section",
+          }
+        ),
       },
     }),
     playground: collection({
@@ -81,8 +98,13 @@ export default config({
       schema: {
         title: fields.slug({ name: { label: "Title" } }),
         order: fields.integer({ label: "Order (lower = first)", defaultValue: 0 }),
-        glyph: fields.text({ label: "Mono glyph label" }),
+        glyph: fields.text({ label: "Mono glyph label (e.g. ▚ GODOT)" }),
         body: fields.text({ label: "Body", multiline: true }),
+        resources: fields.array(fields.object({
+          name: fields.text({ label: "Resource name" }),
+          description: fields.text({ label: "What it helps with" }),
+          url: fields.url({ label: "Link" }),
+        }), { label: "Useful links", itemLabel: (p) => p.fields.name.value || "New resource" }),
       },
     }),
   },

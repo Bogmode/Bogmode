@@ -1,1 +1,23 @@
-{ "title": "Music", "order": 3, "glyph": "♪ SND", "body": "Sound design and loops. The other kind of composition." }
+{
+  "title": "Music discovery",
+  "order": 6,
+  "glyph": "♪ EXPLORE",
+  "body": "Find a new station, follow a genre, or discover your next album.",
+  "resources": [
+    {
+      "name": "Radio Garden",
+      "description": "Explore live radio around the world.",
+      "url": "https://radio.garden/"
+    },
+    {
+      "name": "Musicmap",
+      "description": "Explore music genres and their connections.",
+      "url": "https://musicmap.info/"
+    },
+    {
+      "name": "Bandcamp Discover",
+      "description": "Browse releases by genre and find independent artists.",
+      "url": "https://bandcamp.com/discover"
+    }
+  ]
+}

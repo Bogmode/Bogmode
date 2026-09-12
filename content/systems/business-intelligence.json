@@ -1,0 +1,28 @@
+{
+  "title": "Business intelligence, within reach.",
+  "order": 1,
+  "cat": "COMMERCIAL SYSTEMS",
+  "status": "IN USE",
+  "live": false,
+  "body": "I built a shared information system from the ground up, putting up-to-date business intelligence at the team’s fingertips.",
+  "chips": [
+    "Business intelligence",
+    "Execution",
+    "Team enablement"
+  ],
+  "detail": "For a growing business, I took ownership of making essential information easier to find, keep current, and use. The system is now part of the team’s everyday work.",
+  "sections": [
+    {
+      "label": "THE CHALLENGE",
+      "copy": "As the business grew, valuable information became harder to keep in view. The team needed a dependable way to get the context behind its work."
+    },
+    {
+      "label": "MY CONTRIBUTION",
+      "copy": "I built most of the system from the ground up and continue to keep it useful through timely updates and ongoing improvements. My focus is simple: the information people need should be ready when they need it."
+    },
+    {
+      "label": "THE DIFFERENCE",
+      "copy": "The team now has current information and reporting at its fingertips. Colleagues can work asynchronously, and new team members can get up to speed with shared context. A small team can stay on top of more."
+    }
+  ]
+}

@@ -6,6 +6,7 @@ export default function SystemCard({ s }) {
     <Link href={`/systems/${s.slug}`} className="panel-link">
       <article className="panel">
         <div className="scan" />
+        <div className="card-signal" aria-hidden="true"><span /><span /><span /></div>
         {s.live && <span className="target"><Crosshair size={20} /></span>}
         <div className="meta">
           <span className="cat">{s.cat}</span>
