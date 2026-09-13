@@ -5,6 +5,8 @@ import Script from "next/script";
 const models = [
   { id: "golden-hour", label: "Golden hour", src: "/models/golden-hour.glb" },
   { id: "neon-summer", label: "Neon summer", src: "/models/neon-summer.glb" },
+  { id: "golden-recline", label: "Golden recline", src: "/models/golden-recline.glb" },
+  { id: "tropical", label: "Tropical", src: "/models/tropical.glb" },
 ];
 export default function ModelBay() {
   const [selected, setSelected] = useState(0);
@@ -25,7 +27,7 @@ export default function ModelBay() {
     <Script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/4.1.0/model-viewer.min.js" strategy="afterInteractive" onError={() => setStatus("error")} />
     <div className="model-topline"><span>THE HUMAN BEHIND THE WIZARDRY</span><span>3D / {String(selected + 1).padStart(2,"0")}</span></div>
     <div className="model-stage">
-      {status !== "ready" && <div className="model-fallback"><img src="/photos/bogdan-orange-glasses.jpeg" alt="Bogdan in orange glasses" /><p className="model-status">{status === "error" ? "3D is unavailable. Still me." : "Warming up the third dimension…"}</p></div>}
+      {status !== "ready" && <div className="model-fallback" role="status"><span className="model-loading-mark" aria-hidden="true">3D</span><p className="model-status">{status === "error" ? "This model could not load. Try another portrait." : "Loading 3D portrait…"}</p></div>}
       <model-viewer ref={modelRef} key={model.id} src={model.src} alt={`A playful 3D portrait of Bogdan: ${model.label}`} camera-controls touch-action="pan-y" auto-rotate-delay="1800" rotation-per-orbit="30deg" camera-orbit="0deg 80deg 105%" min-camera-orbit="auto 45deg 75%" max-camera-orbit="auto 100deg 140%" field-of-view="28deg" interaction-prompt="none" shadow-intensity="0.8" exposure="1" loading="lazy" />
     </div>
     <div className="model-choices" role="group" aria-label="Choose a 3D portrait">{models.map((item,i) => <button key={item.id} type="button" aria-pressed={selected===i} onClick={() => { if (i!==selected) { setStatus("loading"); setSelected(i); } }}>{item.label}</button>)}<button type="button" aria-pressed={!spinning} onClick={() => setSpinning(!spinning)}>{spinning ? "Pause rotation" : "Rotate"}</button></div>

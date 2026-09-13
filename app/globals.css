@@ -534,3 +534,5 @@ body { background: #EDEDE8; overflow-x: hidden; }
 .bm .skin .lbl, .bm .skin button:not(.on) { color: var(--muted); }
 .bm .skin button { font-size: 10px; }
 @media(max-width:500px) { .bm .skin { padding-inline: 20px; justify-content: space-between; gap: 1px; } .bm .skin .lbl { display: none; } .bm .skin button { padding-inline: 6px; font-size: 9px; } }
+
+.bm .model-loading-mark { font: 28px/1 var(--mono); opacity: .4; margin-bottom: 12px; }
