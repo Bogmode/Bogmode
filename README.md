@@ -29,3 +29,7 @@ Without all three mail settings, the form prepares a local email draft. It does 
 The `main` branch deploys through the existing GitHub/Vercel integration. Production checks must include `/privacy`, `/terms`, `/feeds`, contact behavior, and 404 responses for `/keystatic` and `/api/keystatic/*`.
 
 Keep professional examples anonymous. Do not add employer or ingredient names, internal systems, records, screenshots, counts, or proprietary details. Project concepts must remain clearly distinguished from live services and verified results.
+
+## System flow diagrams
+
+`components/SystemFlow.js` contains public, illustrative four-stage flows for the hero and each current system. Update the labels, glyphs, and explanation together when adding a system. Keep professional flows generic; they must not reveal internal architecture. The diagrams appear in system cards, detail pages, and independent project sections. Motion follows an eight-second sequence, pauses offscreen or in hidden tabs, and has a per-diagram pause control. Reduced-motion preferences render static diagrams with the same text explanation. Styles use the existing theme variables and add no runtime dependency.
