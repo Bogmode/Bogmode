@@ -1,11 +1,11 @@
 {
-  "headline": "Bring the problem.",
-  "subhead": "Let’s make it work.",
-  "lede": "I’m Bogdan. I connect business, technology, and people to build useful systems, move brands forward, and turn ideas into something people can use.",
+  "headline": "Your messy business problem.",
+  "subhead": "My kind of magic.",
+  "lede": "I’m Bogdan. I build data systems, AI agents, and automations that turn scattered information and repetitive work into clear answers and things getting done.",
   "telemetry": [
     {
       "k": "FOCUS",
-      "v": "systems · brands · execution"
+      "v": "data systems · AI agents · automation"
     },
     {
       "k": "BASED IN",
@@ -17,7 +17,7 @@
     }
   ],
   "about": [
-    "I'm Bogdan, based in Winnipeg. I connect business, technology, and people to make things work. In my professional work, I’ve built shared systems from the ground up and kept essential information current and accessible to the team.",
+    "I’m Bogdan, a problem solver based in Winnipeg. I build with data, AI agents, and automation—connecting scattered information, reducing repetitive work, and making complex tasks easier to manage. In my professional work, I’ve built shared information systems from the ground up and continue keeping them useful to the team.",
     "I still love aerial filming and videography. I used to fly FPV and camera drones, and I shoot short-form videos for social media and other formats with my reliable camera.",
     "Away from work, I train Muay Thai, play video and card games—including Magic: The Gathering and Hearthstone—and spend plenty of time with memes and social media. My Instagram reposts are a running collection of things that catch my attention.",
     "I love building communities, and I love Winnipeg. I want my work to help make this city stronger and more visible on the global map. БОГMODE brings those ambitions together: systems, stories, and people."
@@ -31,7 +31,7 @@
   },
   "contact": {
     "email": "hello@bogmode.ca",
-    "formIntro": "What are you trying to make happen? Tell me about the problem, the people involved, and what a good outcome would look like. Let’s find a way forward."
+    "formIntro": "What’s slowing you down? Scattered data, repetitive work, or an idea for an AI agent? Tell me about the problem and what a useful result would look like."
   },
   "instagramUrl": "https://www.instagram.com/bogmoder/",
   "dronewasheresUrl": "/projects/dronewashers"

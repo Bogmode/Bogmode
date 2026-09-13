@@ -2,6 +2,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import Crosshair from "@/components/Crosshair";
 import Rise from "@/components/Rise";
+import SystemFlow from "@/components/SystemFlow";
 import { getSystems, getSystem } from "@/lib/content";
 
 export async function generateStaticParams() {
@@ -36,6 +37,7 @@ export default async function SystemDetail({ params }) {
         </Rise>
       )}
       <Rise mode="mount" delay={sys.live ? 260 : 180}>
+        <div className="detail-flow"><SystemFlow kind={slug} /></div>
         <p className="detail-intro">{sys.detail}</p>
         {sys.sections?.length ? (
           <div className="case-sections">

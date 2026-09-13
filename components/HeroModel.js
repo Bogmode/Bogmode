@@ -8,12 +8,14 @@ const models = {
   green: "/models/bogdan-asiimov.glb",
   asiimov: "/models/bogdan-asiimov.glb",
   vulcan: "/models/bogdan-vulcan.glb",
+  manticore: "/models/golden-hour.glb",
+  donatello: "/models/neon-summer.glb",
 };
 
 export default function HeroModel() {
   const { skin, hasSelectedSkin } = useSkin();
   const loadout = hasSelectedSkin ? skin : "green";
-  const label = loadout === "green" ? "FIELD / GREEN" : loadout === "asiimov" ? "ASIIMOV / ORANGE" : "VULCAN / PURPLE";
+  const label = loadout === "green" ? "FIELD / GREEN" : loadout === "asiimov" ? "ASIIMOV / ORANGE" : loadout === "vulcan" ? "VULCAN / CYAN" : loadout === "manticore" ? "MANTICORE / LIME" : "DONATELLO / PINK";
 
   const modelRef = useModelMotion(loadout);
 

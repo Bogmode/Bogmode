@@ -6,8 +6,8 @@ const body = Inter({ subsets: ["latin", "cyrillic"], weight: ["400", "500"], var
 const mono = JetBrains_Mono({ subsets: ["latin", "cyrillic"], weight: ["400", "500", "700"], variable: "--font-mono", display: "swap" });
 
 export const metadata = {
-  title: "БОГMODE — Bogdan builds systems",
-  description: "Commercial systems, product data, CRM workflows, and internal tooling by Bogdan Tkachuk.",
+  title: "БОГMODE — Data, AI agents & automation",
+  description: "Bogdan Tkachuk builds data systems, AI agents, and automations to solve messy business problems. Based in Winnipeg.",
 };
 
 export default function RootLayout({ children }) {

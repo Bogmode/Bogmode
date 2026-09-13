@@ -1,14 +1,14 @@
 {
-  "title": "Business intelligence, within reach.",
+  "title": "Scattered information. Shared intelligence.",
   "order": 1,
   "cat": "COMMERCIAL SYSTEMS",
   "status": "IN USE",
   "live": false,
-  "body": "I built a shared information system from the ground up, putting up-to-date business intelligence at the team’s fingertips.",
+  "body": "I built a shared data system that gives a growing team current information, reporting, and the context to move work forward.",
   "chips": [
+    "Data systems",
     "Business intelligence",
-    "Execution",
-    "Team enablement"
+    "Team reporting"
   ],
   "detail": "For a growing business, I took ownership of making essential information easier to find, keep current, and use. The system is now part of the team’s everyday work.",
   "sections": [

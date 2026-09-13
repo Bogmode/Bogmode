@@ -2,7 +2,7 @@ import Dronewasheres from "@/components/Dronewasheres";
 import PlaygroundTile from "@/components/PlaygroundTile";
 import Crosshair from "@/components/Crosshair";
 import Rise from "@/components/Rise";
-import SkillsRose from "@/components/SkillsRose";
+import ProblemExplorer from "@/components/ProblemExplorer";
 import { getPlayground, getSite } from "@/lib/content";
 
 export const metadata = { title: "Playground — БОГMODE" };
@@ -14,15 +14,14 @@ export default async function PlaygroundPage() {
       <Rise mode="mount">
         <div className="sec-head">
           <span className="xh"><Crosshair size={16} /></span>
-          <h2>Playground</h2>
-          <span className="tag">RANGE / OFF-HOURS</span>
+          <h1 className="page-title">Playground</h1>
+          <span className="tag">EXPERIMENTS / OFF-HOURS</span>
         </div>
       </Rise>
       <Dronewasheres url={site.dronewasheresUrl} />
       <Rise mode="mount" delay={80}>
         <div className="play-experiment">
-          <div className="experiment-kicker"><span>LIVE EXPERIMENT / 001</span><span>SKILLS ROSE</span></div>
-          <SkillsRose />
+          <ProblemExplorer />
         </div>
       </Rise>
       <div className="play-grid">

@@ -3,8 +3,7 @@ import Link from "next/link";
 import Crosshair from "@/components/Crosshair";
 import SystemCard from "@/components/SystemCard";
 import Rise from "@/components/Rise";
-import SystemPulse from "@/components/SystemPulse";
-import HeroModel from "@/components/HeroModel";
+import SystemFlow from "@/components/SystemFlow";
 import { getSite, getSystems } from "@/lib/content";
 
 export default async function Home() {
@@ -18,7 +17,7 @@ export default async function Home() {
       <header className="hero">
         <div>
           <Rise mode="mount">
-            <div className="eyebrow"><Crosshair size={13} /> BOGDAN · WINNIPEG, MB</div>
+            <div className="eyebrow"><Crosshair size={13} /> BOGDAN / DATA · AI AGENTS · AUTOMATION</div>
           </Rise>
           <Rise mode="mount" delay={90}>
             <h1>{site.headline}<span className="thin">{site.subhead}</span></h1>
@@ -29,13 +28,13 @@ export default async function Home() {
           <Rise mode="mount" delay={260}>
             <div className="hero-actions">
               <Link href="/contact" className="action primary">BRING YOUR PROBLEM →</Link>
-              <Link href="#systems" className="action secondary">EXPLORE MY WORK →</Link>
+              <Link href="#systems" className="action secondary">SEE HOW MY SYSTEMS WORK →</Link>
             </div>
           </Rise>
         </div>
         <div className="hero-side">
           <Rise mode="mount" delay={140}>
-            <HeroModel />
+            <SystemFlow />
           </Rise>
           <Rise mode="mount" delay={320} className="telemetry">
             {site.telemetry.map(({ k, v }) => (
@@ -43,10 +42,10 @@ export default async function Home() {
             ))}
           </Rise>
           <Rise mode="mount" delay={390}>
-            <p className="hero-note"><span>БОГMODE</span> EVERYTHING, ALL AT ONCE.</p>
+            <p className="hero-note"><span>БОГMODE</span> A LITTLE WIZARDRY. A WORKING SYSTEM.</p>
           </Rise>
           <Rise mode="mount" delay={460}>
-            <SystemPulse />
+            <p className="hero-specialty">Less chasing information. Less repetitive work. More room to move.</p>
           </Rise>
         </div>
       </header>
@@ -55,7 +54,7 @@ export default async function Home() {
         <Rise>
           <div className="sec-head">
             <span className="xh"><Crosshair size={16} /></span>
-            <h2>Useful work. Real responsibility.</h2>
+            <h2>Systems that turn complexity into action.</h2>
             <Link href="/systems" className="tag-link">VIEW ALL →</Link>
           </div>
         </Rise>
@@ -67,8 +66,6 @@ export default async function Home() {
           ))}
         </div>
       </section>
-
-      <IndependentProjects droneUrl={site.dronewasheresUrl} />
 
       <section className="method-section">
         <Rise>
@@ -96,9 +93,11 @@ export default async function Home() {
         </div>
       </section>
 
+      <IndependentProjects droneUrl={site.dronewasheresUrl} />
+
       <section className="home-personal">
         <div><span className="drone-kicker">THE PERSON BEHIND THE WORK</span><h2>Everything, all at once.</h2><p>Business and technology. Cameras and communities. A broad range of interests, with one thread running through them: I like making things happen.</p><Link href="/about" className="tag-link">MEET BOGDAN →</Link></div>
-        <div className="home-invitation"><h3>Something needs to move?</h3><p>A system, a launch, an idea—or the right role. Let’s start with a conversation.</p><Link href="/contact" className="action primary">LET’S TALK →</Link></div>
+        <div className="home-invitation"><h3>Something needs to move?</h3><p>A data problem, a manual workflow, an AI-agent idea—or the right role. Let’s start with a conversation.</p><Link href="/contact" className="action primary">LET’S TALK →</Link></div>
       </section>
     </>
   );
