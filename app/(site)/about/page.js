@@ -31,7 +31,7 @@ export default async function AboutPage() {
             <ModelBay />
           </Rise>
           <Rise mode="mount" delay={220}>
-            <div className="about-skill-note"><span>PERSONAL SYSTEM</span><p>The Skills Rose in the Playground is a living map of the same practice: systems, story, and play feeding each other.</p><Link href="/playground" className="tag-link">OPEN THE SKILLS ROSE →</Link></div>
+            <div className="about-skill-note"><span>HOW I THINK</span><p>Scattered data, repetitive work, or a task for an AI agent. Start with the problem, then choose the tools that fit.</p><Link href="/playground#problem-explorer" className="tag-link">EXPLORE MY APPROACH →</Link></div>
           </Rise>
         </div>
       </div>

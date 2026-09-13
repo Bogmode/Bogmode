@@ -16,6 +16,18 @@ const flows = {
     note: "Bring information together, keep it current, and make it useful to the team.",
     glyphs: ["records", "logic", "tools", "report"],
   },
+  automation: {
+    title: "REPEAT REQUEST → RELIABLE HANDOFF",
+    stages: ["Incoming request", "Check the rules", "Run the steps", "Review exceptions"],
+    note: "An illustrative approach: automate routine steps and route exceptions to a person.",
+    glyphs: ["records", "logic", "tools", "people"],
+  },
+  agents: {
+    title: "CLEAR TASK → USEFUL ACTION",
+    stages: ["Define the task", "Retrieve context", "Use the tools", "Check + hand off"],
+    note: "An illustrative agent workflow, with review and human judgment where needed.",
+    glyphs: ["records", "search", "tools", "people"],
+  },
   upstreams: {
     title: "BYPRODUCT → POSSIBILITY",
     stages: ["Useful byproducts", "Create a listing", "Local discovery", "Potential recipient"],
