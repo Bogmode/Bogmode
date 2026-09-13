@@ -1,58 +1,31 @@
 # БОГMODE — bogmode.ca
 
-Personal hub. White-technical aesthetic (CS:GO Asiimov / Vulcan), Next.js App Router,
-content managed as files in this repo (your git-based CMS). No external service, no subscription.
+Next.js portfolio for Bogdan Tkachuk. Systems, independent projects, credentials, personal interests, and optional social feeds.
 
-## Stack
-- Next.js 16 (App Router) + React 19
-- next/font (Space Grotesk / Inter / JetBrains Mono — Inter & Mono include Cyrillic for the БОГ mark)
-- Plain CSS design system in `app/globals.css`
-- Node.js 20+ required (22 LTS recommended)
+## Develop
 
-## Run it
-```bash
-npm install
-npm run dev        # http://localhost:3000
-```
-Build check before deploy:
-```bash
-npm run build
-```
+Use Node.js 22 or later. Run `npm ci`, then `npm run dev`. Validate changes with `npm run build` and `npm audit`.
 
-## Your CMS = the content/ folder
-There is no admin panel and nothing to pay for. To update the site, edit these files and commit:
-- `content/site.js` — hero copy, telemetry, about text, social links
-- `content/systems.js` — your project catalog (one object per project; `slug` is the URL)
-- `content/playground.js` — the off-hours tiles
+## Content
 
-Add a project = add an object to `content/systems.js`. It automatically gets a card on
-`/` and `/systems`, plus its own page at `/systems/<slug>`.
+- `content/site.json`: introduction, biography, contact details, social links.
+- `content/systems/*.json`: case studies, status, project links.
+- `content/playground/*.json`: personal interests and resources.
+- `content/feeds.json`: Medium profile URL, YouTube channel ID/profile, Instagram profile.
+- Credentials are in `components/Credentials.js`, with source links.
 
-## Routes
-- `/`               home (hero + featured systems + playground)
-- `/systems`        full grid
-- `/systems/[slug]` per-project detail (the LIVE card has a demo slot)
-- `/playground`     range / off-hours
-- `/about`          the human page
-- Contact           mailto in the nav + footer
+Keystatic is available locally. The editor and its API are disabled in production.
 
-## The skin toggle
-Bottom-right control flips the whole site between ASIIMOV (orange) and VULCAN (cyan).
-It swaps one CSS variable (`--accent`), so recoloring is a one-line change in `globals.css`.
+## Feeds
 
-## Deploy to Vercel
-1. Push this folder to a GitHub repo.
-2. On vercel.com: New Project → import the repo → framework auto-detects Next.js → Deploy.
-3. Add your domain: Project → Settings → Domains → add `bogmode.ca` and point your DNS as shown.
+Medium and YouTube use server-fetched RSS with a 30-minute cache and a timeout. Configure the owner's actual profiles before claiming those feeds are connected. Instagram's optional public profile embed may be blocked by the provider; the original profile link is always available. Social embeds make no requests until a visitor chooses to load one. Consent lasts only for that page view and can be withdrawn by unloading the embed. Reposts are not guaranteed to be exposed by Instagram embeds.
 
-## Step 2 (optional): Keystatic admin UI
-When you want to edit content through a GUI instead of the files directly, add Keystatic.
-It's free, open-source, and stores content in this same repo (commits to git for you) — so
-you keep full ownership and still pay nothing. Point it at the `content/` collections and
-it serves an editor at `/keystatic`.
+## Contact
 
-## Step 3 (optional): a live demo
-The `label-intelligence-extractor` project is flagged `live: true` and its detail page
-renders a demo slot. Drop an interactive React component there to turn the portfolio into
-proof. If that demo needs to store data, wire Supabase to *that component only* — keep it
-separate from the content layer so nothing else gains a dependency.
+Without all three mail settings, the form prepares a local email draft. It does not send or save that draft. To enable server delivery, configure `RESEND_API_KEY`, `CONTACT_TO`, and a verified `CONTACT_FROM` in the hosting environment. Never commit credentials. Successful provider acceptance is not proof of inbox delivery; verify delivery with an authorized test after configuration.
+
+## Production
+
+The `main` branch deploys through the existing GitHub/Vercel integration. Production checks must include `/privacy`, `/terms`, `/feeds`, contact behavior, and 404 responses for `/keystatic` and `/api/keystatic/*`.
+
+Keep professional examples anonymous. Do not add employer or ingredient names, internal systems, records, screenshots, counts, or proprietary details. Project concepts must remain clearly distinguished from live services and verified results.
