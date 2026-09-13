@@ -29,3 +29,6 @@
 @keyframes activate { 0%, 24% { stroke: var(--accent); stroke-width: 2; } 25%, 100% { stroke: var(--muted); stroke-width: 1.3; } }
 @keyframes fill { 0% { stroke-dashoffset: 100; } 24%, 100% { stroke-dashoffset: 0; } }
 @media (prefers-reduced-motion: reduce) { .flow * { animation: none !important; } .packet { display: none; } }
+.flow[data-kind="upstreams"] { --panel: #213d33; --ink: #efe9d6; --muted: #c4d0b4; --line: #577465; --accent: #bcc983; }
+.flow[data-kind="fiend"] { --panel: #101010; --ink: #f0ecde; --muted: #b9bca9; --line: #424737; --accent: #d9f64e; }
+.flow[data-kind="dronewashers"] { --panel: #202a37; --ink: #e9eef4; --muted: #b3c8db; --line: #526c84; --accent: #88ccee; }

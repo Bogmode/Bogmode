@@ -91,7 +91,7 @@ export default function SystemFlow({ kind = "hero", compact = false }) {
   if (!flow) return null;
   const running = visible && !paused && !reduced;
   return (
-    <figure ref={ref} className={`${styles.flow} ${compact ? styles.compact : ""}`} data-running={running} data-reduced={reduced}>
+    <figure ref={ref} className={`${styles.flow} ${compact ? styles.compact : ""}`} data-kind={kind} data-running={running} data-reduced={reduced}>
       <div className={styles.header}>
         <span>{flow.title}</span>
         <button type="button" onClick={() => setPaused(!paused)} aria-label={`${paused ? "Play" : "Pause"} ${flow.title.toLowerCase()} animation`} aria-pressed={paused} disabled={reduced}>

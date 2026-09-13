@@ -11,9 +11,9 @@ export default async function SiteLayout({ children }) {
     <SkinProvider>
       <Frame />
       <Nav />
+      <SkinToggle />
       <main className="wrap">{children}</main>
       <Footer site={site} />
-      <SkinToggle />
     </SkinProvider>
   );
 }

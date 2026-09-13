@@ -14,12 +14,12 @@ export default async function SystemsPage() {
           <span className="xh"><Crosshair size={16} /></span>
           <h1 className="page-title">Systems that make work easier.</h1>
         </div>
-        <p className="section-intro">I solve problems with data, AI agents, and automation. Start with a system in everyday use, then explore the products and concepts I’m building.</p>
+        <p className="section-intro">I solve problems with data, AI agents, and automation. Start with a system in everyday use, then explore the ideas I’ve turned into products and prototypes.</p>
       </Rise>
       <div className="sys-grid featured-case-grid">
         {systems.filter((s) => s.slug === "business-intelligence").map((s) => <SystemCard key={s.slug} s={s} />)}
       </div>
-      <div className="sec-head experiments-heading"><h2>Independent products &amp; experiments</h2></div>
+      <div className="sec-head experiments-heading"><h2>Ideas, brought to life.</h2></div>
       <div className="sys-grid">
         {systems.filter((s) => s.slug !== "business-intelligence").map((s) => <SystemCard key={s.slug} s={s} />)}
       </div>

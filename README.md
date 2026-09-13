@@ -33,3 +33,7 @@ Keep professional examples anonymous. Do not add employer or ingredient names, i
 ## System flow diagrams
 
 `components/SystemFlow.js` contains public, illustrative four-stage flows for the hero and each current system. Update the labels, glyphs, and explanation together when adding a system. Keep professional flows generic; they must not reveal internal architecture. The diagrams appear in system cards, detail pages, and independent project sections. Motion follows an eight-second sequence, pauses offscreen or in hidden tabs, and has a per-diagram pause control. Reduced-motion preferences render static diagrams with the same text explanation. Styles use the existing theme variables and add no runtime dependency.
+
+The app identities (Upstreams forest/cream, Fiend black/lime, DroneWashers navy/blue) stay independent of global skins. Manticore and Donatello add complete dark palettes. The About gallery uses two user-supplied Meshy portraits, simplified and Draco/WebP-compressed to approximately 1.5 MB each; the duplicate Neon file was omitted. The gallery supports model selection, manual rotation controls, reduced motion, and a photo fallback.
+
+Feeds are configured in `content/feeds.json`. Unconfigured Medium/YouTube channels are omitted from the public page. LinkedIn always links to the configured profile; `linkedinPosts` may contain owner-approved `{ "id": "<numeric activity id>" }` entries for optional post embeds. A profile link is not a synchronized LinkedIn feed. Confirm account ownership before enabling a new channel.
