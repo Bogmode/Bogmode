@@ -536,3 +536,13 @@ body { background: #EDEDE8; overflow-x: hidden; }
 @media(max-width:500px) { .bm .skin { padding-inline: 20px; justify-content: space-between; gap: 1px; } .bm .skin .lbl { display: none; } .bm .skin button { padding-inline: 6px; font-size: 9px; } }
 
 .bm .model-loading-mark { font: 28px/1 var(--mono); opacity: .4; margin-bottom: 12px; }
+
+.analytics-consent { position: relative; z-index: 80; font: 14px/1.5 system-ui, sans-serif; }
+.analytics-consent-panel { position: fixed; bottom: 16px; left: 16px; width: min(420px, calc(100vw - 32px)); box-sizing: border-box; padding: 20px; background: #fff; color: #171717; border: 1px solid #555; box-shadow: 0 4px 24px #0002; }
+.analytics-consent-panel p { margin: 0 0 12px; }
+.analytics-consent-panel p:first-child { font-weight: 700; }
+.analytics-consent-panel a { color: inherit; text-decoration: underline; }
+.analytics-consent-panel > div { display: flex; gap: 8px; flex-wrap: wrap; }
+.analytics-consent button { min-height: 44px; padding: 10px 14px; border: 1px solid currentColor; background: #fff; color: #171717; cursor: pointer; font: inherit; }
+.analytics-consent button:focus-visible { outline: 3px solid #2872d1; outline-offset: 3px; }
+.analytics-settings { margin: 12px 24px; }

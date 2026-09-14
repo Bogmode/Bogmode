@@ -1,0 +1,1 @@
+export default function sitemap() { return ["", "/about", "/contact", "/systems", "/playground", "/feeds", "/privacy", "/terms", "/systems/business-intelligence", "/systems/upstreams", "/systems/fiend", "/systems/dronewashers"].map(path => ({ url: "https://bogmode.ca" + path })); }

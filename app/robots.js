@@ -1,0 +1,1 @@
+export default function robots() { return { rules: { userAgent: "*", allow: "/", disallow: ["/api/", "/auth/", "/account/", "/login", "/keystatic/", "/project-previews/"] }, sitemap: "https://bogmode.ca/sitemap.xml" }; }
