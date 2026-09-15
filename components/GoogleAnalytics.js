@@ -19,6 +19,7 @@ export default function GoogleAnalytics({ measurementId = "" }) {
   }, []);
   useEffect(() => {
     if (!valid || choice !== "accepted") return;
+    if (/^\/(api|auth|account|login|signin|signup|keystatic)(\/|$)/.test(pathname)) return;
     window.dataLayer = window.dataLayer || [];
     window.gtag = window.gtag || function () { window.dataLayer.push(arguments); };
     window["ga-disable-" + measurementId] = false;
@@ -26,7 +27,7 @@ export default function GoogleAnalytics({ measurementId = "" }) {
       window.gtag("consent", "default", { analytics_storage: "denied", ad_storage: "denied", ad_user_data: "denied", ad_personalization: "denied" });
       window.gtag("consent", "update", { analytics_storage: "granted" });
       window.gtag("js", new Date());
-      window.gtag("config", measurementId, { send_page_view: false, allow_google_signals: false, allow_ad_personalization_signals: false, cookie_expires: 15552000 });
+      window.gtag("config", measurementId, { send_page_view: false, allow_google_signals: false, allow_ad_personalization_signals: false, cookie_expires: 15552000, page_location: location.origin + pathname, page_title: pathname, page_referrer: document.referrer ? new URL(document.referrer).origin : "" });
       const script = document.createElement("script");
       script.src = "https://www.googletagmanager.com/gtag/js?id=" + measurementId;
       script.async = true;
@@ -36,7 +37,8 @@ export default function GoogleAnalytics({ measurementId = "" }) {
     // Exclude private routes and strip queries/fragments, which can contain form or auth data.
     if (/^\/(api|auth|account|login|signin|signup|keystatic)(\/|$)/.test(pathname)) return;
     if (lastPage.current !== pathname) {
-      window.gtag("event", "page_view", { page_location: location.origin + pathname, page_title: pathname, page_referrer: "" });
+      window.gtag("config", measurementId, { send_page_view: false, page_location: location.origin + pathname, page_title: pathname });
+      window.gtag("event", "page_view", { page_location: location.origin + pathname, page_title: pathname, page_referrer: document.referrer ? new URL(document.referrer).origin : "" });
       lastPage.current = pathname;
     }
   }, [choice, pathname, valid, measurementId]);

@@ -7,7 +7,7 @@ const body = Inter({ subsets: ["latin", "cyrillic"], weight: ["400", "500"], var
 const mono = JetBrains_Mono({ subsets: ["latin", "cyrillic"], weight: ["400", "500", "700"], variable: "--font-mono", display: "swap" });
 
 export const metadata = {
-  verification: { google: process.env.GOOGLE_SITE_VERIFICATION || undefined },
+  verification: { google: process.env.GOOGLE_SITE_VERIFICATION || "zT3WEs0CmnA5zPx7wuHpFaxDqGlPm0pPnIcOcyntrb8" },
   title: "БОГMODE — Data, AI agents & automation",
   description: "Bogdan Tkachuk builds data systems, AI agents, and automations to solve messy business problems. Based in Winnipeg.",
 };
@@ -15,7 +15,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en" className={`${display.variable} ${body.variable} ${mono.variable}`}>
-      <body>{children}<GoogleAnalytics measurementId={process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID || ""} /></body>
+      <body>{children}<GoogleAnalytics measurementId={process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID || "G-WQKRQ7MEFG"} /></body>
     </html>
   );
 }
