@@ -28,8 +28,9 @@ export default async function Home() {
           <Rise mode="mount" delay={260}>
             <div className="hero-actions">
               <Link href="/contact" className="action primary">BRING YOUR PROBLEM →</Link>
-              <Link href="#systems" className="action secondary">SEE HOW MY SYSTEMS WORK →</Link>
+              <Link href="#systems" className="action secondary">SEE MY TRACK RECORD →</Link>
             </div>
+            <p className="hero-hiring">Hiring someone to build and own your systems? <Link href="/contact">Let’s talk about the role →</Link></p>
           </Rise>
         </div>
         <div className="hero-side">

@@ -546,3 +546,6 @@ body { background: #EDEDE8; overflow-x: hidden; }
 .analytics-consent button { min-height: 44px; padding: 10px 14px; border: 1px solid currentColor; background: #fff; color: #171717; cursor: pointer; font: inherit; }
 .analytics-consent button:focus-visible { outline: 3px solid #2872d1; outline-offset: 3px; }
 .analytics-settings { margin: 12px 24px; }
+
+.bm .hero-hiring { margin: 18px 0 0; max-width: 46ch; font-size: 14px; line-height: 1.6; color: var(--muted); }
+.bm .hero-hiring a { color: var(--ink); text-underline-offset: 4px; }

@@ -68,7 +68,7 @@ export default function ContactForm({ toEmail, deliveryAvailable = false }) {
           minLength={10}
           maxLength={4000}
           rows={7}
-          placeholder="What are you building, and where is it stuck?"
+          placeholder="Tell me about the project or role, your team, and what needs to work better."
         />
       </label>
 

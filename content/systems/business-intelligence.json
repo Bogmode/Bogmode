@@ -4,13 +4,13 @@
   "cat": "COMMERCIAL SYSTEMS",
   "status": "IN USE",
   "live": false,
-  "body": "I built a shared data system that gives a growing team current information, reporting, and the context to move work forward.",
+  "body": "Over the past two years, I’ve built and maintained shared information systems for a growing B2B business. They support the team’s everyday work.",
   "chips": [
     "Data systems",
     "Business intelligence",
     "Team reporting"
   ],
-  "detail": "For a growing business, I took ownership of making essential information easier to find, keep current, and use. The system is now part of the team’s everyday work.",
+  "detail": "Built from the ground up. Kept useful every day. I took ownership of bringing scattered information together and keeping it current, so colleagues could find answers, access reporting, and move work forward.",
   "sections": [
     {
       "label": "THE CHALLENGE",
@@ -18,11 +18,15 @@
     },
     {
       "label": "MY CONTRIBUTION",
-      "copy": "I built most of the system from the ground up and continue to keep it useful through timely updates and ongoing improvements. My focus is simple: the information people need should be ready when they need it."
+      "copy": "I built most of the system from the ground up. My contribution continues beyond the initial build: timely updates, ongoing improvements, and making sure the information people need is ready when they need it."
     },
     {
       "label": "THE DIFFERENCE",
-      "copy": "The team now has current information and reporting at its fingertips. Colleagues can work asynchronously, and new team members can get up to speed with shared context. A small team can stay on top of more."
+      "copy": "The team has current information and reporting at its fingertips. Colleagues can work asynchronously, and new team members have shared context to get started. A small team can stay on top of more."
+    },
+    {
+      "label": "ABOUT THIS CASE STUDY",
+      "copy": "This summary describes my contribution at a high level. Internal implementation details remain private."
     }
   ]
 }
