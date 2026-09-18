@@ -1,0 +1,36 @@
+{
+  "title": "A cleaner path from inquiry to next action.",
+  "order": 1,
+  "cat": "REVENUE OPERATIONS",
+  "status": "IN USE",
+  "live": false,
+  "body": "I redesigned a B2B lifecycle in HubSpot so qualification, ownership, handoffs, and follow-up could operate as one system instead of separate habits.",
+  "chips": [
+    "HubSpot",
+    "Lifecycle architecture",
+    "Automation"
+  ],
+  "detail": "The system connects intake, qualification, ownership, commercial handoffs, follow-up, and reporting. I translated the way the team actually works into CRM stages, required data, routing rules, views, workflows, and operating guidance.",
+  "sections": [
+    {
+      "label": "THE PROBLEM",
+      "copy": "New opportunities arrived through several channels, but the next step depended too heavily on memory and manual coordination. Ownership could drift, required context was inconsistent, and reports did not always reflect the real process."
+    },
+    {
+      "label": "THE OPERATING MODEL",
+      "copy": "I mapped the commercial journey from initial inquiry through qualification, validation, development, agreement, and customer handoff. For each stage, I defined the information, owner, decision, and next action the system needed to support."
+    },
+    {
+      "label": "WHAT I BUILT",
+      "copy": "I configured HubSpot properties, lifecycle and pipeline logic, lists, routing rules, workflow automation, follow-up structures, reporting views, exception tracking, and documentation. The design leaves judgment with the team while automating repeatable administration."
+    },
+    {
+      "label": "THE RESULT",
+      "copy": "The team can see where an opportunity sits, who owns it, what information is missing, and what should happen next. The system reduces silent handoffs and gives reporting a clearer operational foundation."
+    },
+    {
+      "label": "ABOUT THIS CASE STUDY",
+      "copy": "This is a sanitized summary of live operating work. Company-specific records, rules, screenshots, and implementation details remain private."
+    }
+  ]
+}

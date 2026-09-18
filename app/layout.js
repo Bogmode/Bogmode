@@ -8,8 +8,8 @@ const mono = JetBrains_Mono({ subsets: ["latin", "cyrillic"], weight: ["400", "5
 
 export const metadata = {
   verification: { google: process.env.GOOGLE_SITE_VERIFICATION || "zT3WEs0CmnA5zPx7wuHpFaxDqGlPm0pPnIcOcyntrb8" },
-  title: "БОГMODE — Data, AI agents & automation",
-  description: "Bogdan Tkachuk builds data systems, AI agents, and automations to solve messy business problems. Based in Winnipeg.",
+  title: "БОГMODE — GTM systems, RevOps & automation",
+  description: "Bogdan Tkachuk builds CRM architecture, lifecycle automation, commercial data systems, and AI-assisted internal tools. Based in Winnipeg and open to remote roles across Canada.",
 };
 
 export default function RootLayout({ children }) {

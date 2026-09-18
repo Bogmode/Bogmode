@@ -5,16 +5,28 @@ import styles from "./SystemFlow.module.css";
 
 const flows = {
   hero: {
-    title: "FROM PROBLEM TO WORKING SYSTEM",
-    stages: ["Scattered data", "AI + logic", "Connected tools", "Useful results"],
-    note: "Data becomes context. Agents and automation turn context into action.",
-    glyphs: ["records", "logic", "tools", "report"],
+    title: "FROM FRICTION TO WORKING SYSTEM",
+    stages: ["Messy process", "Rules + data", "Automation", "Clear next action"],
+    note: "Map the work, structure the data, automate the repeatable parts, and keep people in control.",
+    glyphs: ["records", "logic", "tools", "people"],
+  },
+  "revenue-lifecycle-engine": {
+    title: "INQUIRY → OWNED NEXT ACTION",
+    stages: ["New inquiry", "Qualification rules", "Owner + handoff", "Follow-up visibility"],
+    note: "A commercial lifecycle works when every stage has clear data, ownership, and a next action.",
+    glyphs: ["records", "logic", "people", "report"],
   },
   "business-intelligence": {
-    title: "INFORMATION → CLARITY",
-    stages: ["Business information", "Organize + update", "Shared context", "Team reporting"],
-    note: "Bring information together, keep it current, and make it useful to the team.",
+    title: "SCATTERED CONTEXT → SHARED SOURCE",
+    stages: ["Commercial information", "Structure + maintain", "Shared context", "Team decisions"],
+    note: "Bring important information together, keep it current, and make it useful to the people doing the work.",
     glyphs: ["records", "logic", "tools", "report"],
+  },
+  "ai-product-intelligence": {
+    title: "DOCUMENT → REVIEWED RECORD",
+    stages: ["Product source", "AI extraction", "Human review", "Structured record"],
+    note: "Use AI to accelerate extraction while keeping validation and judgment in the loop.",
+    glyphs: ["records", "search", "people", "report"],
   },
   automation: {
     title: "REPEAT REQUEST → RELIABLE HANDOFF",

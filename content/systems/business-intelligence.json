@@ -1,32 +1,36 @@
 {
-  "title": "Scattered information. Shared intelligence.",
-  "order": 1,
-  "cat": "COMMERCIAL SYSTEMS",
+  "title": "One source of truth for commercial work.",
+  "order": 2,
+  "cat": "GTM SYSTEMS",
   "status": "IN USE",
   "live": false,
-  "body": "Over the past two years, I’ve built and maintained shared information systems for a growing B2B business. They support the team’s everyday work.",
+  "body": "I consolidated fragmented product, partner, and commercial information into a maintained system the team can search, update, and use for reporting.",
   "chips": [
-    "Data systems",
-    "Business intelligence",
-    "Team reporting"
+    "Data architecture",
+    "Knowledge systems",
+    "Reporting"
   ],
-  "detail": "Built from the ground up. Kept useful every day. I took ownership of bringing scattered information together and keeping it current, so colleagues could find answers, access reporting, and move work forward.",
+  "detail": "This was more than moving notes into one place. I designed the information model, relationships, update workflows, ownership, views, and reporting layer so the system could stay useful as the business changed.",
   "sections": [
     {
-      "label": "THE CHALLENGE",
-      "copy": "As the business grew, valuable information became harder to keep in view. The team needed a dependable way to get the context behind its work."
+      "label": "THE PROBLEM",
+      "copy": "Important commercial context was distributed across inboxes, files, individual memory, and separate tools. Finding a reliable answer took too much time, and the same information was often recreated for different requests."
     },
     {
-      "label": "MY CONTRIBUTION",
-      "copy": "I built most of the system from the ground up. My contribution continues beyond the initial build: timely updates, ongoing improvements, and making sure the information people need is ready when they need it."
+      "label": "THE BUILD",
+      "copy": "I created a structured source of truth with connected records, normalized fields, purpose-built views, update routines, and reusable reporting. The model was designed around the questions the team actually needed to answer."
     },
     {
-      "label": "THE DIFFERENCE",
-      "copy": "The team has current information and reporting at its fingertips. Colleagues can work asynchronously, and new team members have shared context to get started. A small team can stay on top of more."
+      "label": "ONGOING OWNERSHIP",
+      "copy": "I continue to maintain data quality, add new fields and views, resolve edge cases, document the system, and adapt it as commercial needs change. Shipping the first version was only the beginning."
+    },
+    {
+      "label": "THE RESULT",
+      "copy": "Colleagues can find current context faster, work more effectively across time zones, onboard with shared information, and produce recurring reports without rebuilding the underlying research each time."
     },
     {
       "label": "ABOUT THIS CASE STUDY",
-      "copy": "This summary describes my contribution at a high level. Internal implementation details remain private."
+      "copy": "This summary describes the system and my contribution without exposing employer names, internal records, screenshots, counts, or proprietary implementation details."
     }
   ]
 }

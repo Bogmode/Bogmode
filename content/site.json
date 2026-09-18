@@ -1,37 +1,37 @@
 {
-  "headline": "Your messy business problem.",
-  "subhead": "My kind of magic.",
-  "lede": "I’m Bogdan. I build data systems, AI agents, and automations that turn scattered information and repetitive work into clear answers and things getting done.",
+  "headline": "I build the systems",
+  "subhead": "behind revenue.",
+  "lede": "I’m Bogdan, a GTM systems builder in Winnipeg. I turn messy commercial processes into reliable CRM architecture, lifecycle automation, shared data, and internal tools that sales and marketing teams can actually use.",
   "telemetry": [
     {
       "k": "FOCUS",
-      "v": "data systems · AI agents · automation"
+      "v": "GTM systems · RevOps · automation"
     },
     {
-      "k": "BASED IN",
-      "v": "Winnipeg, Canada"
+      "k": "BASE",
+      "v": "Winnipeg · open to remote across Canada"
     },
     {
-      "k": "LANGUAGES",
-      "v": "English · Ukrainian · Russian"
+      "k": "STACK",
+      "v": "HubSpot · React · Supabase · AI"
     }
   ],
   "about": [
-    "I'm Bogdan. I bring concepts to life — through technology, and through people.",
-    "There's a long process behind most of what I make, and I like it that way. In Winnipeg, at an ingredient company, I turned a scattered global licensing network into infrastructure you can actually query — work that used to live in four inboxes and a shared drive now lives in one system. Data pipelines, AI agents, CRM architecture. If it's repetitive, I'd rather build the thing that does it than do it twice.",
-    "The same instinct shows up behind a camera. I fly GPS and FPV, shoot and cut short-form, and build scenes in 3D — filming and modelling are the same job to me: you're constructing something that didn't exist, framing it, and making someone feel it. I train Muay Thai. I play Magic.",
-    "Mostly I like to be useful to people, and the people I most want to be useful to are here. I've lived in Winnipeg ten years. I want to bring more of the world to this city, and more of this city to the world. БОГMODE is where the systems, the stories, and the people meet."
+    "I'm Bogdan. My title is Marketing & Sales Coordinator. The work I keep gravitating toward is systems ownership.",
+    "Inside a growing B2B business, I have designed and maintained the infrastructure behind lead intake, qualification, lifecycle stages, ownership, commercial handoffs, product data, partner information, reporting, and follow-up. The visible output may be a workflow, dashboard, database, or internal app. The real job is making sure information reaches the right person and the next action is clear.",
+    "I work comfortably between operators and technology. I can map the business process, structure the data, configure the CRM, build the automation, prototype the missing tool, and explain the system to the people who need to use it. My stack includes HubSpot, Notion, PostgreSQL, Supabase, React, TypeScript, APIs, and AI-assisted development.",
+    "I am based in Winnipeg and open to the right local role or a remote role anywhere in Canada. Outside work, I fly GPS and FPV drones, shoot and edit video, train Muay Thai, and build independent products because I learn fastest by shipping."
   ],
   "portrait": "/photos/bogdan-orange-glasses.jpeg",
   "workshop": "/photos/bogdan-muay-thai.jpeg",
   "links": {
     "linkedin": "https://www.linkedin.com/in/bogmode/",
     "youtube": null,
-    "github": null
+    "github": "https://github.com/Bogmode"
   },
   "contact": {
     "email": "hello@bogmode.ca",
-    "formIntro": "A project to move forward, or a role that needs someone to build and own systems? Tell me about the challenge, the team, and what a useful result would look like."
+    "formIntro": "Hiring for GTM systems, revenue operations, marketing operations, CRM, or solutions work? Tell me what is breaking, what the team needs to own, and what a useful result would look like."
   },
   "instagramUrl": "https://www.instagram.com/bogmoder/",
   "dronewasheresUrl": "/projects/dronewashers"

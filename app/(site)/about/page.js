@@ -31,7 +31,7 @@ export default async function AboutPage() {
             <ModelBay />
           </Rise>
           <Rise mode="mount" delay={220}>
-            <div className="about-skill-note"><span>HOW I THINK</span><p>Scattered data, repetitive work, or a task for an AI agent. Start with the problem, then choose the tools that fit.</p><Link href="/playground#problem-explorer" className="tag-link">EXPLORE MY APPROACH →</Link></div>
+            <div className="about-skill-note"><span>HOW I THINK</span><p>A commercial process, scattered data, repetitive work, or a task for an AI agent. Start with how the work should move, then choose the tools that fit.</p><Link href="/playground#problem-explorer" className="tag-link">EXPLORE MY APPROACH →</Link></div>
           </Rise>
         </div>
       </div>

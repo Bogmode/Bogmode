@@ -1,0 +1,36 @@
+{
+  "title": "Turn product documents into structured data.",
+  "order": 3,
+  "cat": "AI · DATA SYSTEM",
+  "status": "WORKING PROTOTYPE",
+  "live": false,
+  "body": "A human-in-the-loop extraction workflow that turns messy product pages, labels, and documents into reviewable structured records.",
+  "chips": [
+    "AI extraction",
+    "Structured data",
+    "Human review"
+  ],
+  "detail": "The prototype explores a common operating problem: useful product information exists, but it is trapped in inconsistent pages and documents. The workflow extracts candidate fields, preserves source context, and routes uncertain values for review before they become trusted data.",
+  "sections": [
+    {
+      "label": "THE PROBLEM",
+      "copy": "Manual product research is slow and inconsistent. Important fields may appear under different names, live in images or PDFs, or be missing entirely. Copying them directly into a database creates silent quality problems."
+    },
+    {
+      "label": "THE PIPELINE",
+      "copy": "The system collects source content, extracts candidate values into a defined schema, attaches confidence and source context, flags missing or conflicting fields, and presents the record for human review."
+    },
+    {
+      "label": "THE GUARDRAILS",
+      "copy": "AI accelerates the first pass; it does not get final authority. A reviewer can inspect the source, correct values, reject weak evidence, and approve only the fields that are ready to use."
+    },
+    {
+      "label": "WHAT IT DEMONSTRATES",
+      "copy": "Schema design, AI-assisted extraction, source traceability, exception handling, and a practical way to combine automation with human judgment."
+    },
+    {
+      "label": "PROJECT STATUS",
+      "copy": "This is a working prototype and portfolio demonstration, not a public production service."
+    }
+  ]
+}
