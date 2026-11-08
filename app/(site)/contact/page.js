@@ -7,8 +7,9 @@ export const dynamic = "force-dynamic";
 
 export const metadata = { title: "Contact — БОГMODE" };
 
-export default async function ContactPage() {
-  const site = await getSite();
+export default async function ContactPage({ searchParams }) {
+  const [site, params] = await Promise.all([getSite(), searchParams]);
+  const brief = typeof params?.brief === "string" ? params.brief.slice(0, 2000) : "";
   return (
     <section>
       <Rise mode="mount">
@@ -28,7 +29,7 @@ export default async function ContactPage() {
           </div>
         </Rise>
         <Rise mode="mount" delay={160}>
-          <ContactForm toEmail={site.contact.email} deliveryAvailable={Boolean(process.env.RESEND_API_KEY && process.env.CONTACT_TO && process.env.CONTACT_FROM)} />
+          <ContactForm toEmail={site.contact.email} deliveryAvailable={Boolean(process.env.RESEND_API_KEY && process.env.CONTACT_TO && process.env.CONTACT_FROM)} defaultMessage={brief} />
         </Rise>
       </div>
     </section>

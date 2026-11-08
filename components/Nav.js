@@ -13,6 +13,7 @@ export default function Nav() {
           <span><span className="cy">БОГ</span>MODE</span>
         </Link>
         <div className="nav-links">
+          <Link href="/fit" aria-current={pathname === "/fit" ? "page" : undefined}>FIT</Link>
           <Link href="/systems" aria-current={pathname === "/systems" || pathname.startsWith("/systems/") ? "page" : undefined}>SYSTEMS</Link>
           <Link href="/playground" aria-current={pathname === "/playground" || pathname.startsWith("/playground/") ? "page" : undefined}>PLAYGROUND</Link>
           <Link href="/feeds" aria-current={pathname === "/feeds" ? "page" : undefined}>FEEDS</Link>

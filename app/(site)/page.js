@@ -34,7 +34,7 @@ export default async function Home() {
           <Rise mode="mount" delay={260}>
             <div className="hero-actions">
               <Link href="/contact" className="action primary">TALK ABOUT THE ROLE →</Link>
-              <Link href="#systems" className="action secondary">SEE THE SYSTEMS →</Link>
+              <Link href="/fit" className="action secondary">CHECK THE FIT →</Link>
             </div>
             <p className="hero-hiring">Hiring for GTM systems, RevOps, marketing operations, or solutions work? <Link href="/contact">Let’s talk →</Link></p>
           </Rise>
@@ -62,7 +62,7 @@ export default async function Home() {
           <div className="sec-head">
             <span className="xh"><Crosshair size={16} /></span>
             <h2>Systems behind a working revenue engine.</h2>
-            <Link href="/systems" className="tag-link">VIEW ALL →</Link>
+            <Link href="/fit" className="tag-link">MATCH TO YOUR ROLE →</Link>
           </div>
         </Rise>
         <div className="sys-grid featured-case-grid">

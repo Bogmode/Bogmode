@@ -1,0 +1,72 @@
+{
+  "roles": [
+    { "id": "gtm-engineering", "label": "GTM Engineering", "problems": ["crm", "handoffs", "manual", "agents"] },
+    { "id": "revops", "label": "Revenue Operations", "problems": ["crm", "handoffs", "reporting"] },
+    { "id": "marketing-ops", "label": "Marketing Operations", "problems": ["crm", "data", "manual"] },
+    { "id": "ai-automation", "label": "AI & Automation", "problems": ["agents", "manual", "documents"] },
+    { "id": "solutions", "label": "Solutions / Internal Tools", "problems": ["tool", "data", "documents"] }
+  ],
+  "problems": [
+    {
+      "id": "crm",
+      "label": "Our CRM is a mess",
+      "systems": ["revenue-lifecycle-engine", "business-intelligence"],
+      "skills": ["HubSpot", "Lifecycle stages", "Properties + data model", "Routing rules"],
+      "move": "Audit stages, properties, and ownership against how the team actually sells."
+    },
+    {
+      "id": "handoffs",
+      "label": "Leads fall through handoffs",
+      "systems": ["revenue-lifecycle-engine"],
+      "skills": ["Lead qualification", "Ownership rules", "Workflow automation", "Sequences"],
+      "move": "Map every handoff from inquiry to owner and define the next action at each stage."
+    },
+    {
+      "id": "reporting",
+      "label": "Nobody trusts the reports",
+      "systems": ["business-intelligence", "revenue-lifecycle-engine"],
+      "skills": ["Funnel reporting", "Data hygiene", "Dashboards", "Definitions"],
+      "move": "Agree on definitions first, then rebuild the few reports leadership actually uses."
+    },
+    {
+      "id": "data",
+      "label": "Data lives in ten places",
+      "systems": ["business-intelligence", "ai-product-intelligence"],
+      "skills": ["Data architecture", "Notion / PostgreSQL", "Supabase", "Source of truth"],
+      "move": "Decide which system owns which data, then connect the rest instead of duplicating it."
+    },
+    {
+      "id": "manual",
+      "label": "Too much manual busywork",
+      "systems": ["revenue-lifecycle-engine", "ai-product-intelligence"],
+      "skills": ["Workflow automation", "APIs", "Exception routing", "Documentation"],
+      "move": "List the repeat tasks, automate the routine path, and route exceptions to a person."
+    },
+    {
+      "id": "agents",
+      "label": "We want AI agents that do real work",
+      "systems": ["ai-product-intelligence", "fiend"],
+      "skills": ["Claude / LLM workflows", "Agent tooling", "Human-in-the-loop review", "Prompt + skill libraries"],
+      "move": "Pick one bounded job, give the agent context and tools, and keep review where judgment matters."
+    },
+    {
+      "id": "documents",
+      "label": "Key info is stuck in PDFs and pages",
+      "systems": ["ai-product-intelligence"],
+      "skills": ["AI extraction", "Schema design", "Source traceability", "Review queues"],
+      "move": "Define the schema, extract candidates with AI, and approve fields before they become trusted data."
+    },
+    {
+      "id": "tool",
+      "label": "We need an internal tool, fast",
+      "systems": ["fiend", "upstreams", "ai-product-intelligence"],
+      "skills": ["React / Next.js", "Supabase", "Vercel", "AI-assisted development"],
+      "move": "Prototype the smallest useful version in days, put it in front of users, then harden it."
+    }
+  ],
+  "plan": [
+    { "phase": "DAYS 1–30", "label": "Observe + map", "copy": "Shadow the team, trace the real process, and document where work and data break." },
+    { "phase": "DAYS 31–60", "label": "Build", "copy": "Ship the highest-friction fix first: {moves}" },
+    { "phase": "DAYS 61–90", "label": "Measure + learn", "copy": "Track adoption and handoff speed, cut what nobody uses, and document how the system runs." }
+  ]
+}

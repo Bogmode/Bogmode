@@ -10,7 +10,7 @@ const STATUS = {
   error: null, // uses server-provided message
 };
 
-export default function ContactForm({ toEmail, deliveryAvailable = false }) {
+export default function ContactForm({ toEmail, deliveryAvailable = false, defaultMessage = "" }) {
   const [state, setState] = useState("idle");
   const [draft, setDraft] = useState("");
   const [errMsg, setErrMsg] = useState("");
@@ -68,6 +68,7 @@ export default function ContactForm({ toEmail, deliveryAvailable = false }) {
           minLength={10}
           maxLength={4000}
           rows={7}
+          defaultValue={defaultMessage}
           placeholder="Tell me about the project or role, your team, and what needs to work better."
         />
       </label>
