@@ -1,36 +1,33 @@
 {
-  "title": "Turn product documents into structured data.",
+  "title": "Read a product label. Get a clean record.",
   "order": 3,
   "cat": "AI · DATA SYSTEM",
-  "status": "WORKING PROTOTYPE",
+  "status": "PROTOTYPE",
   "live": false,
-  "body": "A human-in-the-loop extraction workflow that turns messy product pages, labels, and documents into reviewable structured records.",
+  "body": "An AI tool that reads product labels, pulls out the key facts, and sends them to a person to check before anything is saved.",
   "chips": [
-    "AI extraction",
+    "Claude API",
+    "Python",
     "Structured data",
     "Human review"
   ],
-  "detail": "The prototype explores a common operating problem: useful product information exists, but it is trapped in inconsistent pages and documents. The workflow extracts candidate fields, preserves source context, and routes uncertain values for review before they become trusted data.",
+  "detail": "Partner product labels arrive as photos and PDFs. Typing them into a database by hand is slow and error-prone. This tool does the first pass and leaves the final call to a reviewer.",
   "sections": [
     {
       "label": "THE PROBLEM",
-      "copy": "Manual product research is slow and inconsistent. Important fields may appear under different names, live in images or PDFs, or be missing entirely. Copying them directly into a database creates silent quality problems."
+      "copy": "Every label is laid out differently. Ingredients, doses, and claims sit in images or PDFs, and copying them by hand creates quiet mistakes."
     },
     {
-      "label": "THE PIPELINE",
-      "copy": "The system collects source content, extracts candidate values into a defined schema, attaches confidence and source context, flags missing or conflicting fields, and presents the record for human review."
+      "label": "HOW IT WORKS",
+      "copy": "Upload a label. The AI transcribes it, extracts the fields into a fixed format, and shows where each value came from on the label. A reviewer approves or fixes each field. Only approved data is sent to the team database, with a notification when it is done."
     },
     {
-      "label": "THE GUARDRAILS",
-      "copy": "AI accelerates the first pass; it does not get final authority. A reviewer can inspect the source, correct values, reject weak evidence, and approve only the fields that are ready to use."
+      "label": "WHY IT IS BUILT THIS WAY",
+      "copy": "AI does the tedious part. A person keeps the final say. Every change is versioned, so you can see what changed on a label and when."
     },
     {
-      "label": "WHAT IT DEMONSTRATES",
-      "copy": "Schema design, AI-assisted extraction, source traceability, exception handling, and a practical way to combine automation with human judgment."
-    },
-    {
-      "label": "PROJECT STATUS",
-      "copy": "This is a working prototype and portfolio demonstration, not a public production service."
+      "label": "STATUS",
+      "copy": "Internal prototype. Not a public service."
     }
   ]
 }

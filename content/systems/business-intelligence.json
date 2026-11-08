@@ -1,36 +1,33 @@
 {
-  "title": "One source of truth for commercial work.",
+  "title": "One place for product and partner data.",
   "order": 2,
   "cat": "GTM SYSTEMS",
   "status": "IN USE",
   "live": false,
-  "body": "I consolidated fragmented product, partner, and commercial information into a maintained system the team can search, update, and use for reporting.",
+  "body": "I turned scattered spreadsheets, emails, and files into connected databases for products, partners, and agreements, and kept them accurate.",
   "chips": [
-    "Data architecture",
-    "Knowledge systems",
-    "Reporting"
+    "Notion",
+    "Data modelling",
+    "Compliance tracking",
+    "Product finder"
   ],
-  "detail": "This was more than moving notes into one place. I designed the information model, relationships, update workflows, ownership, views, and reporting layer so the system could stay useful as the business changed.",
+  "detail": "The company licenses its ingredient brand to partner brands worldwide. Knowing which products use it, at what dose, and under which signed agreement was spread across inboxes and files.",
   "sections": [
     {
       "label": "THE PROBLEM",
-      "copy": "Important commercial context was distributed across inboxes, files, individual memory, and separate tools. Finding a reliable answer took too much time, and the same information was often recreated for different requests."
+      "copy": "Answering basic questions took hours: Which partner products are on shelf? Is each one compliant? When does its agreement renew? The answers lived in different places and were often out of date."
     },
     {
-      "label": "THE BUILD",
-      "copy": "I created a structured source of truth with connected records, normalized fields, purpose-built views, update routines, and reusable reporting. The model was designed around the questions the team actually needed to answer."
-    },
-    {
-      "label": "ONGOING OWNERSHIP",
-      "copy": "I continue to maintain data quality, add new fields and views, resolve edge cases, document the system, and adapt it as commercial needs change. Shipping the first version was only the beginning."
+      "label": "WHAT I BUILT",
+      "copy": "A product database with verified ingredient and compliance details, a partner agreement tracker with renewal alerts, and a public, brand-first product finder built from the same data. I audited every partner across four regions to fill the gaps."
     },
     {
       "label": "THE RESULT",
-      "copy": "Colleagues can find current context faster, work more effectively across time zones, onboard with shared information, and produce recurring reports without rebuilding the underlying research each time."
+      "copy": "One source the team trusts. Missing agreements were found and flagged, renewal dates no longer hide in old files, and new staff can get up to speed from the system instead of from people."
     },
     {
-      "label": "ABOUT THIS CASE STUDY",
-      "copy": "This summary describes the system and my contribution without exposing employer names, internal records, screenshots, counts, or proprietary implementation details."
+      "label": "NOTE",
+      "copy": "Summarized without employer names, records, counts, or screenshots."
     }
   ]
 }

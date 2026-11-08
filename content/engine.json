@@ -11,14 +11,14 @@
       "id": "crm",
       "label": "Our CRM is a mess",
       "systems": ["revenue-lifecycle-engine", "business-intelligence"],
-      "skills": ["HubSpot", "Lifecycle stages", "Properties + data model", "Routing rules"],
+      "skills": ["HubSpot", "Lifecycle stages", "Properties + data model", "Email sequences"],
       "move": "Audit stages, properties, and ownership against how the team actually sells."
     },
     {
       "id": "handoffs",
       "label": "Leads fall through handoffs",
       "systems": ["revenue-lifecycle-engine"],
-      "skills": ["Lead qualification", "Ownership rules", "Workflow automation", "Sequences"],
+      "skills": ["Lead qualification", "Ownership rules", "Workflow automation", "Funnel reporting"],
       "move": "Map every handoff from inquiry to owner and define the next action at each stage."
     },
     {
