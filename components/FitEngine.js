@@ -68,7 +68,7 @@ export default function FitEngine({ systems, email }) {
     `Role: ${roleLabel}`,
     `What needs fixing: ${selected.map((id) => problemById[id].label).join(" · ")}`,
     "",
-    "Hi Bogdan — I used the fit engine on bogmode.ca. Here's a bit more context about the team and the role:",
+    "Hi Bogdan — I used the fit engine on bogmode.ca. A bit more context:",
     "",
   ].join("\n");
 
@@ -87,7 +87,7 @@ export default function FitEngine({ systems, email }) {
       <div className={styles.step}>
         <span className={styles.num}>01</span>
         <div>
-          <h2>Which role are you hiring for?</h2>
+          <h2>Which role is this for?</h2>
           <div className={styles.chips} role="group" aria-label="Choose a role">
             {engine.roles.map((r) => (
               <button key={r.id} type="button" aria-pressed={role === r.id} onClick={() => pickRole(r.id)}>{r.label}</button>
@@ -157,7 +157,7 @@ export default function FitEngine({ systems, email }) {
             <p className={styles.fine}>An illustrative starting plan. The real one starts by listening to your team.</p>
 
             <div className={styles.cta}>
-              <Link href={`/contact?brief=${encodeURIComponent(brief)}`} className="action primary">SEND THIS BRIEF →</Link>
+              <Link href={`/contact?brief=${encodeURIComponent(brief)}`} className="action primary">GET IN TOUCH →</Link>
               <a href={`mailto:${email}?subject=${encodeURIComponent(`[bogmode.ca] ${roleLabel}`)}&body=${encodeURIComponent(brief)}`} className="action secondary">EMAIL DIRECT</a>
             </div>
           </>

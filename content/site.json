@@ -9,7 +9,7 @@
     },
     {
       "k": "BASE",
-      "v": "Winnipeg · open to remote across Canada"
+      "v": "Winnipeg, MB"
     },
     {
       "k": "STACK",
@@ -20,7 +20,7 @@
     "I'm Bogdan. My title is Marketing & Sales Coordinator. The work I keep gravitating toward is systems ownership.",
     "Inside a growing B2B business, I have designed and maintained the infrastructure behind lead intake, qualification, lifecycle stages, ownership, commercial handoffs, product data, partner information, reporting, and follow-up. The visible output may be a workflow, dashboard, database, or internal app. The real job is making sure information reaches the right person and the next action is clear.",
     "I work comfortably between operators and technology. I can map the business process, structure the data, configure the CRM, build the automation, prototype the missing tool, and explain the system to the people who need to use it. My stack includes HubSpot, Notion, PostgreSQL, Supabase, React, TypeScript, APIs, and AI-assisted development.",
-    "I am based in Winnipeg and open to the right local role or a remote role anywhere in Canada. Outside work, I fly GPS and FPV drones, shoot and edit video, train Muay Thai, and build independent products because I learn fastest by shipping."
+    "I am based in Winnipeg. Outside work, I fly GPS and FPV drones, shoot and edit video, train Muay Thai, and build independent products because I learn fastest by shipping."
   ],
   "portrait": "/photos/bogdan-orange-glasses.jpeg",
   "workshop": "/photos/bogdan-muay-thai.jpeg",
@@ -31,7 +31,7 @@
   },
   "contact": {
     "email": "hello@bogmode.ca",
-    "formIntro": "Hiring for GTM systems, revenue operations, marketing operations, CRM, or solutions work? Tell me what is breaking, what the team needs to own, and what a useful result would look like."
+    "formIntro": "Questions about the work, or something you would like to talk through? Send a note and I will reply personally."
   },
   "instagramUrl": "https://www.instagram.com/bogmoder/",
   "dronewasheresUrl": "/projects/dronewashers"

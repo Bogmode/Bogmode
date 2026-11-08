@@ -24,7 +24,7 @@ const problems = [
     approach: "Connect the tools. Automate routine steps. Flag the exceptions.",
     flow: "automation",
     link: "/contact",
-    linkLabel: "LET’S AUTOMATE IT →",
+    linkLabel: "GET IN TOUCH →",
   },
   {
     id: "agents",
@@ -34,7 +34,7 @@ const problems = [
     approach: "Give it context and tools. Define the task. Keep human judgment in the loop.",
     flow: "agents",
     link: "/contact",
-    linkLabel: "LET’S BUILD AN AGENT →",
+    linkLabel: "GET IN TOUCH →",
   },
 ];
 

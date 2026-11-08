@@ -9,7 +9,7 @@ const PROFESSIONAL_SYSTEMS = new Set([
   "ai-product-intelligence",
 ]);
 
-export const metadata = { title: "GTM Systems — БОГMODE" };
+export const metadata = { title: "Work — БОГMODE" };
 
 export default async function SystemsPage() {
   const systems = await getSystems();
@@ -18,7 +18,7 @@ export default async function SystemsPage() {
       <Rise mode="mount">
         <div className="sec-head">
           <span className="xh"><Crosshair size={16} /></span>
-          <h1 className="page-title">Systems behind revenue.</h1>
+          <h1 className="page-title">Work</h1>
         </div>
         <p className="section-intro">I design and operate CRM architecture, lifecycle automation, commercial data systems, and AI-assisted internal tools. The first three are sanitized examples from live business operations. The rest are independent products and prototypes.</p>
       </Rise>

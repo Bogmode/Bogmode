@@ -11,6 +11,9 @@ export default function Footer({ site }) {
           {links.github && <a href={links.github} target="_blank" rel="noreferrer">GitHub</a>}
           {contact.email && <a href={`mailto:${contact.email}`}>Email</a>}
           <Link href="/contact">Contact</Link>
+          <Link href="/playground">Playground</Link>
+          <Link href="/feeds">Feeds</Link>
+          <Link href="/fit">Fit engine</Link>
           <Link href="/privacy">Privacy & cookies</Link>
           <Link href="/terms">Site terms</Link>
         </div>

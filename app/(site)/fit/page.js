@@ -17,11 +17,11 @@ export default async function FitPage() {
         <div className="sec-head">
           <span className="xh"><Crosshair size={16} /></span>
           <h1 className="page-title">Fit engine</h1>
-          <span className="tag">FOR HIRING TEAMS</span>
+          <span className="tag">MATCH THE WORK</span>
         </div>
       </Rise>
       <Rise mode="mount" delay={80}>
-        <p className="lede">Skip the scroll. Tell the engine what you are hiring for and what is breaking. It pulls the closest work I have done, the tools involved, and how I would spend the first 90 days.</p>
+        <p className="lede">Pick a role and the problems your team has. The engine pulls the most relevant work from this portfolio, the tools involved, and how I would approach the first 90 days.</p>
       </Rise>
       <Rise mode="mount" delay={160}>
         <FitEngine systems={slim} email={site.contact.email} />

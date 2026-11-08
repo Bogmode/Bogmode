@@ -33,10 +33,9 @@ export default async function Home() {
           </Rise>
           <Rise mode="mount" delay={260}>
             <div className="hero-actions">
-              <Link href="/contact" className="action primary">TALK ABOUT THE ROLE →</Link>
-              <Link href="/fit" className="action secondary">CHECK THE FIT →</Link>
+              <Link href="#systems" className="action primary">SEE THE WORK →</Link>
+              <Link href="/about" className="action secondary">ABOUT ME →</Link>
             </div>
-            <p className="hero-hiring">Hiring for GTM systems, RevOps, marketing operations, or solutions work? <Link href="/contact">Let’s talk →</Link></p>
           </Rise>
         </div>
         <div className="hero-side">
@@ -61,8 +60,8 @@ export default async function Home() {
         <Rise>
           <div className="sec-head">
             <span className="xh"><Crosshair size={16} /></span>
-            <h2>Systems behind a working revenue engine.</h2>
-            <Link href="/fit" className="tag-link">MATCH TO YOUR ROLE →</Link>
+            <h2>Selected work</h2>
+            <Link href="/systems" className="tag-link">ALL WORK →</Link>
           </div>
         </Rise>
         <div className="sys-grid featured-case-grid">
@@ -104,7 +103,7 @@ export default async function Home() {
 
       <section className="home-personal">
         <div><span className="drone-kicker">THE PERSON BEHIND THE WORK</span><h2>Everything, all at once.</h2><p>Business and technology. Cameras and communities. A broad range of interests, with one thread running through them: I like making things happen.</p><Link href="/about" className="tag-link">MEET BOGDAN →</Link></div>
-        <div className="home-invitation"><h3>Your GTM system needs an owner?</h3><p>I am open to the right Winnipeg role or a remote role anywhere in Canada. Bring me the broken handoffs, messy CRM, or missing internal tool.</p><Link href="/contact" className="action primary">LET’S TALK →</Link></div>
+        <div className="home-invitation"><h3>Looking at this for a specific role?</h3><p>Pick the role and the problems your team has. The fit engine pulls the most relevant work from this portfolio.</p><Link href="/fit" className="action secondary">MATCH THE WORK →</Link></div>
       </section>
     </>
   );

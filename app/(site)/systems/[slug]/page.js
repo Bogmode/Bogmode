@@ -51,7 +51,7 @@ export default async function SystemDetail({ params }) {
         ) : (
           <div className="detail-body">{sys.detail}</div>
         )}
-        <div className="case-contact"><h2>Have a related challenge?</h2><p>Tell me what needs to work better. Let’s figure out the next step.</p><Link className="action primary" href="/contact">LET’S TALK →</Link></div>
+        <div className="case-contact"><h2>Questions about this work?</h2><p>Happy to walk through it in more detail.</p><Link className="action secondary" href="/contact">CONTACT →</Link></div>
         <div className="chips">{sys.chips.map((c) => <span className="chip" key={c}>{c}</span>)}</div>
       </Rise>
     </article>
