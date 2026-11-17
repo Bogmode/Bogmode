@@ -168,6 +168,7 @@ export default config({
         cat: fields.text({ label: "Category label (mono, e.g. DATA TOOL · LIVE)" }),
         status: fields.text({ label: "Status tag (DEPLOYED / LIVE / BUILDING)" }),
         live: fields.checkbox({ label: "Live project indicator" }),
+        nda: fields.checkbox({ label: "Under NDA (shows inside the NDA folder)", defaultValue: false }),
         body: fields.text({ label: "Card body", multiline: true }),
         chips: fields.array(fields.text({ label: "Chip" }), {
           label: "Chips",
@@ -186,6 +187,19 @@ export default config({
             itemLabel: (p) => p.fields.label.value || "Untitled section",
           }
         ),
+      },
+    }),
+    news: collection({
+      label: "News",
+      path: "content/news/*",
+      slugField: "title",
+      format: { contentField: "body" },
+      columns: ["title", "date"],
+      schema: {
+        title: fields.slug({ name: { label: "Title" } }),
+        date: fields.date({ label: "Date", validation: { isRequired: true } }),
+        summary: fields.text({ label: "One-line summary", validation: { length: { min: 1, max: 180 } } }),
+        body: fields.markdoc({ label: "Update" }),
       },
     }),
     playground: collection({

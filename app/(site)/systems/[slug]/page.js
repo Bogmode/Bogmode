@@ -24,7 +24,7 @@ export default async function SystemDetail({ params }) {
   return (
     <article className="detail">
       <Rise mode="mount">
-        <Link href="/systems" className="back">← SYSTEMS</Link>
+        <Link href={sys.nda ? "/systems/nda" : "/systems"} className="back">{sys.nda ? "← NDA FOLDER" : "← WORK"}</Link>
         <div className="eyebrow"><Crosshair size={13} /> {sys.cat}</div>
       </Rise>
       <Rise mode="mount" delay={90}>

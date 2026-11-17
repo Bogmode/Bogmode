@@ -14,6 +14,7 @@ export default function Nav() {
         </Link>
         <div className="nav-links">
           <Link href="/systems" aria-current={pathname === "/systems" || pathname.startsWith("/systems/") ? "page" : undefined}>WORK</Link>
+          <Link href="/news" aria-current={pathname === "/news" || pathname.startsWith("/news/") ? "page" : undefined}>NEWS</Link>
           <Link href="/about" aria-current={pathname === "/about" || pathname.startsWith("/about/") ? "page" : undefined}>ABOUT</Link>
           <Link href="/contact" aria-current={pathname === "/contact" || pathname.startsWith("/contact/") ? "page" : undefined}>CONTACT</Link>
         </div>

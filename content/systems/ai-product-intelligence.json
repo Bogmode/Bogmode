@@ -29,5 +29,6 @@
       "label": "STATUS",
       "copy": "Internal prototype. Not a public service."
     }
-  ]
+  ],
+  "nda": true
 }

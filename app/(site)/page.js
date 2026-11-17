@@ -1,22 +1,22 @@
 import IndependentProjects from "@/components/IndependentProjects";
 import Link from "next/link";
 import Crosshair from "@/components/Crosshair";
-import SystemCard from "@/components/SystemCard";
+import ProjectCard from "@/components/ProjectCard";
+import NdaFolder from "@/components/NdaFolder";
+import NewsList from "@/components/NewsList";
 import Rise from "@/components/Rise";
 import SystemFlow from "@/components/SystemFlow";
-import { getSite, getSystems } from "@/lib/content";
-
-const PROFESSIONAL_SYSTEMS = new Set([
-  "revenue-lifecycle-engine",
-  "business-intelligence",
-  "ai-product-intelligence",
-]);
+import { getSite, getSystems, getProjects, getNews } from "@/lib/content";
 
 export default async function Home() {
-  const [site, systems] = await Promise.all([
+  const [site, systems, projects, news] = await Promise.all([
     getSite(),
     getSystems(),
+    getProjects(),
+    getNews(),
   ]);
+  const featured = projects.filter((p) => p.featured).slice(0, 5);
+  const ndaCount = systems.filter((s) => s.nda).length;
 
   return (
     <>
@@ -64,14 +64,32 @@ export default async function Home() {
             <Link href="/systems" className="tag-link">ALL WORK →</Link>
           </div>
         </Rise>
-        <div className="sys-grid featured-case-grid">
-          {systems.filter((s) => PROFESSIONAL_SYSTEMS.has(s.slug)).map((s, i) => (
-            <Rise key={s.slug} delay={i * 90}>
-              <SystemCard s={s} />
+        <div className="sys-grid">
+          {featured.map((p, i) => (
+            <Rise key={p.slug} delay={(i % 3) * 90}>
+              <ProjectCard p={p} />
             </Rise>
           ))}
+          {ndaCount > 0 && (
+            <Rise delay={(featured.length % 3) * 90}>
+              <NdaFolder count={ndaCount} />
+            </Rise>
+          )}
         </div>
       </section>
+
+      {news.length > 0 && (
+        <section id="news">
+          <Rise>
+            <div className="sec-head">
+              <span className="xh"><Crosshair size={16} /></span>
+              <h2>Latest news</h2>
+              <Link href="/news" className="tag-link">ALL NEWS →</Link>
+            </div>
+          </Rise>
+          <Rise delay={80}><NewsList posts={news.slice(0, 3)} /></Rise>
+        </section>
+      )}
 
       <section className="method-section">
         <Rise>

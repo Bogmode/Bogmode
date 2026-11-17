@@ -9,7 +9,7 @@ const PROFESSIONAL_SYSTEMS = new Set([
 ]);
 
 export default function SystemCard({ s }) {
-  const professional = PROFESSIONAL_SYSTEMS.has(s.slug);
+  const professional = s.nda || PROFESSIONAL_SYSTEMS.has(s.slug);
   return (
     <article className={`panel system-card ${professional ? "" : "app-system-card"}`}>
       {!professional && <ProjectIdentity kind={s.slug} />}

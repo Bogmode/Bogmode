@@ -29,5 +29,6 @@
       "label": "NOTE",
       "copy": "Live work, summarized without company records, rules, or screenshots."
     }
-  ]
+  ],
+  "nda": true
 }
