@@ -612,29 +612,14 @@ body { background: #EDEDE8; overflow-x: hidden; }
 @keyframes bm-blink { 0% { opacity: 1; } 100% { opacity: .2; } }
 @keyframes bm-spin { to { transform: rotate(360deg); } }
 
-/* ── БОГMODE ⇄ GODMODE glitch ─────────────────────────────────────── */
-.bm .glitch { position: relative; display: inline-block; }
-.bm .glitch::before, .bm .glitch::after { content: attr(data-text); position: absolute; inset: 0; opacity: 0; pointer-events: none; }
-.bm .glitch.is-glitching > span { animation: bm-jitter .14s steps(2) 4; }
-.bm .glitch.is-glitching::before { opacity: .9; color: var(--accent); animation: bm-slice-a .56s steps(1) both; }
-.bm .glitch.is-glitching::after { opacity: .8; color: #05B6CB; mix-blend-mode: screen; animation: bm-slice-b .56s steps(1) both; }
-.bm[data-skin="vulcan"] .glitch.is-glitching::after { color: #FF5A1F; }
-@keyframes bm-jitter { 0% { transform: translate(0); } 50% { transform: translate(-1px, 1px); } 100% { transform: translate(1px, -1px); } }
-@keyframes bm-slice-a {
-  0% { clip-path: inset(10% 0 70% 0); transform: translate(-3px, 0); }
-  20% { clip-path: inset(55% 0 20% 0); transform: translate(3px, 0); }
-  40% { clip-path: inset(30% 0 45% 0); transform: translate(-2px, 0); }
-  60% { clip-path: inset(75% 0 5% 0); transform: translate(2px, 0); }
-  80% { clip-path: inset(5% 0 85% 0); transform: translate(-1px, 0); }
-  100% { clip-path: inset(0 0 100% 0); transform: none; }
-}
-@keyframes bm-slice-b {
-  0% { clip-path: inset(65% 0 10% 0); transform: translate(3px, 0); }
-  25% { clip-path: inset(15% 0 60% 0); transform: translate(-3px, 0); }
-  50% { clip-path: inset(40% 0 35% 0); transform: translate(2px, 0); }
-  75% { clip-path: inset(80% 0 2% 0); transform: translate(-2px, 0); }
-  100% { clip-path: inset(0 0 100% 0); transform: none; }
-}
+/* ── БОГMODE ⇄ GODMODE melt ───────────────────────────────────────── */
+.bm .glitch { position: relative; display: inline-grid; }
+.bm .glitch .g-word { grid-area: 1 / 1; transition: opacity .7s cubic-bezier(.4,0,.2,1), filter .7s cubic-bezier(.4,0,.2,1), transform .7s cubic-bezier(.4,0,.2,1), text-shadow .7s ease; will-change: opacity, filter, transform; }
+.bm .glitch .g-god { opacity: 0; filter: blur(3px); transform: translateY(2px); }
+.bm .glitch.is-god .g-bog { opacity: 0; filter: blur(3px); transform: translateY(-2px); }
+.bm .glitch.is-god .g-god { opacity: 1; filter: blur(0); transform: none; text-shadow: -1.5px 0 color-mix(in srgb, var(--accent) 55%, transparent), 1.5px 0 rgba(5,182,203,.45); animation: bm-drift 1.5s ease-in-out both; }
+@keyframes bm-drift { 0%, 100% { text-shadow: 0 0 transparent, 0 0 transparent; } 35%, 65% { text-shadow: -1.5px 0 color-mix(in srgb, var(--accent) 55%, transparent), 1.5px 0 rgba(5,182,203,.45); } }
 .bm .hero-note .glitch { color: var(--accent); margin-right: 8px; }
 .bm .hero-note .glitch .cy { color: inherit; }
 .bm .hero-note .glitch span { margin-right: 0; }
+@media (prefers-reduced-motion: reduce) { .bm .glitch .g-word { transition: none; } }

@@ -12,7 +12,10 @@ export default function Scramble({ text, as: Tag = "span", className = "", delay
     let raf = 0, timer = 0;
     const run = () => {
       const start = performance.now(), dur = Math.min(900, 220 + text.length * 28);
+      let lastSwap = 0;
       const step = (now) => {
+        if (now - lastSwap < 45 && now - start < dur) { raf = requestAnimationFrame(step); return; }
+        lastSwap = now;
         const p = Math.min((now - start) / dur, 1);
         const settled = Math.floor(p * text.length);
         el.textContent = text.split("").map((ch, i) =>
