@@ -5,7 +5,8 @@ import ProjectCard from "@/components/ProjectCard";
 import NdaFolder from "@/components/NdaFolder";
 import NewsList from "@/components/NewsList";
 import Rise from "@/components/Rise";
-import SystemFlow from "@/components/SystemFlow";
+import HeroScene from "@/components/HeroScene";
+import Scramble from "@/components/Scramble";
 import { getSite, getSystems, getProjects, getNews } from "@/lib/content";
 
 export default async function Home() {
@@ -23,7 +24,7 @@ export default async function Home() {
       <header className="hero">
         <div>
           <Rise mode="mount">
-            <div className="eyebrow"><Crosshair size={13} /> BOGDAN / GTM SYSTEMS · REVOPS · AUTOMATION</div>
+            <div className="eyebrow"><Crosshair size={13} /> <Scramble text="BOGDAN / GTM SYSTEMS · REVOPS · AUTOMATION" /></div>
           </Rise>
           <Rise mode="mount" delay={90}>
             <h1>{site.headline}<span className="thin">{site.subhead}</span></h1>
@@ -40,7 +41,7 @@ export default async function Home() {
         </div>
         <div className="hero-side">
           <Rise mode="mount" delay={140}>
-            <SystemFlow />
+            <HeroScene />
           </Rise>
           <Rise mode="mount" delay={320} className="telemetry">
             {site.telemetry.map(({ k, v }) => (
@@ -96,7 +97,7 @@ export default async function Home() {
           <div className="sec-head">
             <span className="xh"><Crosshair size={16} /></span>
             <h2>How I work</h2>
-            <span className="tag">OPERATOR → SYSTEMS BUILDER</span>
+            <Scramble className="tag" text="OPERATOR → SYSTEMS BUILDER" />
           </div>
         </Rise>
         <div className="method-grid">

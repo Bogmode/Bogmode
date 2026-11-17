@@ -1,10 +1,11 @@
 import ProjectIdentity from "./ProjectIdentity";
+import Scramble from "./Scramble";
 import SystemFlow from "./SystemFlow";
 
 export default function IndependentProjects({ droneUrl }) {
   return (
     <section id="independent-work" className="independent-work">
-      <div className="sec-head"><h2>Ideas, brought to life.</h2><span className="tag">INDEPENDENT PROJECTS</span></div>
+      <div className="sec-head"><h2>Ideas, brought to life.</h2><Scramble className="tag" text="INDEPENDENT PROJECTS" /></div>
       <p className="section-intro">A spark of an idea. A little wizardry. Something you can actually use.</p>
       <div className="project-grid">
         <article className="project-card">

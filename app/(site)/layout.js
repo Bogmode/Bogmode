@@ -3,6 +3,7 @@ import Frame from "@/components/Frame";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
 import SkinToggle from "@/components/SkinToggle";
+import PointerGlow from "@/components/PointerGlow";
 import { getSite } from "@/lib/content";
 
 export default async function SiteLayout({ children }) {
@@ -12,6 +13,7 @@ export default async function SiteLayout({ children }) {
       <Frame />
       <Nav />
       <SkinToggle />
+      <PointerGlow />
       <main className="wrap">{children}</main>
       <Footer site={site} />
     </SkinProvider>

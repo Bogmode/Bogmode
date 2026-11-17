@@ -593,3 +593,21 @@ body { background: #EDEDE8; overflow-x: hidden; }
   .bm .news-item { grid-template-columns: 1fr 20px; gap: 6px 12px; }
   .bm .news-date { grid-column: 1 / -1; }
 }
+
+/* ── Motion layer: hero core, pointer glow, live accents ─────────── */
+.bm .hero-scene-stage { cursor: crosshair; touch-action: pan-y; }
+.bm .hero-scene-stage canvas { position: absolute; inset: 0; width: 100% !important; height: 100% !important; display: block; }
+.bm .hero-scene-stage::after { content: ""; position: absolute; inset: 0; pointer-events: none; background: radial-gradient(circle at 50% 50%, transparent 52%, color-mix(in srgb, var(--paper) 70%, transparent) 100%); }
+.bm .hero-scene-stage.no-webgl { background-image: radial-gradient(circle, var(--accent) 0 3px, transparent 4px), linear-gradient(var(--line) 1px, transparent 1px), linear-gradient(90deg, var(--line) 1px, transparent 1px); background-size: auto, 24px 24px, 24px 24px; background-position: center; background-repeat: no-repeat, repeat, repeat; }
+.bm .hero-scene .hero-model-head span:last-child { font-variant-numeric: tabular-nums; }
+.bm .panel, .bm .news-item { background-image: radial-gradient(240px circle at var(--mx, -400px) var(--my, -400px), var(--glow), transparent 72%); }
+.bm .nda-card { background: repeating-linear-gradient(135deg, var(--panel) 0 14px, var(--paper) 14px 15px); }
+@media (prefers-reduced-motion: no-preference) {
+  .bm .status.live { position: relative; }
+  .bm .status.live::before { content: ""; display: inline-block; width: 6px; height: 6px; margin-right: 6px; vertical-align: 1px; background: var(--accent-ink); animation: bm-blink 1.6s steps(2, jump-none) infinite; }
+  .bm .sec-head .xh svg { transition: transform .6s cubic-bezier(.2,.7,.2,1); }
+  .bm .sec-head:hover .xh svg { transform: rotate(90deg); }
+  .bm nav .stat .xh svg { animation: bm-spin 8s linear infinite; }
+}
+@keyframes bm-blink { 0% { opacity: 1; } 100% { opacity: .2; } }
+@keyframes bm-spin { to { transform: rotate(360deg); } }
