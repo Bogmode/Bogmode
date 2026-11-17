@@ -1,0 +1,30 @@
+---
+title: Social Video Dataset
+summary: Decodes social videos and posts into a structured, queryable dataset, including the audio track used.
+category: tools
+status: paused
+featured: false
+order: 85
+year: 2026
+role: Solo — data design, build
+stack:
+  - PostgreSQL
+links:
+  live: ''
+  repo: ''
+  video: ''
+related:
+  - social-tracker
+  - label-ingestion-pipeline
+notes: ''
+---
+
+## The problem
+
+Social content is unstructured: video, captions, sounds and comments spread across platforms. That makes it hard to compare or analyse.
+
+## What I built
+
+A pipeline that breaks videos and posts (TikTok/Reels-style video, Facebook, LinkedIn, Reddit) into structured values, identifies the sound used, and stores everything in self-hosted Postgres for querying.
+
+TODO — schema diagram, example query.
