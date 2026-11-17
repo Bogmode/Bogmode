@@ -7,6 +7,7 @@ import NewsList from "@/components/NewsList";
 import Rise from "@/components/Rise";
 import HeroScene from "@/components/HeroScene";
 import Scramble from "@/components/Scramble";
+import GlitchMark from "@/components/GlitchMark";
 import { getSite, getSystems, getProjects, getNews } from "@/lib/content";
 
 export default async function Home() {
@@ -24,7 +25,7 @@ export default async function Home() {
       <header className="hero">
         <div>
           <Rise mode="mount">
-            <div className="eyebrow"><Crosshair size={13} /> <Scramble text="BOGDAN / GTM SYSTEMS · REVOPS · AUTOMATION" /></div>
+            <div className="eyebrow"><Crosshair size={13} /> <Scramble text="BOGDAN / BUILDER · WINNIPEG" /></div>
           </Rise>
           <Rise mode="mount" delay={90}>
             <h1>{site.headline}<span className="thin">{site.subhead}</span></h1>
@@ -49,10 +50,10 @@ export default async function Home() {
             ))}
           </Rise>
           <Rise mode="mount" delay={390}>
-            <p className="hero-note"><span>БОГMODE</span> A LITTLE WIZARDRY. A RELIABLE SYSTEM.</p>
+            <p className="hero-note"><GlitchMark /> A LITTLE WIZARDRY. A RELIABLE SYSTEM.</p>
           </Rise>
           <Rise mode="mount" delay={460}>
-            <p className="hero-specialty">Clear ownership. Clean data. Fewer manual handoffs. Better decisions.</p>
+            <p className="hero-specialty">A swarming mind.</p>
           </Rise>
         </div>
       </header>

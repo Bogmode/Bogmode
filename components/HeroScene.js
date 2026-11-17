@@ -68,6 +68,9 @@ function start(THREE, host, readout, api) {
       uniform float uTime; uniform float uPulse; uniform float uDpr; attribute float aRand; varying float vA;
       void main(){
         vec3 p = position;
+        float a = uTime * (0.15 + aRand * 0.55) + aRand * 6.2831;
+        vec3 ax = normalize(vec3(sin(aRand * 17.0), cos(aRand * 29.0), sin(aRand * 7.0)));
+        p = p * cos(a * 0.35) + cross(ax, p) * sin(a * 0.35) + ax * dot(ax, p) * (1.0 - cos(a * 0.35));
         float n = snoise(p * 0.9 + vec3(0.0, uTime * 0.22, uTime * 0.12));
         float breathe = sin(uTime * 1.1) * 0.05;
         p *= 1.0 + n * 0.2 + breathe + uPulse * 0.22 * (0.6 + aRand);

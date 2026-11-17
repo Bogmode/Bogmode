@@ -1,11 +1,11 @@
 {
-  "headline": "I build the systems",
-  "subhead": "behind revenue.",
-  "lede": "I’m Bogdan, a GTM systems builder in Winnipeg. I turn messy commercial processes into reliable CRM architecture, lifecycle automation, shared data, and internal tools that sales and marketing teams can actually use.",
+  "headline": "Vision through the build.",
+  "subhead": "I heard. I built.",
+  "lede": "I’m Bogdan, a builder in Winnipeg. An idea reaches me, and I build it into something you can touch: simulators, explorers, data tools and brands. Many threads at once, one swarming mind.",
   "telemetry": [
     {
       "k": "FOCUS",
-      "v": "GTM systems · RevOps · automation"
+      "v": "Simulation · 3D · data tools · drones"
     },
     {
       "k": "BASE",
@@ -13,7 +13,7 @@
     },
     {
       "k": "STACK",
-      "v": "HubSpot · React · Supabase · AI"
+      "v": "React · Three.js · Godot · Python · AI"
     }
   ],
   "about": [

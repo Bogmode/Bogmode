@@ -2,6 +2,7 @@
 import { usePathname } from "next/navigation";
 import Link from "next/link";
 import Crosshair from "./Crosshair";
+import GlitchMark from "./GlitchMark";
 
 export default function Nav() {
   const pathname = usePathname();
@@ -10,7 +11,7 @@ export default function Nav() {
       <div className="nav-in">
         <Link href="/" className="mark">
           <span className="xh"><Crosshair size={15} /></span>
-          <span><span className="cy">БОГ</span>MODE</span>
+          <GlitchMark />
         </Link>
         <div className="nav-links">
           <Link href="/systems" aria-current={pathname === "/systems" || pathname.startsWith("/systems/") ? "page" : undefined}>WORK</Link>
