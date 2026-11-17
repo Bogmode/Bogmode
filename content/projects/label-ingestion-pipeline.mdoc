@@ -1,0 +1,55 @@
+---
+title: CPG Label Ingestion Pipeline
+summary: Turns photos and PDFs of product labels into verified, versioned structured data with a human-review step.
+category: tools
+status: paused
+featured: true
+order: 30
+year: 2026
+role: Solo — architecture, data model, build
+stack:
+  - Python 3.12
+  - FastAPI
+  - HTMX
+  - Pydantic
+  - SQLite
+  - PyMuPDF
+  - Anthropic API
+  - Notion API
+  - ntfy
+  - Tailscale
+links:
+  live: ''
+  repo: ''
+  video: ''
+related:
+  - social-video-dataset
+  - claude-code-skill-library
+notes: |
+  Keep framing generic (CPG labels) — no employer/brand names on the public page.
+  Demo mode runs without API credentials — use that for a public demo video.
+---
+
+## The problem
+
+Product label data (ingredients, claims, nutrition panels) arrives as photos and PDFs in every possible format. Re-typing it by hand is slow and error-prone, and versions drift silently when packaging changes.
+
+## What I built
+
+An ingest → parse → normalize → review → sync pipeline:
+
+- **Immutable storage**: every file is stored by SHA-256 hash and never overwritten.
+- **Two-pass extraction**: first transcription with bounding boxes, then mapping into a structured label schema.
+- **Deterministic normalization** in plain Python, so results are repeatable.
+- **Three-stage matching**: brand → product → reviewer decision.
+- **Field-level version diffing**: label changes over time are explicit.
+- **Review UI**: three columns, with the evidence region on the label highlighted next to each extracted field.
+- Only verified records sync to Notion, followed by a push notification.
+
+## Design choices
+
+Deliberately boring infrastructure: SQLite in WAL mode, systemd, a small VPS reachable only over Tailscale. No React, Redis, queues or Docker. At around 100 ingestions a year, simple beats scalable.
+
+## Outcome
+
+TODO — accuracy on a test set, time saved per label.

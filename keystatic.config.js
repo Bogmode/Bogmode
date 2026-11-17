@@ -59,6 +59,104 @@ export default config({
   },
 
   collections: {
+    // Portfolio registry — one entry per personal project (see docs/portfolio-plan.md)
+    projects: collection({
+      label: 'Projects',
+      slugField: 'title',
+      path: 'content/projects/*',
+      format: { contentField: 'body' },
+      entryLayout: 'content',
+      columns: ['title', 'status', 'category'],
+      schema: {
+        title: fields.slug({ name: { label: 'Title' } }),
+    
+        // Card-level presentation
+        summary: fields.text({
+          label: 'One-line summary',
+          description: 'What it is + why it matters. Shown on cards.',
+          validation: { length: { min: 1, max: 140 } },
+        }),
+        category: fields.select({
+          label: 'Category',
+          options: [
+            { label: 'Interactive / Education', value: 'interactive' },
+            { label: 'Games & 3D', value: 'games' },
+            { label: 'Drones & Simulation', value: 'drones' },
+            { label: 'Web & Brand', value: 'web-brand' },
+            { label: 'Tools & Data Pipelines', value: 'tools' },
+            { label: 'Concepts', value: 'concept' },
+          ],
+          defaultValue: 'tools',
+        }),
+        status: fields.select({
+          label: 'Status',
+          options: [
+            { label: 'Live', value: 'live' },
+            { label: 'In progress', value: 'in-progress' },
+            { label: 'Prototype', value: 'prototype' },
+            { label: 'Paused', value: 'paused' },
+            { label: 'Concept', value: 'concept' },
+          ],
+          defaultValue: 'in-progress',
+        }),
+        featured: fields.checkbox({ label: 'Featured on home', defaultValue: false }),
+        order: fields.integer({ label: 'Sort order (low = first)', defaultValue: 100 }),
+        year: fields.integer({ label: 'Year' }),
+        role: fields.text({ label: 'My role', description: 'e.g. Solo — design, build, data' }),
+    
+        stack: fields.array(fields.text({ label: 'Tech' }), {
+          label: 'Stack',
+          itemLabel: (p) => p.value,
+        }),
+        links: fields.object(
+          {
+            live: fields.url({ label: 'Live URL' }),
+            repo: fields.url({ label: 'Repo URL' }),
+            video: fields.url({ label: 'Demo video URL' }),
+          },
+          { label: 'Links' }
+        ),
+        // Demo-first: every project page opens on something you can touch
+        demo: fields.object(
+          {
+            kind: fields.select({
+              label: 'Demo type',
+              options: [
+                { label: 'None yet', value: 'none' },
+                { label: 'Live embed (iframe)', value: 'embed' },
+                { label: '3D scene (shared engine)', value: 'scene' },
+                { label: 'Video loop', value: 'video' },
+              ],
+              defaultValue: 'none',
+            }),
+            src: fields.text({ label: 'Embed URL / scene id / video URL' }),
+            poster: fields.image({
+              label: 'Poster (shown until demo loads)',
+              directory: 'public/images/demos',
+              publicPath: '/images/demos/',
+            }),
+          },
+          { label: 'Demo' }
+        ),
+        cover: fields.image({
+          label: 'Cover image (16:9)',
+          directory: 'public/images/projects',
+          publicPath: '/images/projects/',
+        }),
+    
+        // Association graph
+        related: fields.array(
+          fields.relationship({ label: 'Project', collection: 'projects' }),
+          { label: 'Related projects', itemLabel: (p) => p.value ?? '' }
+        ),
+    
+        // Never rendered — private working notes
+        notes: fields.text({ label: 'Internal notes (not rendered)', multiline: true }),
+    
+        // Case study
+        body: fields.markdoc({ label: 'Case study' }),
+      },
+    }),
     systems: collection({
       label: "Systems",
       path: "content/systems/*",
