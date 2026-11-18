@@ -37,6 +37,7 @@ export default async function ProjectDetailPage({ params }) {
   const { slug } = await params;
   const project = await getProject(slug);
   if (!project) notFound();
+  const body = await project.body();
 
   return (
     <article className="detail portfolio-detail">
@@ -58,7 +59,7 @@ export default async function ProjectDetailPage({ params }) {
             {project.stack.map((item) => <span className="chip" key={item}>{item}</span>)}
           </div>
         )}
-        <div className="portfolio-markdoc"><DocumentRenderer document={project.body} /></div>
+        <div className="portfolio-markdoc"><DocumentRenderer document={body.node.children} /></div>
         <div className="portfolio-links">
           {project.links?.live && <a className="action primary" href={project.links.live}>OPEN LIVE PROJECT ↗</a>}
           {project.links?.video && <a className="action secondary" href={project.links.video}>WATCH DEMO ↗</a>}
