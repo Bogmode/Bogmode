@@ -840,3 +840,26 @@ body { background: #EDEDE8; overflow-x: hidden; }
 .bm.bm[data-cheat="god"] { --accent: #FFC83D; --glow: rgba(255,200,61,.22); --accent-ink: #1a1203; }
 .bm[data-cheat="god"] .glitch .g-bog { opacity: 0 !important; filter: blur(3px); animation: none !important; }
 .bm[data-cheat="god"] .glitch .g-god { opacity: 1 !important; filter: none; transform: none; animation: none !important; text-shadow: -1.5px 0 rgba(255,200,61,.6), 1.5px 0 rgba(5,182,203,.45); }
+
+/* ── About v2: player card + press start ─────────────────────────── */
+.bm .about-v2 .about-body .lede:last-of-type { color: var(--ink); }
+.bm .about-v2 .about-body .lede { color: var(--ink); }
+.bm .about-connect { margin-top: 28px; padding-top: 20px; border-top: 1px solid var(--line); }
+.bm .about-connect-label { display: block; font: 10px var(--mono); letter-spacing: .18em; color: var(--accent); margin-bottom: 12px; }
+@media (prefers-reduced-motion: no-preference) { .bm .about-connect-label { animation: bm-blink 1.2s steps(2, jump-none) infinite; } }
+.bm .about-links { display: flex; flex-direction: column; gap: 8px; margin-top: 18px; }
+.bm .about-links a { font: 12px var(--mono); letter-spacing: .08em; color: var(--ink); text-decoration: none; width: fit-content; border-bottom: 1px solid transparent; }
+.bm .about-links a span { color: var(--muted); letter-spacing: 0; }
+.bm .about-links a:hover { border-bottom-color: var(--accent); }
+.bm .player-card { margin: 0; border: 1px solid var(--line); background: var(--panel); }
+.bm .pc-head { display: flex; justify-content: space-between; padding: 10px 14px; border-bottom: 1px solid var(--line); font: 10px var(--mono); letter-spacing: .14em; color: var(--muted); }
+.bm .pc-head span:last-child { color: var(--accent); }
+.bm .pc-photo { position: relative; aspect-ratio: 4 / 4.4; overflow: hidden; border-bottom: 1px solid var(--line); background: var(--block); }
+.bm .pc-photo img { width: 100%; height: 100%; object-fit: cover; display: block; filter: contrast(1.05); }
+.bm .pc-photo::after { content: ""; position: absolute; inset: 0; background: repeating-linear-gradient(0deg, rgba(0,0,0,.08) 0 1px, transparent 1px 3px); pointer-events: none; }
+.bm .pc-totem { position: absolute; right: 12px; bottom: 12px; z-index: 1; color: var(--accent); background: color-mix(in srgb, var(--block) 70%, transparent); padding: 6px; }
+.bm .pc-stats { margin: 0; padding: 6px 14px 12px; }
+.bm .pc-stats div { display: grid; grid-template-columns: 110px 1fr; gap: 10px; padding: 7px 0; border-bottom: 1px dashed var(--line); }
+.bm .pc-stats div:last-child { border-bottom: 0; }
+.bm .pc-stats dt { font: 10px var(--mono); letter-spacing: .12em; color: var(--muted); }
+.bm .pc-stats dd { margin: 0; font-size: 14px; color: var(--ink); }
