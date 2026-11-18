@@ -1,0 +1,9 @@
+{
+  "name": "Lab",
+  "order": 3,
+  "totem": "hare",
+  "focus": "SCIENCE",
+  "tagline": "Everything at every scale.",
+  "intro": "Interactive science: atoms, cells, microbes, planets and the systems between them.",
+  "pipeline": []
+}

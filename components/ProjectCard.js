@@ -22,7 +22,7 @@ export default function ProjectCard({ p }) {
     <article className="panel system-card project-entry-card">
       <Link href={`/work/${p.slug}`} className="panel-link" aria-label={`Explore ${p.title}`}>
         <div className="meta">
-          <span className="cat">{CATEGORY_LABEL[p.category] || p.category}</span>
+          <span className="cat">{p.division ? p.division.toUpperCase() : CATEGORY_LABEL[p.category] || p.category}</span>
           <span className={"status" + (p.status === "live" ? " live" : "")}>{STATUS_LABEL[p.status] || p.status}</span>
         </div>
         <h3>{p.title}</h3>

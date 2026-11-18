@@ -5,7 +5,9 @@ import Rise from "@/components/Rise";
 import Scramble from "@/components/Scramble";
 import NumberRain from "@/components/NumberRain";
 import SystemFlow from "@/components/SystemFlow";
-import { getSystems, getSystem } from "@/lib/content";
+import DivisionBadge from "@/components/DivisionBadge";
+import DivisionPipeline from "@/components/DivisionPipeline";
+import { getSystems, getSystem, getEcosystem } from "@/lib/content";
 
 export async function generateStaticParams() {
   const systems = await getSystems();
@@ -22,18 +24,24 @@ export default async function SystemDetail({ params }) {
   const { slug } = await params;
   const sys = await getSystem(slug);
   if (!sys) notFound();
+  const { divisions, bySlug } = await getEcosystem();
+  const division = sys.nda ? null : divisions.find((d) => d.slug === sys.division);
 
   return (
     <article className="detail">
       <NumberRain />
       <Rise mode="mount">
         <Link href={sys.nda ? "/systems/nda" : "/systems"} className="back">{sys.nda ? "← NDA FOLDER" : "← WORK"}</Link>
+        <DivisionBadge division={division} />
         <div className="eyebrow"><Crosshair size={13} /> {sys.cat}</div>
       </Rise>
       <Rise mode="mount" delay={90}>
         <h1><Scramble text={sys.title} /></h1>
         <p className="lede">{sys.body}</p>
       </Rise>
+      {division?.pipeline?.some((st) => st.project === slug) && (
+        <Rise mode="mount" delay={120}><DivisionPipeline division={division} bySlug={bySlug} current={slug} /></Rise>
+      )}
       {sys.projectUrl && (
         <Rise mode="mount" delay={150}>
           <a className="action primary" href={sys.projectUrl}>{sys.projectLabel || "EXPLORE PROJECT"} →</a>

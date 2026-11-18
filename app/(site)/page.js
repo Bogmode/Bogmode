@@ -5,11 +5,12 @@ import ProjectCard from "@/components/ProjectCard";
 import NdaFolder from "@/components/NdaFolder";
 import NewsList from "@/components/NewsList";
 import ScaleStrip from "@/components/ScaleStrip";
+import TotemMark from "@/components/TotemMark";
 import Rise from "@/components/Rise";
 import HeroScene from "@/components/HeroScene";
 import Scramble from "@/components/Scramble";
 import GlitchMark from "@/components/GlitchMark";
-import { getSite, getSystems, getProjects, getNews } from "@/lib/content";
+import { getSite, getSystems, getProjects, getNews, getDivisions } from "@/lib/content";
 
 export default async function Home() {
   const [site, systems, projects, news] = await Promise.all([
@@ -18,6 +19,7 @@ export default async function Home() {
     getProjects(),
     getNews(),
   ]);
+  const divisions = await getDivisions();
   const featured = projects.filter((p) => p.featured).slice(0, 5);
   const ndaCount = systems.filter((s) => s.nda).length;
 
@@ -78,6 +80,28 @@ export default async function Home() {
               <NdaFolder count={ndaCount} />
             </Rise>
           )}
+        </div>
+      </section>
+
+      <section id="divisions">
+        <Rise>
+          <div className="sec-head">
+            <span className="xh"><Crosshair size={16} /></span>
+            <h2>One studio, five divisions.</h2>
+            <Link href="/systems" className="tag-link">ALL WORK →</Link>
+          </div>
+        </Rise>
+        <div className="division-strip">
+          {divisions.map((d, i) => (
+            <Rise key={d.slug} delay={i * 60}>
+              <Link href={`/divisions/${d.slug}`} className="panel division-tile">
+                <TotemMark totem={d.totem} size={64} />
+                <span className="division-focus">{d.focus}</span>
+                <strong>{d.name}</strong>
+                <span className="division-tag">{d.tagline}</span>
+              </Link>
+            </Rise>
+          ))}
         </div>
       </section>
 

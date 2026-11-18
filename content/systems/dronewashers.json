@@ -26,5 +26,6 @@
       "label": "PROJECT STATUS",
       "copy": "This is an interactive website concept. Service claims, prices, and testimonials are draft content; the quote form is a demonstration and does not send requests."
     }
-  ]
+  ],
+  "division": "swarm"
 }

@@ -6,7 +6,9 @@ import Scramble from "@/components/Scramble";
 import NumberRain from "@/components/NumberRain";
 import RichText from "@/components/RichText";
 import { CATEGORY_LABEL, STATUS_LABEL } from "@/components/ProjectCard";
-import { getProjects, getProject } from "@/lib/content";
+import DivisionBadge from "@/components/DivisionBadge";
+import DivisionPipeline from "@/components/DivisionPipeline";
+import { getProjects, getProject, getEcosystem } from "@/lib/content";
 
 export async function generateStaticParams() {
   const projects = await getProjects();
@@ -23,6 +25,9 @@ export default async function ProjectDetail({ params }) {
   const { slug } = await params;
   const p = await getProject(slug);
   if (!p) notFound();
+  const { divisions, bySlug } = await getEcosystem();
+  const division = divisions.find((d) => d.slug === p.division);
+  const siblings = division ? division.items.filter((i) => i.slug !== slug) : [];
   const links = [
     p.links?.live && { href: p.links.live, label: "OPEN PROJECT", primary: true },
     p.links?.repo && { href: p.links.repo, label: "SOURCE CODE" },
@@ -34,6 +39,7 @@ export default async function ProjectDetail({ params }) {
       <NumberRain />
       <Rise mode="mount">
         <Link href="/systems" className="back">← WORK</Link>
+        <DivisionBadge division={division} />
         <div className="eyebrow"><Crosshair size={13} /> {CATEGORY_LABEL[p.category] || p.category} · {STATUS_LABEL[p.status] || p.status}{p.year ? ` · ${p.year}` : ""}</div>
       </Rise>
       <Rise mode="mount" delay={90}>
@@ -50,9 +56,18 @@ export default async function ProjectDetail({ params }) {
           </div>
         </Rise>
       )}
+      {division?.pipeline?.some((st) => st.project === slug) && (
+        <Rise mode="mount" delay={170}><DivisionPipeline division={division} bySlug={bySlug} current={slug} /></Rise>
+      )}
       <Rise mode="mount" delay={200}>
         <RichText node={p.body} />
         {p.stack?.length > 0 && <div className="chips">{p.stack.map((c) => <span className="chip" key={c}>{c}</span>)}</div>}
+        {siblings.length > 0 && (
+          <div className="siblings">
+            <span className="siblings-label">MORE IN {division.name.toUpperCase()}</span>
+            {siblings.map((s) => <Link key={s.slug} href={s.href}>{s.title} →</Link>)}
+          </div>
+        )}
         <div className="case-contact"><h2>Questions about this project?</h2><p>Happy to walk through it.</p><Link className="action secondary" href="/contact">CONTACT →</Link></div>
       </Rise>
     </article>

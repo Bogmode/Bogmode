@@ -69,6 +69,7 @@ export default config({
       columns: ['title', 'status', 'category'],
       schema: {
         title: fields.slug({ name: { label: 'Title' } }),
+        division: fields.relationship({ label: "Division", collection: "divisions" }),
     
         // Card-level presentation
         summary: fields.text({
@@ -157,6 +158,37 @@ export default config({
         body: fields.markdoc({ label: 'Case study' }),
       },
     }),
+    divisions: collection({
+      label: "Divisions",
+      path: "content/divisions/*",
+      slugField: "name",
+      format: { data: "json" },
+      columns: ["name", "order"],
+      schema: {
+        name: fields.slug({ name: { label: "Name (e.g. Swarm)" } }),
+        order: fields.integer({ label: "Order (lower = first)", defaultValue: 10 }),
+        totem: fields.select({
+          label: "Totem animal",
+          options: [
+            { label: "Wolf", value: "wolf" }, { label: "Hare", value: "hare" },
+            { label: "Manticore", value: "manticore" }, { label: "Dragon", value: "dragon" },
+            { label: "Bear", value: "bear" },
+          ],
+          defaultValue: "wolf",
+        }),
+        focus: fields.text({ label: "Focus label (mono, e.g. DRONES)" }),
+        tagline: fields.text({ label: "Tagline (one line)" }),
+        intro: fields.text({ label: "Intro", multiline: true }),
+        pipeline: fields.array(
+          fields.object({
+            stage: fields.text({ label: "Stage (e.g. Plan)" }),
+            note: fields.text({ label: "What happens here" }),
+            project: fields.text({ label: "Project slug (from Projects or Systems)" }),
+          }),
+          { label: "Pipeline (optional)", itemLabel: (p) => p.fields.stage.value || "Stage" }
+        ),
+      },
+    }),
     systems: collection({
       label: "Systems",
       path: "content/systems/*",
@@ -169,6 +201,7 @@ export default config({
         status: fields.text({ label: "Status tag (DEPLOYED / LIVE / BUILDING)" }),
         live: fields.checkbox({ label: "Live project indicator" }),
         nda: fields.checkbox({ label: "Under NDA (shows inside the NDA folder)", defaultValue: false }),
+        division: fields.relationship({ label: "Division", collection: "divisions" }),
         body: fields.text({ label: "Card body", multiline: true }),
         chips: fields.array(fields.text({ label: "Chip" }), {
           label: "Chips",

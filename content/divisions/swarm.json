@@ -1,0 +1,25 @@
+{
+  "name": "Swarm",
+  "order": 1,
+  "totem": "wolf",
+  "focus": "DRONES",
+  "tagline": "Plan it. Simulate it. Fly it.",
+  "intro": "A multi-drone program built for Canadian skies. Missions are planned on a map, tested in a physics simulator, then flown for real.",
+  "pipeline": [
+    {
+      "stage": "Plan",
+      "note": "Draw multi-drone routes against the rules.",
+      "project": "multi-drone-mission-planner"
+    },
+    {
+      "stage": "Simulate",
+      "note": "Fly the mission in real physics first.",
+      "project": "drone-sim"
+    },
+    {
+      "stage": "Fly",
+      "note": "Real-world service: drone cleaning.",
+      "project": "dronewashers"
+    }
+  ]
+}

@@ -1,0 +1,9 @@
+{
+  "name": "Worlds",
+  "order": 2,
+  "totem": "dragon",
+  "focus": "GAMES & 3D",
+  "tagline": "Places you can walk around in.",
+  "intro": "Games, prototypes and 3D worlds built in Godot and Blender.",
+  "pipeline": []
+}

@@ -1,0 +1,9 @@
+{
+  "name": "Tools",
+  "order": 4,
+  "totem": "bear",
+  "focus": "DATA & AI",
+  "tagline": "Quiet machines that do the boring part.",
+  "intro": "Data pipelines, trackers and AI tooling that turn messy inputs into something usable.",
+  "pipeline": []
+}
