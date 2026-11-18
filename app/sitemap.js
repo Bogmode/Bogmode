@@ -1,1 +1,7 @@
-export default function sitemap() { return ["", "/about", "/contact", "/systems", "/playground", "/playground/gmail-outreach", "/feeds", "/privacy", "/terms", "/systems/business-intelligence", "/systems/upstreams", "/systems/fiend", "/systems/dronewashers"].map(path => ({ url: "https://bogmode.ca" + path })); }
+import { getProjects, getSystems } from "@/lib/content";
+
+export default async function sitemap() {
+  const [systems, projects] = await Promise.all([getSystems(), getProjects()]);
+  const paths = ["", "/about", "/contact", "/work-with-me", "/systems", "/projects", "/playground", "/playground/gmail-outreach", "/projects/dronewashers", "/feeds", "/privacy", "/terms", ...systems.map(({ slug }) => `/systems/${slug}`), ...projects.map(({ slug }) => `/project/${slug}`)];
+  return paths.map((path) => ({ url: `https://bogmode.ca${path}` }));
+}
