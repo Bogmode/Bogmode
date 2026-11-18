@@ -873,3 +873,36 @@ body { background: #EDEDE8; overflow-x: hidden; }
 .bm .pc-views button.on { background: var(--accent); border-color: var(--accent); color: var(--accent-ink); }
 .bm .pc-loading { position: absolute; inset: 0; display: grid; place-items: center; font: 10px var(--mono); letter-spacing: .16em; color: var(--muted); pointer-events: none; }
 .bm .pc-hint { position: absolute; left: 12px; bottom: 12px; font: 10px var(--mono); letter-spacing: .14em; color: var(--muted); pointer-events: none; }
+
+/* ── Project identities (card art + detail banners) ──────────────── */
+.bm .project-art-link { display: block; color: inherit; text-decoration: none; }
+.bm .app-system-card > .project-art-link > .project-art { margin: -20px -18px 22px; }
+.bm .project-art b { font-weight: inherit; }
+.bm .project-art .id-motif { width: 100%; max-width: 300px; height: auto; margin-top: 22px; overflow: visible; }
+.bm .project-art .id-motif [fill="none"], .bm .project-art .id-motif path:not(.id-dot path), .bm .project-art .id-motif rect[fill="none"] { stroke: currentColor; }
+.bm .project-art .id-motif .id-dot, .bm .project-art .id-motif .id-dot * { fill: var(--id-accent); stroke: none; }
+.bm .project-art .id-motif .id-accent-stroke { stroke: var(--id-accent); }
+.bm .project-art .id-motif .id-bars rect, .bm .project-art .id-motif .id-ticks rect { fill: currentColor; }
+.bm .project-art .id-motif .id-empty { fill: none; stroke: currentColor; opacity: .55; }
+.bm .project-art .id-motif .id-scan path { stroke: var(--id-accent); }
+.bm .id-scales { --id-accent: #ffd36e; background: #0b1020; color: #e9e6dc; }
+.bm .id-scales b { color: #ffd36e; }
+.bm .id-dronesim { --id-accent: #FF5A1F; background: #1b1f24; color: #e6ebf0; }
+.bm .id-planner { --id-accent: #5de0c1; background: #0f2430; color: #e3f3ef; }
+.bm .id-label { --id-accent: #e0442b; background: #f1ece1; color: #1d1a16; }
+.bm .id-video { --id-accent: #FF5A1F; background: #131317; color: #f2f1ec; }
+.bm .id-social { --id-accent: #ff6ad5; background: #22113a; color: #f4ecff; }
+.bm .id-tracker { --id-accent: #2e7d4f; background: #e6ede4; color: #13201a; }
+.bm .id-spellbook { --id-accent: #d9a441; background: #241a12; color: #f3e6c8; }
+.bm .id-totem { --id-accent: var(--accent); background: var(--block); color: #ecebe6; }
+.bm .id-totem > span { font-size: clamp(26px, 3vw, 36px); max-width: 12ch; line-height: 1.05; }
+.bm .id-totem .id-totem-mark { position: absolute; right: 20px; bottom: 18px; color: var(--accent); }
+.bm .project-art-banner { aspect-ratio: 16 / 6; margin: 10px 0 28px; padding: 32px 36px; }
+.bm .project-art-banner > span { font-size: clamp(36px, 5vw, 60px); }
+.bm .project-art-banner .id-motif { position: absolute; right: 36px; top: 50%; transform: translateY(-50%); margin: 0; width: 42%; max-width: 420px; }
+.bm .project-art-banner .id-totem-mark { width: 120px; height: 120px; }
+@media (max-width: 720px) { .bm .project-art-banner { aspect-ratio: 4 / 3; } .bm .project-art-banner .id-motif { position: static; transform: none; width: 100%; margin-top: 20px; } }
+@media (prefers-reduced-motion: no-preference) {
+  .bm .project-art .id-motif .id-dot { transition: transform .6s cubic-bezier(.2,.7,.2,1); transform-box: fill-box; }
+  .bm .system-card:hover .project-art .id-motif .id-dot { transform: translateX(4px); }
+}

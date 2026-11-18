@@ -5,6 +5,7 @@ import Rise from "@/components/Rise";
 import Scramble from "@/components/Scramble";
 import NumberRain from "@/components/NumberRain";
 import RichText from "@/components/RichText";
+import ProjectIdentity from "@/components/ProjectIdentity";
 import { CATEGORY_LABEL, STATUS_LABEL } from "@/components/ProjectCard";
 import DivisionBadge from "@/components/DivisionBadge";
 import DivisionPipeline from "@/components/DivisionPipeline";
@@ -47,6 +48,7 @@ export default async function ProjectDetail({ params }) {
         <p className="lede">{p.summary}</p>
         {p.role && <p className="project-role">{p.role}</p>}
       </Rise>
+      <Rise mode="mount" delay={130}><ProjectIdentity kind={p.slug} title={p.title} division={p.division} banner /></Rise>
       {links.length > 0 && (
         <Rise mode="mount" delay={150}>
           <div className="hero-actions">

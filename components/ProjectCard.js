@@ -1,4 +1,5 @@
 import Link from "next/link";
+import ProjectIdentity from "./ProjectIdentity";
 
 export const CATEGORY_LABEL = {
   interactive: "INTERACTIVE / EDUCATION",
@@ -19,7 +20,8 @@ export const STATUS_LABEL = {
 
 export default function ProjectCard({ p }) {
   return (
-    <article className="panel system-card project-entry-card">
+    <article className="panel system-card app-system-card project-entry-card">
+      <Link href={`/work/${p.slug}`} className="project-art-link" tabIndex={-1} aria-hidden="true"><ProjectIdentity kind={p.slug} title={p.title} division={p.division} /></Link>
       <Link href={`/work/${p.slug}`} className="panel-link" aria-label={`Explore ${p.title}`}>
         <div className="meta">
           <span className="cat">{p.division ? p.division.toUpperCase() : CATEGORY_LABEL[p.category] || p.category}</span>
