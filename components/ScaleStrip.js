@@ -22,7 +22,7 @@ export default function ScaleStrip() {
       <div className="scale-strip">
         {SCALES.map((s, i) => (
           <Rise key={s.kind} delay={i * 90}>
-            <figure className="panel scale-tile" data-parallax={0.04 * (i - 1)}>
+            <figure className="panel scale-tile">
               <div className="scale-head"><span>{s.name.toUpperCase()}</span><span>{s.tag}</span></div>
               <AsciiScene kind={s.kind} label={`${s.name}, animated in ASCII`} />
               <figcaption>{s.line}</figcaption>

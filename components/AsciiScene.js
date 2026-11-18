@@ -50,14 +50,14 @@ function build(THREE, kind) {
   }
 
   if (kind === "planet") {
-    const planet = new THREE.Mesh(new THREE.IcosahedronGeometry(1.15, 4), mat);
+    const planet = new THREE.Mesh(new THREE.IcosahedronGeometry(1.25, 4), mat);
     root.add(planet); parts.planet = planet;
-    const ring = new THREE.Mesh(new THREE.RingGeometry(1.55, 2.15, 96), new THREE.MeshStandardMaterial({ color: 0xffffff, side: THREE.DoubleSide, roughness: .7 }));
-    ring.rotation.x = Math.PI / 2.6; root.add(ring);
+    const ring = new THREE.Mesh(new THREE.RingGeometry(1.7, 2.45, 120), new THREE.MeshStandardMaterial({ color: 0xffffff, side: THREE.DoubleSide, roughness: .7 }));
+    ring.rotation.x = Math.PI / 2 - 0.42; root.add(ring);
     const moonPivot = new THREE.Group(); root.add(moonPivot);
-    const moon = new THREE.Mesh(new THREE.SphereGeometry(0.22, 16, 16), mat); moon.position.x = 2.6; moonPivot.add(moon);
+    const moon = new THREE.Mesh(new THREE.SphereGeometry(0.22, 16, 16), mat); moon.position.x = 2.9; moonPivot.add(moon);
     parts.moonPivot = moonPivot;
-    root.rotation.z = 0.35;
+    root.rotation.z = 0.18;
   }
 
   const update = (t) => {
@@ -83,7 +83,7 @@ function build(THREE, kind) {
     if (kind === "planet") {
       parts.planet.rotation.y = t * 0.5;
       parts.moonPivot.rotation.y = t * 0.9;
-      root.rotation.y = Math.sin(t * 0.25) * 0.3;
+      root.rotation.y = Math.sin(t * 0.25) * 0.15;
     }
   };
   return { scene, update };
@@ -101,10 +101,10 @@ export default function AsciiScene({ kind = "atom", label }) {
       try { renderer = new THREE.WebGLRenderer({ alpha: true, preserveDrawingBuffer: true }); }
       catch { el.classList.add("no-webgl"); return; }
       renderer.setClearColor(0x000000, 0);
-      const effect = new AsciiEffect(renderer, " .:-=+*#%@", { resolution: 0.17, invert: false });
+      const effect = new AsciiEffect(renderer, " .,:;-=+*x#%@", { resolution: 0.2, invert: false });
       effect.domElement.className = "ascii-out";
       el.appendChild(effect.domElement);
-      const camera = new THREE.PerspectiveCamera(36, 1, 0.1, 50); camera.position.set(0, 0, kind === "planet" ? 8.6 : 7);
+      const camera = new THREE.PerspectiveCamera(36, 1, 0.1, 50); camera.position.set(0, 0, kind === "planet" ? 10 : 7.2);
       const { scene, update } = build(THREE, kind);
       const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
 
