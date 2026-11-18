@@ -1,6 +1,7 @@
 "use client";
 import { useEffect, useRef } from "react";
 import { useSkin } from "./SkinProvider";
+import { SKIN_TOTEM, sampleTotem } from "./totems";
 
 // Breathing point-cloud core with HUD rings. Colours follow the active skin.
 // Pauses off-screen / in background tabs; renders one still frame for reduced motion.
@@ -36,7 +37,7 @@ function readColors(el) {
   return { accent: v("--accent", "#FF5A1F"), ink: v("--ink", "#131317"), muted: v("--muted", "#6E6D66") };
 }
 
-function start(THREE, host, readout, api) {
+function start(THREE, host, readout, api, label, skinRef) {
   const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
   const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true, powerPreference: "low-power" });
   const dpr = Math.min(window.devicePixelRatio || 1, 2);
@@ -61,11 +62,14 @@ function start(THREE, host, readout, api) {
   const coreGeo = new THREE.BufferGeometry();
   coreGeo.setAttribute("position", new THREE.BufferAttribute(pos, 3));
   coreGeo.setAttribute("aRand", new THREE.BufferAttribute(rnd, 1));
-  const uniforms = { uTime: { value: 0 }, uPulse: { value: 0 }, uDpr: { value: dpr }, uColor: { value: new THREE.Color() } };
+  const targetAttr = new THREE.BufferAttribute(sampleTotem(SKIN_TOTEM[skinRef.current] || "wolf", N), 3);
+  coreGeo.setAttribute("aTarget", targetAttr);
+  let totem = SKIN_TOTEM[skinRef.current] || "wolf";
+  const uniforms = { uTime: { value: 0 }, uPulse: { value: 0 }, uMorph: { value: 0 }, uDpr: { value: dpr }, uColor: { value: new THREE.Color() } };
   const coreMat = new THREE.ShaderMaterial({
     uniforms, transparent: true, depthWrite: false,
     vertexShader: `${NOISE}
-      uniform float uTime; uniform float uPulse; uniform float uDpr; attribute float aRand; varying float vA;
+      uniform float uTime; uniform float uPulse; uniform float uDpr; uniform float uMorph; attribute float aRand; attribute vec3 aTarget; varying float vA;
       void main(){
         vec3 p = position;
         float a = uTime * (0.12 + aRand * 0.4) + aRand * 6.2831;
@@ -74,11 +78,15 @@ function start(THREE, host, readout, api) {
         float n = snoise(p * 0.9 + vec3(0.0, uTime * 0.16, uTime * 0.09));
         float breathe = sin(uTime * 1.1) * 0.05;
         p *= 1.0 + n * 0.2 + breathe + uPulse * 0.22 * (0.6 + aRand);
-        vec4 mv = modelViewMatrix * vec4(p, 1.0);
+        float m = smoothstep(0.0, 1.0, clamp(uMorph * 1.5 - aRand * 0.5, 0.0, 1.0));
+        vec3 t = aTarget + vec3(sin(uTime * 2.0 + aRand * 40.0), cos(uTime * 1.7 + aRand * 30.0), 0.0) * 0.012
+               + normalize(position) * uPulse * 0.5 * aRand;
+        vec3 fp = mix(p, t, m);
+        vec4 mv = modelViewMatrix * vec4(fp, 1.0);
         gl_Position = projectionMatrix * mv;
         float k = smoothstep(-0.3, 0.9, n);
-        gl_PointSize = (1.1 + 2.4 * k + aRand * 0.6) * uDpr * (8.5 / -mv.z);
-        vA = 0.18 + 0.82 * k;
+        gl_PointSize = mix((1.1 + 2.4 * k + aRand * 0.6), (1.3 + aRand * 0.9), m) * uDpr * (8.5 / -mv.z);
+        vA = mix(0.18 + 0.82 * k, 0.75 + 0.25 * aRand, m);
       }`,
     fragmentShader: `
       uniform vec3 uColor; varying float vA;
@@ -127,7 +135,14 @@ function start(THREE, host, readout, api) {
     tickMat.color.set(c.muted);
     if (reduce) renderer.render(scene, camera);
   };
-  api.current = { setColor };
+  const setTotem = (skin) => {
+    const next = SKIN_TOTEM[skin] || "wolf";
+    if (next === totem) return;
+    totem = next; targetAttr.array.set(sampleTotem(totem, N)); targetAttr.needsUpdate = true;
+    phaseStart = clock - 2.5; // new animal starts gathering about a second after the switch
+    if (reduce) { uniforms.uMorph.value = 1; renderer.render(scene, camera); }
+  };
+  api.current = { setColor, setTotem };
   setColor();
 
   const resize = () => {
@@ -152,6 +167,17 @@ function start(THREE, host, readout, api) {
   host.addEventListener("pointerleave", onLeave);
   host.addEventListener("pointerdown", onDown);
 
+  // Cycle: swarm → gather into totem → hold → scatter.
+  const CYCLE = 12, ease = (x) => x * x * (3 - 2 * x);
+  let clock = 0, phaseStart = -2.5, faceTo = 0, faceLocked = false;
+  const morphAt = (c) => {
+    const u = ((c - phaseStart) % CYCLE + CYCLE) % CYCLE;
+    if (u < 3.5) return 0;
+    if (u < 5.3) return ease((u - 3.5) / 1.8);
+    if (u < 9.8) return 1;
+    if (u < 11.4) return 1 - ease((u - 9.8) / 1.6);
+    return 0;
+  };
   let raf = 0, running = false, last = performance.now(), t = 0, frame = 0;
   const tick = (now) => {
     const dt = Math.min((now - last) / 1000, 0.05); last = now; t += dt; frame++;
@@ -159,8 +185,21 @@ function start(THREE, host, readout, api) {
     uniforms.uPulse.value *= Math.pow(0.12, dt);
     cur.x += (target.x - cur.x) * (1 - Math.exp(-dt * 2.2));
     cur.y += (target.y - cur.y) * (1 - Math.exp(-dt * 2.2));
-    rig.rotation.y = t * 0.12 + cur.x * 0.55;
-    rig.rotation.x = 0.18 + cur.y * 0.35;
+    clock = t;
+    const me = morphAt(t);
+    uniforms.uMorph.value = me;
+    const spin = t * 0.12;
+    if (me > 0 && !faceLocked) { faceLocked = true; faceTo = Math.round(spin / (Math.PI * 2)) * Math.PI * 2; }
+    if (me === 0) faceLocked = false;
+    const face = faceLocked ? faceTo : spin;
+    rig.rotation.y = spin + (face - spin) * me + cur.x * (0.55 - 0.4 * me);
+    rig.rotation.x = (0.18 + cur.y * 0.35) * (1 - me * 0.85);
+    latticeMat.opacity = 0.35 * (1 - me);
+    ringMat.opacity = 0.45 * (1 - 0.65 * me);
+    if (label.current) {
+      const name = me > 0.6 ? `БОГMODE / ${totem.toUpperCase()}` : "БОГMODE / CORE";
+      if (label.current.textContent !== name) label.current.textContent = name;
+    }
     lattice.rotation.set(-t * 0.3, t * 0.22, 0);
     ticks.rotation.z = -t * 0.04;
     for (const o of orbits) {
@@ -181,7 +220,7 @@ function start(THREE, host, readout, api) {
   io.observe(host);
   const onVis = () => (visible && !document.hidden ? play() : pause());
   document.addEventListener("visibilitychange", onVis);
-  if (reduce) { if (readout.current) readout.current.textContent = "STATIC"; renderer.render(scene, camera); } else play();
+  if (reduce) { if (readout.current) readout.current.textContent = "STATIC"; uniforms.uMorph.value = 1; lattice.visible = false; if (label.current) label.current.textContent = `БОГMODE / ${totem.toUpperCase()}`; renderer.render(scene, camera); } else play();
 
   return () => {
     pause(); io.disconnect(); ro.disconnect();
@@ -201,28 +240,31 @@ export default function HeroScene() {
   const host = useRef(null);
   const readout = useRef(null);
   const api = useRef(null);
+  const label = useRef(null);
   const { skin } = useSkin();
+  const skinRef = useRef(skin);
+  skinRef.current = skin;
 
   useEffect(() => {
     let cleanup = () => {}, cancelled = false;
     import("three").then((THREE) => {
       if (cancelled || !host.current) return;
-      try { cleanup = start(THREE, host.current, readout, api); }
+      try { cleanup = start(THREE, host.current, readout, api, label, skinRef); }
       catch { host.current?.classList.add("no-webgl"); }
     });
     return () => { cancelled = true; cleanup(); };
   }, []);
 
   useEffect(() => {
-    const id = requestAnimationFrame(() => api.current?.setColor());
+    const id = requestAnimationFrame(() => { api.current?.setColor(); api.current?.setTotem(skin); });
     return () => cancelAnimationFrame(id);
   }, [skin]);
 
   return (
-    <figure className="hero-model hero-scene">
-      <div className="hero-model-head"><span>БОГMODE / CORE</span><span ref={readout}>INIT</span></div>
+    <figure className="hero-model hero-scene" data-parallax="-0.06">
+      <div className="hero-model-head"><span ref={label}>БОГMODE / CORE</span><span ref={readout}>INIT</span></div>
       <div className="hero-model-stage hero-scene-stage" ref={host} aria-hidden="true" />
-      <figcaption>MOVE TO STEER · CLICK TO PULSE <span>LIVE / THREE.JS</span></figcaption>
+      <figcaption>WATCH IT GATHER · CLICK TO SCATTER <span>LIVE / THREE.JS</span></figcaption>
     </figure>
   );
 }

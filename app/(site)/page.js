@@ -4,6 +4,7 @@ import Crosshair from "@/components/Crosshair";
 import ProjectCard from "@/components/ProjectCard";
 import NdaFolder from "@/components/NdaFolder";
 import NewsList from "@/components/NewsList";
+import ScaleStrip from "@/components/ScaleStrip";
 import Rise from "@/components/Rise";
 import HeroScene from "@/components/HeroScene";
 import Scramble from "@/components/Scramble";
@@ -79,6 +80,8 @@ export default async function Home() {
           )}
         </div>
       </section>
+
+      <ScaleStrip />
 
       {news.length > 0 && (
         <section id="news">
