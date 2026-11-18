@@ -2,6 +2,8 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import Crosshair from "@/components/Crosshair";
 import Rise from "@/components/Rise";
+import Scramble from "@/components/Scramble";
+import NumberRain from "@/components/NumberRain";
 import RichText from "@/components/RichText";
 import { CATEGORY_LABEL, STATUS_LABEL } from "@/components/ProjectCard";
 import { getProjects, getProject } from "@/lib/content";
@@ -29,12 +31,13 @@ export default async function ProjectDetail({ params }) {
 
   return (
     <article className="detail">
+      <NumberRain />
       <Rise mode="mount">
         <Link href="/systems" className="back">← WORK</Link>
         <div className="eyebrow"><Crosshair size={13} /> {CATEGORY_LABEL[p.category] || p.category} · {STATUS_LABEL[p.status] || p.status}{p.year ? ` · ${p.year}` : ""}</div>
       </Rise>
       <Rise mode="mount" delay={90}>
-        <h1>{p.title}</h1>
+        <h1><Scramble text={p.title} /></h1>
         <p className="lede">{p.summary}</p>
         {p.role && <p className="project-role">{p.role}</p>}
       </Rise>

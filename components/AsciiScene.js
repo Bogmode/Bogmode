@@ -107,6 +107,7 @@ export default function AsciiScene({ kind = "atom", label }) {
       const camera = new THREE.PerspectiveCamera(36, 1, 0.1, 50); camera.position.set(0, 0, kind === "planet" ? 10 : 7.2);
       const { scene, update } = build(THREE, kind);
       const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+      const frameTime = matchMedia("(max-width: 820px)").matches ? 1 / 15 : 1 / 30;
 
       const resize = () => {
         const w = el.clientWidth, h = el.clientHeight; if (!w || !h) return;
@@ -118,7 +119,7 @@ export default function AsciiScene({ kind = "atom", label }) {
       let raf = 0, running = false, t = Math.random() * 10, last = 0, acc = 0;
       const loop = (now) => {
         const dt = Math.min((now - (last || now)) / 1000, 0.05); last = now; t += dt; acc += dt;
-        if (acc > 1 / 30) { acc = 0; update(t); effect.render(scene, camera); }
+        if (acc > frameTime) { acc = 0; update(t); effect.render(scene, camera); }
         raf = requestAnimationFrame(loop);
       };
       const play = () => { if (running || reduce) return; running = true; last = 0; raf = requestAnimationFrame(loop); };

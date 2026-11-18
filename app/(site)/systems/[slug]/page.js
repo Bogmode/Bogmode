@@ -2,6 +2,8 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import Crosshair from "@/components/Crosshair";
 import Rise from "@/components/Rise";
+import Scramble from "@/components/Scramble";
+import NumberRain from "@/components/NumberRain";
 import SystemFlow from "@/components/SystemFlow";
 import { getSystems, getSystem } from "@/lib/content";
 
@@ -23,12 +25,13 @@ export default async function SystemDetail({ params }) {
 
   return (
     <article className="detail">
+      <NumberRain />
       <Rise mode="mount">
         <Link href={sys.nda ? "/systems/nda" : "/systems"} className="back">{sys.nda ? "← NDA FOLDER" : "← WORK"}</Link>
         <div className="eyebrow"><Crosshair size={13} /> {sys.cat}</div>
       </Rise>
       <Rise mode="mount" delay={90}>
-        <h1>{sys.title}</h1>
+        <h1><Scramble text={sys.title} /></h1>
         <p className="lede">{sys.body}</p>
       </Rise>
       {sys.projectUrl && (

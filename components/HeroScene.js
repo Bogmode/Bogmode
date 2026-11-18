@@ -41,7 +41,7 @@ function readColors(el) {
 function start(THREE, host, readout, api, label, skinRef) {
   const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
   const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true, powerPreference: "low-power" });
-  const dpr = Math.min(window.devicePixelRatio || 1, 2);
+  const dpr = Math.min(window.devicePixelRatio || 1, matchMedia("(max-width: 820px)").matches ? 1.5 : 2);
   renderer.setPixelRatio(dpr);
   renderer.setClearColor(0x000000, 0);
   host.appendChild(renderer.domElement);

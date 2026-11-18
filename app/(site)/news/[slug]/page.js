@@ -2,6 +2,8 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import Crosshair from "@/components/Crosshair";
 import Rise from "@/components/Rise";
+import Scramble from "@/components/Scramble";
+import NumberRain from "@/components/NumberRain";
 import RichText from "@/components/RichText";
 import { formatDate } from "@/components/NewsList";
 import { getNews, getNewsPost } from "@/lib/content";
@@ -23,12 +25,13 @@ export default async function NewsPost({ params }) {
   if (!p) notFound();
   return (
     <article className="detail">
+      <NumberRain />
       <Rise mode="mount">
         <Link href="/news" className="back">← NEWS</Link>
         <div className="eyebrow"><Crosshair size={13} /> {formatDate(p.date)}</div>
       </Rise>
       <Rise mode="mount" delay={90}>
-        <h1>{p.title}</h1>
+        <h1><Scramble text={p.title} /></h1>
         <p className="lede">{p.summary}</p>
       </Rise>
       <Rise mode="mount" delay={160}><RichText node={p.body} /></Rise>
