@@ -13,7 +13,7 @@ const ACHIEVEMENTS = [
   { id: "pack-leader", name: "PACK LEADER", hint: "Visit all five divisions", totem: "wolf" },
   { id: "scatterbrain", name: "SCATTERBRAIN", hint: "Scatter the swarm 10 times", totem: "manticore" },
   { id: "seen-god", name: "SAW GOD", hint: "Catch GODMODE with your cursor", totem: "dragon" },
-  { id: "shapeshifter", name: "SHAPESHIFTER", hint: "Play as every totem", totem: "bear" },
+  { id: "shapeshifter", name: "SHAPESHIFTER", hint: "Play as every form", totem: "bear" },
   { id: "cheater", name: "CHEATER", hint: "Find the cheat code", totem: "manticore" },
   { id: "cartographer", name: "CARTOGRAPHER", hint: "Explore the whole map", totem: "wolf" },
 ];

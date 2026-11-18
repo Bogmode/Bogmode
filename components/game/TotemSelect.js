@@ -4,7 +4,7 @@ import { useSkin } from "../SkinProvider";
 import TotemMark from "../TotemMark";
 import { TOTEM_CARDS } from "./totemData";
 
-// "Choose your totem" screen. Arrow keys move, Enter picks, Esc closes.
+// Form picker. Arrow keys move, Enter picks, Esc closes.
 export default function TotemSelect({ open, onClose }) {
   const { skin, setSkin } = useSkin();
   const start = Math.max(0, TOTEM_CARDS.findIndex((c) => c.skin === skin));
@@ -28,11 +28,11 @@ export default function TotemSelect({ open, onClose }) {
   const pick = (c) => { setSkin(c.skin); onClose(); };
 
   return (
-    <div className="totem-select" role="dialog" aria-modal="true" aria-label="Choose your totem" onClick={onClose}>
+    <div className="totem-select" role="dialog" aria-modal="true" aria-label="Choose a form" onClick={onClose}>
       <div className="ts-panel" onClick={(e) => e.stopPropagation()}>
         <div className="ts-head">
           <span>PLAYER 1</span>
-          <strong>CHOOSE YOUR TOTEM</strong>
+          <strong>CHOOSE A FORM</strong>
           <button className="ts-close" onClick={onClose} aria-label="Close">ESC ✕</button>
         </div>
         <div className="ts-grid">

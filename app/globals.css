@@ -857,7 +857,16 @@ body { background: #EDEDE8; overflow-x: hidden; }
 .bm .pc-photo { position: relative; aspect-ratio: 4 / 4.4; overflow: hidden; border-bottom: 1px solid var(--line); background: var(--block); }
 .bm .pc-photo img { width: 100%; height: 100%; object-fit: cover; display: block; filter: contrast(1.05); }
 .bm .pc-photo::after { content: ""; position: absolute; inset: 0; background: repeating-linear-gradient(0deg, rgba(0,0,0,.08) 0 1px, transparent 1px 3px); pointer-events: none; }
-.bm .pc-totem { position: absolute; right: 12px; bottom: 12px; z-index: 1; color: var(--accent); background: color-mix(in srgb, var(--block) 70%, transparent); padding: 6px; }
+.bm .pc-form-mark { position: absolute; top: 21%; left: 50%; z-index: 1; display: grid; place-items: center; width: 70px; height: 70px; transform: translate(-50%, -50%); color: var(--accent); background: color-mix(in srgb, var(--block) 76%, transparent); border: 1px solid color-mix(in srgb, var(--accent) 70%, transparent); }
+.bm .pc-form-mark .totem-mark { color: currentColor; }
+@media (prefers-reduced-motion: no-preference) {
+  .bm .pc-form-mark { animation: pc-form-change .48s cubic-bezier(.2,.7,.2,1) both; }
+}
+@keyframes pc-form-change {
+  from { opacity: .25; transform: translate(-50%, -44%) scale(.72) rotate(-14deg); }
+  70% { opacity: 1; transform: translate(-50%, -53%) scale(1.08) rotate(4deg); }
+  to { opacity: 1; transform: translate(-50%, -50%) scale(1) rotate(0); }
+}
 .bm .pc-stats { margin: 0; padding: 6px 14px 12px; }
 .bm .pc-stats div { display: grid; grid-template-columns: 110px 1fr; gap: 10px; padding: 7px 0; border-bottom: 1px dashed var(--line); }
 .bm .pc-stats div:last-child { border-bottom: 0; }
