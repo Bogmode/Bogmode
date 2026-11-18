@@ -16,7 +16,7 @@ export async function generateStaticParams() {
 export async function generateMetadata({ params }) {
   const { slug } = await params;
   const p = await getNewsPost(slug);
-  return p ? { title: `${p.title} — БОГMODE`, description: p.summary } : { title: "БОГMODE" };
+  return p ? { title: `${p.title} — БОГMODE`, description: p.summary, alternates: { canonical: `/news/${slug}` }, openGraph: { title: `${p.title} — БОГMODE`, description: p.summary, url: `/news/${slug}`, images: ["/opengraph-image.png"] }, twitter: { card: "summary_large_image", title: `${p.title} — БОГMODE`, description: p.summary, images: ["/opengraph-image.png"] } } : { title: "БОГMODE" };
 }
 
 export default async function NewsPost({ params }) {

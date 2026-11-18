@@ -19,7 +19,7 @@ export async function generateMetadata({ params }) {
   const { slug } = await params;
   const { divisions } = await getEcosystem();
   const d = divisions.find((x) => x.slug === slug);
-  return d ? { title: `${d.name} — БОГMODE`, description: d.tagline } : { title: "БОГMODE" };
+  return d ? { title: `${d.name} — БОГMODE`, description: d.tagline, alternates: { canonical: `/divisions/${slug}` }, openGraph: { title: `${d.name} — БОГMODE`, description: d.tagline, url: `/divisions/${slug}`, images: ["/opengraph-image.png"] }, twitter: { card: "summary_large_image", title: `${d.name} — БОГMODE`, description: d.tagline, images: ["/opengraph-image.png"] } } : { title: "БОГMODE" };
 }
 
 export default async function DivisionPage({ params }) {

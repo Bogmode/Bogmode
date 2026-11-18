@@ -12,6 +12,8 @@ import Scramble from "@/components/Scramble";
 import GlitchMark from "@/components/GlitchMark";
 import { getSite, getSystems, getProjects, getNews, getDivisions } from "@/lib/content";
 
+export const metadata = { alternates: { canonical: "/" } };
+
 export default async function Home() {
   const [site, systems, projects, news] = await Promise.all([
     getSite(),

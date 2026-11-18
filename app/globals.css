@@ -726,3 +726,27 @@ body { background: #EDEDE8; overflow-x: hidden; }
   .bm .division-hero-totem { width: 110px; height: 110px; }
   .bm .division-badge { margin-left: 0; display: flex; width: max-content; margin-top: 8px; }
 }
+
+/* ── Brand loader ────────────────────────────────────────────────── */
+.site-loading { min-height: 65vh; display: grid; place-items: center; }
+.brand-loader { display: grid; justify-items: center; gap: 16px; font-family: var(--font-mono), ui-monospace, SFMono-Regular, Menlo, monospace; color: var(--ink, #131317); }
+.brand-loader-frame { position: relative; width: 220px; height: 120px; display: grid; place-items: center; margin: 6px; }
+.bl-corner { position: absolute; width: 18px; height: 18px; border: 0 solid var(--accent, #FF5A1F); }
+.bl-corner.tl { top: 0; left: 0; border-top-width: 2px; border-left-width: 2px; }
+.bl-corner.tr { top: 0; right: 0; border-top-width: 2px; border-right-width: 2px; }
+.bl-corner.bl { bottom: 0; left: 0; border-bottom-width: 2px; border-left-width: 2px; }
+.bl-corner.br { bottom: 0; right: 0; border-bottom-width: 2px; border-right-width: 2px; }
+.bl-word { font-weight: 700; font-size: 26px; letter-spacing: .02em; }
+.bl-word .cy { color: var(--accent, #FF5A1F); }
+.bl-scan { position: absolute; left: 10px; right: 10px; top: 0; height: 2px; background: var(--accent, #FF5A1F); opacity: .7; box-shadow: 0 0 12px var(--accent, #FF5A1F); }
+.bl-label { font-size: 10px; letter-spacing: .14em; color: var(--muted, #6E6D66); }
+.bl-dots::after { content: ""; }
+@media (prefers-reduced-motion: no-preference) {
+  .bl-scan { animation: bl-scan 1.4s cubic-bezier(.6,0,.4,1) infinite; }
+  .bl-corner { animation: bl-breathe 1.4s ease-in-out infinite; }
+  .bl-corner.tl { --dx: -4px; --dy: -4px; } .bl-corner.tr { --dx: 4px; --dy: -4px; } .bl-corner.bl { --dx: -4px; --dy: 4px; } .bl-corner.br { --dx: 4px; --dy: 4px; }
+  .bl-dots::after { animation: bl-dots 1.2s steps(4) infinite; }
+}
+@keyframes bl-scan { 0% { top: 0; } 50% { top: calc(100% - 2px); } 100% { top: 0; } }
+@keyframes bl-breathe { 50% { transform: translate(var(--dx), var(--dy)); } }
+@keyframes bl-dots { 0% { content: ""; } 25% { content: "."; } 50% { content: ".."; } 75% { content: "..."; } }
