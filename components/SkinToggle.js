@@ -55,11 +55,11 @@ export default function SkinToggle() {
         className="form-trigger"
         aria-haspopup="dialog"
         aria-controls="form-wheel"
-        aria-label={`Change form. Current form: ${current.skin}`}
+        aria-label={`Change totem. Current totem: ${current.skin}`}
         onClick={openWheel}
       >
         <span className="form-trigger-icon"><TotemMark totem={current.totem} size={20} /></span>
-        <span>FORM <strong>{current.skin}</strong></span>
+        <span>TOTEM <strong>{current.skin}</strong></span>
         <span aria-hidden="true">⌄</span>
       </button>
       <dialog
@@ -74,8 +74,8 @@ export default function SkinToggle() {
       >
         <div className="form-panel">
           <header className="form-heading">
-            <h2 id="form-wheel-title">Choose a form</h2>
-            <button type="button" className="form-close" aria-label="Close form picker" onClick={() => dialog.current.close()}>×</button>
+            <h2 id="form-wheel-title">Choose a totem</h2>
+            <button type="button" className="form-close" aria-label="Close totem picker" onClick={() => dialog.current.close()}>×</button>
           </header>
           <div className="form-wheel">
             <div className="form-orbits" aria-hidden="true" />
