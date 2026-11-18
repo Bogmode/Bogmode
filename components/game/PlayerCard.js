@@ -9,8 +9,8 @@ import { TOTEM_CARDS } from "./totemData";
 export default function PlayerCard({ portrait, model = "/models/bogdan-half.glb" }) {
   const { skin } = useSkin();
   const card = TOTEM_CARDS.find((c) => c.skin === skin) || TOTEM_CARDS[0];
-  const [view, setView] = useState("photo");
-  const [status, setStatus] = useState("idle");
+  const [view, setView] = useState("3d");
+  const [status, setStatus] = useState("loading");
   const [reduce, setReduce] = useState(false);
   useEffect(() => { setReduce(matchMedia("(prefers-reduced-motion: reduce)").matches); }, []);
 
