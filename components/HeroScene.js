@@ -34,7 +34,8 @@ float snoise(vec3 v){
 function readColors(el) {
   const cs = getComputedStyle(el.closest(".bm") || document.body);
   const v = (n, f) => (cs.getPropertyValue(n).trim() || f);
-  return { accent: v("--accent", "#FF5A1F"), ink: v("--ink", "#131317"), muted: v("--muted", "#6E6D66") };
+  const dark = cs.colorScheme === "dark" || cs.getPropertyValue("color-scheme").trim() === "dark";
+  return { accent: v("--accent", "#FF5A1F"), ink: v("--ink", "#131317"), muted: v("--muted", "#6E6D66"), dark };
 }
 
 function start(THREE, host, readout, api, label, skinRef) {
@@ -130,9 +131,12 @@ function start(THREE, host, readout, api, label, skinRef) {
     const c = readColors(host);
     uniforms.uColor.value.set(c.accent);
     satMat.color.set(c.accent);
-    latticeMat.color.set("#f4f3ee");
-    ringMat.color.set("#9b9a95");
-    tickMat.color.set("#9b9a95");
+    // Dark skins: dark stage, additive glow. Light skins: lab-paper stage, solid ink-like points.
+    latticeMat.color.set(c.dark ? "#f4f3ee" : "#1a1a1e");
+    ringMat.color.set(c.dark ? "#9b9a95" : "#6e6d66");
+    tickMat.color.set(c.dark ? "#9b9a95" : "#6e6d66");
+    coreMat.blending = c.dark ? THREE.AdditiveBlending : THREE.NormalBlending;
+    coreMat.needsUpdate = true;
     if (reduce) renderer.render(scene, camera);
   };
   const setTotem = (skin) => {

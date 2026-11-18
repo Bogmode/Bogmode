@@ -595,11 +595,16 @@ body { background: #EDEDE8; overflow-x: hidden; }
 }
 
 /* ── Motion layer: hero core, pointer glow, live accents ─────────── */
-.bm .hero-scene-stage { cursor: crosshair; touch-action: pan-y; background-color: #08080a; background-image: linear-gradient(rgba(255,255,255,.05) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.05) 1px, transparent 1px); }
-.bm .hero-scene .hero-model-head, .bm .hero-scene figcaption { background: #08080a; color: #b9b8b2; border-color: #26262a; }
-.bm .hero-scene { border-color: #26262a; background: #08080a; }
+.bm .hero-scene-stage { cursor: crosshair; touch-action: pan-y; background-color: #fbfaf6; background-image: linear-gradient(rgba(19,19,23,.07) 1px, transparent 1px), linear-gradient(90deg, rgba(19,19,23,.07) 1px, transparent 1px); }
+.bm .hero-scene { background: #fbfaf6; }
+.bm[data-skin="manticore"] .hero-scene-stage, .bm[data-skin="donatello"] .hero-scene-stage, .bm[data-skin="mono"] .hero-scene-stage { background-color: #08080a; background-image: linear-gradient(rgba(255,255,255,.05) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.05) 1px, transparent 1px); }
+.bm[data-skin="manticore"] .hero-scene, .bm[data-skin="donatello"] .hero-scene, .bm[data-skin="mono"] .hero-scene { border-color: #26262a; background: #08080a; }
+.bm[data-skin="manticore"] .hero-scene .hero-model-head, .bm[data-skin="manticore"] .hero-scene figcaption,
+.bm[data-skin="donatello"] .hero-scene .hero-model-head, .bm[data-skin="donatello"] .hero-scene figcaption,
+.bm[data-skin="mono"] .hero-scene .hero-model-head, .bm[data-skin="mono"] .hero-scene figcaption { background: #08080a; color: #b9b8b2; border-color: #26262a; }
 .bm .hero-scene-stage canvas { position: absolute; inset: 0; width: 100% !important; height: 100% !important; display: block; }
-.bm .hero-scene-stage::after { content: ""; position: absolute; inset: 0; pointer-events: none; background: radial-gradient(circle at 50% 50%, transparent 55%, rgba(8,8,10,.75) 100%); }
+.bm .hero-scene-stage::after { content: ""; position: absolute; inset: 0; pointer-events: none; background: radial-gradient(circle at 50% 50%, transparent 58%, rgba(251,250,246,.6) 100%); }
+.bm[data-skin="manticore"] .hero-scene-stage::after, .bm[data-skin="donatello"] .hero-scene-stage::after, .bm[data-skin="mono"] .hero-scene-stage::after { background: radial-gradient(circle at 50% 50%, transparent 55%, rgba(8,8,10,.75) 100%); }
 .bm .hero-scene-stage.no-webgl { background-image: radial-gradient(circle, var(--accent) 0 3px, transparent 4px), linear-gradient(var(--line) 1px, transparent 1px), linear-gradient(90deg, var(--line) 1px, transparent 1px); background-size: auto, 24px 24px, 24px 24px; background-position: center; background-repeat: no-repeat, repeat, repeat; }
 .bm .hero-scene .hero-model-head span:last-child { font-variant-numeric: tabular-nums; }
 .bm .panel, .bm .news-item { background-image: radial-gradient(240px circle at var(--mx, -400px) var(--my, -400px), var(--glow), transparent 72%); }
