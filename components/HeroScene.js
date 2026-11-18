@@ -67,7 +67,7 @@ function start(THREE, host, readout, api, label, skinRef) {
   let totem = SKIN_TOTEM[skinRef.current] || "wolf";
   const uniforms = { uTime: { value: 0 }, uPulse: { value: 0 }, uMorph: { value: 0 }, uDpr: { value: dpr }, uColor: { value: new THREE.Color() } };
   const coreMat = new THREE.ShaderMaterial({
-    uniforms, transparent: true, depthWrite: false,
+    uniforms, transparent: true, depthWrite: false, blending: THREE.AdditiveBlending,
     vertexShader: `${NOISE}
       uniform float uTime; uniform float uPulse; uniform float uDpr; uniform float uMorph; attribute float aRand; attribute vec3 aTarget; varying float vA;
       void main(){
@@ -86,7 +86,7 @@ function start(THREE, host, readout, api, label, skinRef) {
         gl_Position = projectionMatrix * mv;
         float k = smoothstep(-0.3, 0.9, n);
         gl_PointSize = mix((1.1 + 2.4 * k + aRand * 0.6), (1.6 + aRand * 1.0), m) * uDpr * (8.5 / -mv.z);
-        vA = mix(0.18 + 0.82 * k, 0.88 + 0.12 * aRand, m);
+        vA = mix(0.32 + 0.68 * k, 0.92 + 0.08 * aRand, m);
       }`,
     fragmentShader: `
       uniform vec3 uColor; varying float vA;
@@ -130,9 +130,9 @@ function start(THREE, host, readout, api, label, skinRef) {
     const c = readColors(host);
     uniforms.uColor.value.set(c.accent);
     satMat.color.set(c.accent);
-    latticeMat.color.set(c.ink);
-    ringMat.color.set(c.muted);
-    tickMat.color.set(c.muted);
+    latticeMat.color.set("#f4f3ee");
+    ringMat.color.set("#9b9a95");
+    tickMat.color.set("#9b9a95");
     if (reduce) renderer.render(scene, camera);
   };
   const setTotem = (skin) => {
@@ -194,8 +194,8 @@ function start(THREE, host, readout, api, label, skinRef) {
     const face = faceLocked ? faceTo : spin;
     rig.rotation.y = spin + (face - spin) * me + cur.x * (0.55 - 0.4 * me);
     rig.rotation.x = (0.18 + cur.y * 0.35) * (1 - me * 0.85);
-    latticeMat.opacity = 0.35 * (1 - me);
-    ringMat.opacity = 0.45 * (1 - 0.65 * me);
+    latticeMat.opacity = 0.5 * (1 - me);
+    ringMat.opacity = 0.55 * (1 - 0.65 * me);
     if (label.current) {
       const name = me > 0.6 ? `БОГMODE / ${totem.toUpperCase()}` : "БОГMODE / CORE";
       if (label.current.textContent !== name) label.current.textContent = name;
