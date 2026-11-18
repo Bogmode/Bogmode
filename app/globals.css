@@ -863,3 +863,13 @@ body { background: #EDEDE8; overflow-x: hidden; }
 .bm .pc-stats div:last-child { border-bottom: 0; }
 .bm .pc-stats dt { font: 10px var(--mono); letter-spacing: .12em; color: var(--muted); }
 .bm .pc-stats dd { margin: 0; font-size: 14px; color: var(--ink); }
+.bm .pc-photo { aspect-ratio: 4 / 5; }
+.bm .pc-photo img { object-position: 50% 22%; }
+.bm .pc-photo.pc-3d { background: radial-gradient(circle at 50% 40%, var(--panel), var(--paper)); }
+.bm .pc-photo.pc-3d::after { display: none; }
+.bm .pc-photo model-viewer { width: 100%; height: 100%; --poster-color: transparent; background: transparent; }
+.bm .pc-views { display: inline-flex; gap: 2px; }
+.bm .pc-views button { font: 10px var(--mono); letter-spacing: .12em; padding: 3px 8px; background: transparent; border: 1px solid var(--line); color: var(--muted); cursor: pointer; }
+.bm .pc-views button.on { background: var(--accent); border-color: var(--accent); color: var(--accent-ink); }
+.bm .pc-loading { position: absolute; inset: 0; display: grid; place-items: center; font: 10px var(--mono); letter-spacing: .16em; color: var(--muted); pointer-events: none; }
+.bm .pc-hint { position: absolute; left: 12px; bottom: 12px; font: 10px var(--mono); letter-spacing: .14em; color: var(--muted); pointer-events: none; }
