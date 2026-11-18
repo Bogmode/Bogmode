@@ -20,7 +20,7 @@ export default function PlayerCard({ portrait }) {
       <div className="pc-photo">
         {portrait && <img src={portrait} alt="Bogdan, studio portrait in orange-tinted glasses and a navy work jacket" />}
         <span key={card.skin} className="pc-form-mark" role="img" aria-label={`Current profile mark: ${card.totem}`}>
-          <TotemMark totem={card.totem} size={58} />
+          <TotemMark totem={card.totem} size={44} />
         </span>
       </div>
       <dl className="pc-stats">
