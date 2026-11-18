@@ -85,8 +85,8 @@ function start(THREE, host, readout, api, label, skinRef) {
         vec4 mv = modelViewMatrix * vec4(fp, 1.0);
         gl_Position = projectionMatrix * mv;
         float k = smoothstep(-0.3, 0.9, n);
-        gl_PointSize = mix((1.1 + 2.4 * k + aRand * 0.6), (1.3 + aRand * 0.9), m) * uDpr * (8.5 / -mv.z);
-        vA = mix(0.18 + 0.82 * k, 0.75 + 0.25 * aRand, m);
+        gl_PointSize = mix((1.1 + 2.4 * k + aRand * 0.6), (1.6 + aRand * 1.0), m) * uDpr * (8.5 / -mv.z);
+        vA = mix(0.18 + 0.82 * k, 0.88 + 0.12 * aRand, m);
       }`,
     fragmentShader: `
       uniform vec3 uColor; varying float vA;

@@ -513,7 +513,7 @@ body { background: #EDEDE8; overflow-x: hidden; }
 
 /* Global skins; application artwork retains its own brand palette. */
 .bm[data-skin="manticore"] { color-scheme: dark; --paper: #25282a; --panel: #303537; --ink: #f0f4e8; --block: #191c1e; --muted: #b6c0ae; --line: #50594e; --accent: #cbff38; --accent-ink: #19200b; --glow: #cbff3829; }
-.bm[data-skin="donatello"] { color-scheme: dark; --paper: #251d30; --panel: #34283f; --ink: #f9edf9; --block: #19131f; --muted: #c6b5d0; --line: #62476d; --accent: #f297d5; --accent-ink: #28142d; --glow: #b990ff30; }
+.bm[data-skin="donatello"] { color-scheme: dark; --paper: #1d1726; --panel: #2a2135; --ink: #fff4fd; --block: #120e18; --muted: #d9c8e3; --line: #57406a; --accent: #ff9be3; --accent-ink: #2a0f25; --glow: #ff9be330; }
 .bm[data-skin="donatello"] .grid-bg { background-image: linear-gradient(#a985dc 1px, transparent 1px),linear-gradient(90deg,#a985dc 1px,transparent 1px); }
 .bm .skin { max-width: calc(100vw - 40px); flex-wrap: wrap; }
 .bm .skin button { min-height: 44px; }
