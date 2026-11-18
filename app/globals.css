@@ -750,3 +750,17 @@ body { background: #EDEDE8; overflow-x: hidden; }
 @keyframes bl-scan { 0% { top: 0; } 50% { top: calc(100% - 2px); } 100% { top: 0; } }
 @keyframes bl-breathe { 50% { transform: translate(var(--dx), var(--dy)); } }
 @keyframes bl-dots { 0% { content: ""; } 25% { content: "."; } 50% { content: ".."; } 75% { content: "..."; } }
+
+/* ── БОГMODE ⇄ GODMODE everywhere: CSS-only loop (loader) + inline contexts ── */
+.glitch { position: relative; display: inline-grid; vertical-align: baseline; }
+.glitch .g-word { grid-area: 1 / 1; white-space: nowrap; }
+.glitch .g-god { opacity: 0; }
+.glitch-auto .g-word { will-change: opacity, filter, transform; }
+@media (prefers-reduced-motion: no-preference) {
+  .glitch-auto .g-bog { animation: bm-melt-out 2.8s cubic-bezier(.4,0,.2,1) infinite; }
+  .glitch-auto .g-god { animation: bm-melt-in 2.8s cubic-bezier(.4,0,.2,1) infinite; }
+}
+@keyframes bm-melt-out { 0%, 30% { opacity: 1; filter: blur(0); transform: none; } 42%, 72% { opacity: 0; filter: blur(3px); transform: translateY(-2px); } 84%, 100% { opacity: 1; filter: blur(0); transform: none; } }
+@keyframes bm-melt-in { 0%, 30% { opacity: 0; filter: blur(3px); transform: translateY(2px); text-shadow: none; } 42%, 72% { opacity: 1; filter: blur(0); transform: none; text-shadow: -1.5px 0 color-mix(in srgb, var(--accent, #FF5A1F) 55%, transparent), 1.5px 0 rgba(5,182,203,.45); } 84%, 100% { opacity: 0; filter: blur(3px); transform: translateY(2px); text-shadow: none; } }
+.bm .eyebrow .glitch, .bm .signoff .glitch, .bm .hero-model-head .glitch, .bm .drone-kicker .glitch { color: inherit; }
+.bm .hero-model-head .glitch .cy, .bm .eyebrow .glitch .cy { color: var(--accent); }

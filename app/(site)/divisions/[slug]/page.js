@@ -5,6 +5,7 @@ import Rise from "@/components/Rise";
 import Scramble from "@/components/Scramble";
 import NumberRain from "@/components/NumberRain";
 import TotemMark from "@/components/TotemMark";
+import GlitchMark from "@/components/GlitchMark";
 import ProjectCard from "@/components/ProjectCard";
 import SystemCard from "@/components/SystemCard";
 import DivisionPipeline from "@/components/DivisionPipeline";
@@ -34,7 +35,7 @@ export default async function DivisionPage({ params }) {
       <NumberRain />
       <Rise mode="mount">
         <Link href="/systems" className="back">← WORK</Link>
-        <div className="eyebrow"><Crosshair size={13} /> БОГMODE DIVISION · {d.focus}</div>
+        <div className="eyebrow"><Crosshair size={13} /> <GlitchMark /> DIVISION · {d.focus}</div>
       </Rise>
       <Rise mode="mount" delay={90}>
         <div className="division-hero">

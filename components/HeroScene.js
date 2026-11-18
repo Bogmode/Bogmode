@@ -2,6 +2,7 @@
 import { useEffect, useRef } from "react";
 import { useSkin } from "./SkinProvider";
 import { SKIN_TOTEM, sampleTotem } from "./totems";
+import GlitchMark from "./GlitchMark";
 
 // Breathing point-cloud core with HUD rings. Colours follow the active skin.
 // Pauses off-screen / in background tabs; renders one still frame for reduced motion.
@@ -201,7 +202,7 @@ function start(THREE, host, readout, api, label, skinRef) {
     latticeMat.opacity = 0.5 * (1 - me);
     ringMat.opacity = 0.55 * (1 - 0.65 * me);
     if (label.current) {
-      const name = me > 0.6 ? `БОГMODE / ${totem.toUpperCase()}` : "БОГMODE / CORE";
+      const name = me > 0.6 ? totem.toUpperCase() : "CORE";
       if (label.current.textContent !== name) label.current.textContent = name;
     }
     lattice.rotation.set(-t * 0.3, t * 0.22, 0);
@@ -224,7 +225,7 @@ function start(THREE, host, readout, api, label, skinRef) {
   io.observe(host);
   const onVis = () => (visible && !document.hidden ? play() : pause());
   document.addEventListener("visibilitychange", onVis);
-  if (reduce) { if (readout.current) readout.current.textContent = "STATIC"; uniforms.uMorph.value = 1; lattice.visible = false; if (label.current) label.current.textContent = `БОГMODE / ${totem.toUpperCase()}`; renderer.render(scene, camera); } else play();
+  if (reduce) { if (readout.current) readout.current.textContent = "STATIC"; uniforms.uMorph.value = 1; lattice.visible = false; if (label.current) label.current.textContent = totem.toUpperCase(); renderer.render(scene, camera); } else play();
 
   return () => {
     pause(); io.disconnect(); ro.disconnect();
@@ -266,7 +267,7 @@ export default function HeroScene() {
 
   return (
     <figure className="hero-model hero-scene" data-parallax="-0.06">
-      <div className="hero-model-head"><span ref={label}>БОГMODE / CORE</span><span ref={readout}>INIT</span></div>
+      <div className="hero-model-head"><span><GlitchMark /> / <span ref={label}>CORE</span></span><span ref={readout}>INIT</span></div>
       <div className="hero-model-stage hero-scene-stage" ref={host} aria-hidden="true" />
       <figcaption>WATCH IT GATHER · CLICK TO SCATTER <span>LIVE / THREE.JS</span></figcaption>
     </figure>

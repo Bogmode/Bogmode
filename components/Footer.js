@@ -1,3 +1,4 @@
+import GlitchMark from "./GlitchMark";
 import Link from "next/link";
 
 export default function Footer({ site }) {
@@ -17,7 +18,7 @@ export default function Footer({ site }) {
           <Link href="/privacy">Privacy & cookies</Link>
           <Link href="/terms">Site terms</Link>
         </div>
-        <div className="signoff">БОГMODE · bogmode.ca — built by hand</div>
+        <div className="signoff"><GlitchMark /> · bogmode.ca — built by hand</div>
       </div>
     </footer>
   );
