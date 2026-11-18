@@ -56,7 +56,7 @@ export default function NumberRain() {
     ro.observe(canvas);
     const mo = new MutationObserver(readColors);
     const skinEl = canvas.closest(".bm");
-    if (skinEl) mo.observe(skinEl, { attributes: true, attributeFilter: ["data-skin"] });
+    if (skinEl) mo.observe(skinEl, { attributes: true, attributeFilter: ["data-skin", "data-cheat"] });
     if (reduce) { draw(0); return () => { ro.disconnect(); mo.disconnect(); }; }
 
     let raf = 0, last = 0, acc = 0, visible = true;

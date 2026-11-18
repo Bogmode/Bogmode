@@ -33,6 +33,7 @@ export default function GlitchMark({ className = "" }) {
   }, []);
 
   const onHover = () => {
+    window.dispatchEvent(new Event("bm:god"));
     if (busy || matchMedia("(prefers-reduced-motion: reduce)").matches) return;
     setBusy(true); setGod(true);
     setTimeout(() => setGod(false), 1500);

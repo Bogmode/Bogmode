@@ -148,6 +148,8 @@ function start(THREE, host, readout, api, label, skinRef) {
     if (reduce) { uniforms.uMorph.value = 1; renderer.render(scene, camera); }
   };
   api.current = { setColor, setTotem };
+  const onRecolor = () => requestAnimationFrame(setColor);
+  window.addEventListener("bm:recolor", onRecolor);
   setColor();
 
   const resize = () => {
@@ -167,7 +169,7 @@ function start(THREE, host, readout, api, label, skinRef) {
     target.y = ((e.clientY - b.top) / b.height - 0.5) * 2;
   };
   const onLeave = () => { target.x = 0; target.y = 0; };
-  const onDown = () => { uniforms.uPulse.value = 1; };
+  const onDown = () => { uniforms.uPulse.value = 1; window.dispatchEvent(new Event("bm:scatter")); };
   host.addEventListener("pointermove", onMove);
   host.addEventListener("pointerleave", onLeave);
   host.addEventListener("pointerdown", onDown);
@@ -233,6 +235,7 @@ function start(THREE, host, readout, api, label, skinRef) {
     host.removeEventListener("pointermove", onMove);
     host.removeEventListener("pointerleave", onLeave);
     host.removeEventListener("pointerdown", onDown);
+    window.removeEventListener("bm:recolor", onRecolor);
     scene.traverse((o) => { o.geometry?.dispose(); });
     [coreMat, latticeMat, ringMat, satMat, tickMat].forEach((m) => m.dispose());
     renderer.dispose();
