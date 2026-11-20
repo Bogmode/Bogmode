@@ -30,6 +30,16 @@ export default function ProjectIdentity({ kind, title, division, banner = false 
     </div>
   );
 
+  if (kind === "provensky") return (
+    <div className={cls("id-planner")} aria-hidden="true">
+      <span>ProvenSky</span><small>PLAN IT · PROVE IT · FLY IT</small>
+      <svg className="id-motif" viewBox="0 0 240 90"><g fill="none" strokeWidth="1.4">
+        <path d="M10 72 L70 34 L130 58 L190 22" strokeDasharray="5 4" />
+        <path d="M200 30 l10 10 l20 -24" strokeWidth="2.2" />
+      </g><g className="id-dot"><circle cx="10" cy="72" r="4" /><circle cx="70" cy="34" r="4" /><circle cx="130" cy="58" r="4" /><circle cx="190" cy="22" r="4" /></g></svg>
+    </div>
+  );
+
   if (kind === "multi-drone-mission-planner") return (
     <div className={cls("id-planner")} aria-hidden="true">
       <span>Mission Planner</span><small>SWARM · PLAN</small>

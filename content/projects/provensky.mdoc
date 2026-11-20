@@ -1,0 +1,31 @@
+---
+division: swarm
+title: ProvenSky
+summary: Multi-drone mission planning for Canada, checked against the rules, terrain and a physics simulator before take-off.
+category: drones
+status: prototype
+featured: true
+order: 15
+year: 2026
+role: Solo — product, design, build
+stack:
+  - Godot
+links:
+  live: https://drone-sim-gilt.vercel.app
+  repo: ''
+  video: ''
+related:
+  - multi-drone-mission-planner
+  - drone-sim
+notes: |
+  Has its own landing page at /provensky (see PROJECT_PAGES in lib/content.js); /work/provensky redirects there.
+  Mac download points at github.com/Bogmode/drone-sim/releases (no release published yet).
+---
+
+## The problem
+
+Planning a multi-drone job in Canada means checking airspace rules, terrain and battery limits by hand before every flight.
+
+## What I built
+
+ProvenSky plans the mission, checks it against the rules and real terrain, flies it in a physics simulator, and keeps the evidence in one place.

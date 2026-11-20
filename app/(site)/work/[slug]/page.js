@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { notFound } from "next/navigation";
+import { notFound, permanentRedirect } from "next/navigation";
 import Crosshair from "@/components/Crosshair";
 import Rise from "@/components/Rise";
 import Scramble from "@/components/Scramble";
@@ -13,7 +13,7 @@ import { getProjects, getProject, getEcosystem } from "@/lib/content";
 
 export async function generateStaticParams() {
   const projects = await getProjects();
-  return projects.map((p) => ({ slug: p.slug }));
+  return projects.filter((p) => p.href === `/work/${p.slug}`).map((p) => ({ slug: p.slug }));
 }
 
 export async function generateMetadata({ params }) {
@@ -26,6 +26,7 @@ export default async function ProjectDetail({ params }) {
   const { slug } = await params;
   const p = await getProject(slug);
   if (!p) notFound();
+  if (p.href !== `/work/${slug}`) permanentRedirect(p.href);
   const { divisions, bySlug } = await getEcosystem();
   const division = divisions.find((d) => d.slug === p.division);
   const siblings = division ? division.items.filter((i) => i.slug !== slug) : [];

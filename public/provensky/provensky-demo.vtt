@@ -1,0 +1,85 @@
+WEBVTT
+
+1
+00:00:00.000 --> 00:00:03.000
+ProvenSky — Plan it. Prove it. Fly it. By БОГMODE.
+
+2
+00:00:03.001 --> 00:00:06.001
+Plan · Pemby round flight, Winnipeg: one drone, 20
+inspection points, three zones.
+
+3
+00:00:06.001 --> 00:00:10.285
+Four steps: area, drones, mission type, check.
+
+4
+00:00:10.285 --> 00:00:14.103
+The verdict chip opens the rules check: 1 action — NAV
+Drone authorization for the CYWG control zone.
+
+5
+00:00:14.103 --> 00:00:18.103
+Notes keep the rest in view: an antenna site nearby (ISED
+tower data), terrain not yet checked.
+
+6
+00:00:18.683 --> 00:00:23.683
+Load NRCan terrain: ground 228–233 m. The surface model
+flags a low-clearance spot to verify on site.
+
+7
+00:00:27.713 --> 00:00:32.713
+Prepare NAV Drone request: the plan fills in the area,
+altitude and aircraft; the pilot adds the rest.
+
+8
+00:00:33.245 --> 00:00:37.845
+Example details only. The area exports as KML and GeoJSON
+for the NAV Drone portal; the pilot submits it.
+
+9
+00:00:39.000 --> 00:00:42.800
+Simulate · 3D replay of the plan at 16×, overview first…
+
+10
+00:00:42.942 --> 00:00:47.142
+…then the camera follows the drone along the route.
+
+11
+00:00:48.628 --> 00:00:52.573
+Review · the Godot run took 453 s vs 301 s planned
+(flagged) and used 28.6% of the pack.
+
+12
+00:00:52.573 --> 00:00:57.573
+50-run wind test, real Godot runs in varied wind: 50 of 50
+passed; worst waypoint error 0.06 m, max pack 31%.
+
+13
+00:00:57.772 --> 00:01:02.772
+Real-flight compare, waypoint by waypoint. No Pemby flight
+yet: this sample log is a simulated run.
+
+14
+00:01:03.878 --> 00:01:06.480
+Export the evidence pack: plan, rules check, weather,
+terrain, sim and flight results in one PDF.
+
+15
+00:01:06.480 --> 00:01:13.880
+6 pages for an SFOC application, a client or an insurer.
+Decision support, not an authorization.
+
+16
+00:01:13.897 --> 00:01:18.337
+Fly · on the phone: go/no-go stays No-go until the NAV
+Drone authorization is recorded.
+
+17
+00:01:18.337 --> 00:01:21.737
+Then the pre-flight checklist, item by item.
+
+18
+00:01:21.760 --> 00:01:25.760
+Founding operators wanted — bogmode.ca/provensky
