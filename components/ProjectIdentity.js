@@ -116,6 +116,42 @@ export default function ProjectIdentity({ kind, title, division, banner = false,
     </div>
   );
 
+  if (kind === "site-v2") return (
+    <div className={cls("id-sitev2")} aria-hidden="true">
+      <span>Site <b>v2</b></span><small>NEXT.JS · KEYSTATIC · 11 ROUTES</small>
+      <svg className="id-motif" viewBox="0 0 240 90"><g fill="none" strokeWidth="1.1">
+        <path d="M12 12 V78 M12 24 H34 M12 45 H34 M12 66 H34" /><rect x="40" y="16" width="56" height="16" /><rect x="40" y="37" width="56" height="16" /><rect x="40" y="58" width="56" height="16" />
+      </g><g className="id-dot">{Array.from({ length: 11 }).map((_, i) => <rect key={i} x={118 + (i % 6) * 19} y={i < 6 ? 26 : 50} width="12" height="12" />)}</g></svg>
+    </div>
+  );
+
+  if (kind === "skins") return (
+    <div className={cls("id-skins")} aria-hidden="true">
+      <span>Skins<b>.</b></span><small>ASIIMOV · VULCAN · MANTICORE · DONATELLO</small>
+      <svg className="id-motif" viewBox="0 0 240 90">
+        {["#FF5A1F", "#05B6CB", "#cbff38", "#ff9be3"].map((c, i) => <rect key={c} x={8 + i * 58} y="18" width="48" height="54" fill={c} />)}
+        <g fill="none" strokeWidth="1.2"><path d="M4 14 H14 M4 14 V24 M236 14 H226 M236 14 V24 M4 76 H14 M4 76 V66 M236 76 H226 M236 76 V66" /></g>
+      </svg>
+    </div>
+  );
+
+  if (kind === "swarm-core") return (
+    <div className={cls("id-swarmcore")} aria-hidden="true">
+      <span>Swarm <b>Core</b></span><small>POINTS → TOTEM → SCATTER</small>
+      <svg className="id-motif" viewBox="0 0 240 90"><g className="id-dot">
+        {[[8,20],[22,64],[36,38],[48,12],[60,76],[70,48],[84,24],[92,62]].map(([x, y]) => <circle key={`${x}-${y}`} cx={x} cy={y} r="2.4" />)}
+      </g><path d="M104 45 H128" fill="none" strokeWidth="1.2" strokeDasharray="3 3" />
+      <g transform="translate(146 2) scale(.84)"><TotemMark totem="wolf" size={100} className="id-swarm-totem" /></g></svg>
+    </div>
+  );
+
+  if (kind === "divisions") return (
+    <div className={cls("id-divisions")} aria-hidden="true">
+      <span>Five <b>Divisions</b></span><small>SWARM · WORLDS · LAB · TOOLS · VENTURES</small>
+      <div className="id-totem-row">{["wolf", "dragon", "hare", "bear", "manticore"].map((t) => <TotemMark key={t} totem={t} size={40} />)}</div>
+    </div>
+  );
+
   // Fallback: division totem on the studio block, with the project's name.
   if (title) return (
     <div className={cls("id-totem")} aria-hidden="true">

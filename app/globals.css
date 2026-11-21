@@ -573,12 +573,25 @@ body { background: #EDEDE8; overflow-x: hidden; }
 .bm .project-art-thumb { aspect-ratio: 4 / 3; padding: 10px 12px; justify-content: flex-start; }
 .bm .project-art-thumb > span { font-size: 19px; letter-spacing: -.03em; }
 .bm .project-art-thumb small { font-size: 7px; margin-top: 4px; }
-.bm .project-art-thumb .id-motif { max-width: 96px; margin-top: 6px; }
+.bm .project-art-thumb .id-motif { max-width: 84px; margin-top: 6px; }
 .bm .project-art-thumb > span { line-height: 1; }
 .bm .id-provensky { --id-accent: #7cc7ff; background: #0d1622; color: #e6eef7; }
 .bm .id-provensky b { color: #7cc7ff; }
 .bm .id-gamelayer { --id-accent: var(--accent); background: var(--block); color: #ecebe6; }
 .bm .id-gamelayer b { color: var(--accent); }
+.bm .id-sitev2 { --id-accent: var(--accent); background: var(--block); color: #ecebe6; }
+.bm .id-sitev2 b, .bm .id-swarmcore b, .bm .id-divisions b { color: var(--accent); }
+.bm .id-skins { --id-accent: #FF5A1F; background: #141416; color: #f2f1ec; }
+.bm .id-skins b { color: #05B6CB; }
+.bm .id-swarmcore { --id-accent: var(--accent); background: #08080a; color: #ecebe6; }
+.bm .id-swarmcore .id-swarm-totem polygon { fill: none; stroke: var(--accent); stroke-width: 2.4; }
+.bm .id-divisions { --id-accent: var(--accent); background: var(--block); color: #ecebe6; }
+.bm .id-totem-row { display: flex; gap: 14px; margin-top: 22px; color: var(--accent); }
+.bm .project-art-banner .id-totem-row { position: absolute; right: 36px; top: 50%; transform: translateY(-50%); margin: 0; gap: 22px; }
+.bm .project-art-banner .id-totem-row svg { width: 64px; height: 64px; }
+.bm .project-art-thumb .id-totem-row { gap: 5px; margin-top: 8px; }
+.bm .project-art-thumb .id-totem-row svg { width: 18px; height: 18px; }
+@media (max-width: 720px) { .bm .project-art-banner .id-totem-row { position: static; transform: none; margin-top: 20px; } .bm .project-art-banner .id-totem-row svg { width: 44px; height: 44px; } }
 .bm .news-arrow { font-family: var(--mono); color: var(--muted); transition: transform .2s ease, color .2s ease; }
 .bm .rich { font-size: 15px; line-height: 1.65; color: var(--ink); margin: 8px 0 28px; }
 .bm .rich h2 { font: 11px var(--mono); letter-spacing: .1em; text-transform: uppercase; color: var(--accent); margin: 34px 0 10px; padding-top: 18px; border-top: 1px solid var(--line); }
