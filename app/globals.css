@@ -568,6 +568,17 @@ body { background: #EDEDE8; overflow-x: hidden; }
 .bm .news-date { font: 11px var(--mono); color: var(--muted); letter-spacing: .04em; }
 .bm .news-item h3 { font-family: var(--display); font-weight: 600; font-size: 18px; margin: 0 0 6px; letter-spacing: -0.01em; }
 .bm .news-item p { margin: 0; font-size: 14px; line-height: 1.5; color: var(--muted); }
+.bm .news-item.has-art { grid-template-columns: 130px 150px 1fr 24px; align-items: center; }
+.bm .news-thumb { width: 150px; }
+.bm .project-art-thumb { aspect-ratio: 4 / 3; padding: 10px 12px; justify-content: flex-start; }
+.bm .project-art-thumb > span { font-size: 19px; letter-spacing: -.03em; }
+.bm .project-art-thumb small { font-size: 7px; margin-top: 4px; }
+.bm .project-art-thumb .id-motif { max-width: 96px; margin-top: 6px; }
+.bm .project-art-thumb > span { line-height: 1; }
+.bm .id-provensky { --id-accent: #7cc7ff; background: #0d1622; color: #e6eef7; }
+.bm .id-provensky b { color: #7cc7ff; }
+.bm .id-gamelayer { --id-accent: var(--accent); background: var(--block); color: #ecebe6; }
+.bm .id-gamelayer b { color: var(--accent); }
 .bm .news-arrow { font-family: var(--mono); color: var(--muted); transition: transform .2s ease, color .2s ease; }
 .bm .rich { font-size: 15px; line-height: 1.65; color: var(--ink); margin: 8px 0 28px; }
 .bm .rich h2 { font: 11px var(--mono); letter-spacing: .1em; text-transform: uppercase; color: var(--accent); margin: 34px 0 10px; padding-top: 18px; border-top: 1px solid var(--line); }
@@ -579,6 +590,8 @@ body { background: #EDEDE8; overflow-x: hidden; }
 @media (max-width: 720px) {
   .bm .news-item { grid-template-columns: 1fr 20px; gap: 6px 12px; }
   .bm .news-date { grid-column: 1 / -1; }
+  .bm .news-item.has-art { grid-template-columns: 1fr 20px; }
+  .bm .news-thumb { grid-column: 1 / -1; width: 100%; max-width: 360px; }
 }
 
 /* ── Motion layer: hero core, pointer glow, live accents ─────────── */

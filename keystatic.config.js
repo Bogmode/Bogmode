@@ -232,6 +232,10 @@ export default config({
         title: fields.slug({ name: { label: "Title" } }),
         date: fields.date({ label: "Date", validation: { isRequired: true } }),
         summary: fields.text({ label: "One-line summary", validation: { length: { min: 1, max: 180 } } }),
+        art: fields.text({
+          label: "Card art",
+          description: "Identity art shown on the list and as the post banner. A project slug (e.g. drone-sim) or a news art key (provensky, game-layer). Leave empty for none.",
+        }),
         body: fields.markdoc({ label: "Update" }),
       },
     }),

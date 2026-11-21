@@ -5,6 +5,7 @@ import Rise from "@/components/Rise";
 import Scramble from "@/components/Scramble";
 import NumberRain from "@/components/NumberRain";
 import RichText from "@/components/RichText";
+import ProjectIdentity from "@/components/ProjectIdentity";
 import { formatDate } from "@/components/NewsList";
 import { getNews, getNewsPost } from "@/lib/content";
 
@@ -34,6 +35,7 @@ export default async function NewsPost({ params }) {
         <h1><Scramble text={p.title} /></h1>
         <p className="lede">{p.summary}</p>
       </Rise>
+      {p.art && <Rise mode="mount" delay={130}><ProjectIdentity kind={p.art} banner /></Rise>}
       <Rise mode="mount" delay={160}><RichText node={p.body} /></Rise>
     </article>
   );

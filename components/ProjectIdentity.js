@@ -4,8 +4,8 @@ import TotemMark from "./TotemMark";
 const DIVISION_TOTEM = { swarm: "wolf", worlds: "dragon", lab: "hare", tools: "bear", ventures: "manticore" };
 
 // Card art per project: colour, wordmark, tagline, one motif. Falls back to the division totem.
-export default function ProjectIdentity({ kind, title, division, banner = false }) {
-  const cls = (name) => `project-art ${name}${banner ? " project-art-banner" : ""}`;
+export default function ProjectIdentity({ kind, title, division, banner = false, thumb = false }) {
+  const cls = (name) => `project-art ${name}${banner ? " project-art-banner" : ""}${thumb ? " project-art-thumb" : ""}`;
 
   if (kind === "upstreams") return <div className={cls("upstream-art")} aria-hidden="true"><span>Upstreams</span><small>WASTE → POSSIBILITY</small><div className="upstream-flow"><i /><i /><i /></div></div>;
   if (kind === "fiend") return <div className={cls("fiend-art")} aria-hidden="true"><span>Fiend<b>.</b></span><small>NOTICE THE PATTERN.</small><div className="fiend-bars"><i /><i /><i /><i /><i /><i /><i /></div></div>;
@@ -87,6 +87,32 @@ export default function ProjectIdentity({ kind, title, division, banner = false 
         <rect x="22" y="14" width="56" height="70" transform="rotate(-8 50 49)" opacity=".45" /><rect x="40" y="10" width="56" height="70" transform="rotate(4 68 45)" opacity=".7" /><rect x="58" y="8" width="56" height="70" />
       </g><g className="id-dot"><path d="M86 26 L92 40 L106 43 L95 52 L98 66 L86 58 L74 66 L77 52 L66 43 L80 40 Z" /></g>
       <g fill="none" strokeWidth="1" opacity=".6"><path d="M134 24 H226 M134 40 H210 M134 56 H222 M134 72 H196" /></g></svg>
+    </div>
+  );
+
+  // ── News art ─────────────────────────────────────────────────────
+  if (kind === "provensky") return (
+    <div className={cls("id-provensky")} aria-hidden="true">
+      <span>Proven<b>Sky</b></span><small>PLAN · SIMULATE · FLY</small>
+      <svg className="id-motif" viewBox="0 0 240 90"><g fill="none" strokeWidth="1">
+        <path d="M0 78 H240" opacity=".45" /><path d="M20 78 V70 M60 78 V72 M100 78 V70 M140 78 V72 M180 78 V70 M220 78 V72" opacity=".45" />
+        <path d="M14 66 C60 20, 110 60, 150 30 S 220 12, 232 18" strokeDasharray="4 4" />
+        <path d="M14 66 C70 44, 120 72, 160 50 S 214 40, 232 44" strokeDasharray="4 4" opacity=".55" />
+        <rect x="196" y="6" width="40" height="24" className="id-accent-stroke" />
+      </g><g className="id-dot"><circle cx="14" cy="66" r="4" /><circle cx="88" cy="42" r="3.2" /><circle cx="150" cy="30" r="3.2" /><circle cx="216" cy="18" r="4" /><circle cx="120" cy="58" r="2.6" /></g></svg>
+    </div>
+  );
+
+  if (kind === "game-layer") return (
+    <div className={cls("id-gamelayer")} aria-hidden="true">
+      <span>Press <b>Start</b></span><small>TOTEMS · QUESTS · ACHIEVEMENTS</small>
+      <svg className="id-motif" viewBox="0 0 240 90"><g fill="none" strokeWidth="1.2">
+        <circle cx="45" cy="45" r="36" /><circle cx="45" cy="45" r="24" opacity=".55" /><circle cx="45" cy="45" r="12" opacity=".35" />
+        <rect x="100" y="16" width="132" height="12" /><rect x="100" y="40" width="132" height="12" /><rect x="100" y="64" width="132" height="12" />
+      </g><g className="id-dot">
+        <circle cx="45" cy="9" r="4" /><circle cx="79" cy="34" r="3" /><circle cx="66" cy="74" r="3" /><circle cx="24" cy="74" r="3" /><circle cx="11" cy="34" r="3" />
+        <rect x="102" y="18" width="108" height="8" /><rect x="102" y="42" width="74" height="8" /><rect x="102" y="66" width="38" height="8" />
+      </g></svg>
     </div>
   );
 

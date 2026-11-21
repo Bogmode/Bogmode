@@ -1,4 +1,5 @@
 import Link from "next/link";
+import ProjectIdentity from "./ProjectIdentity";
 
 export function formatDate(d) {
   if (!d) return "";
@@ -12,8 +13,9 @@ export default function NewsList({ posts }) {
   return (
     <div className="news-list">
       {posts.map((p) => (
-        <Link key={p.slug} href={`/news/${p.slug}`} className="news-item">
+        <Link key={p.slug} href={`/news/${p.slug}`} className={`news-item${p.art ? " has-art" : ""}`}>
           <span className="news-date">{formatDate(p.date)}</span>
+          {p.art && <div className="news-thumb"><ProjectIdentity kind={p.art} thumb /></div>}
           <div>
             <h3>{p.title}</h3>
             <p>{p.summary}</p>
