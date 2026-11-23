@@ -1,0 +1,45 @@
+---
+division: worlds
+title: SOL
+summary: A gold sun you can poke. Tap a side to turn it. Five quick taps give it ten seconds of fire.
+category: games
+status: live
+featured: false
+order: 20
+year: 2026
+role: Solo — concept, 3D, physics, sound, build
+stack:
+  - Three.js
+  - WebGL2
+  - Web Audio
+  - Canvas 2D fallback
+links:
+  live: https://bogmode.ca/projects/sol
+  repo: ''
+  video: https://bogmode.ca/videos/sol-how-to.mp4
+demo:
+  kind: embed
+  src: /project-previews/sol.html
+  poster: /images/demos/sol.jpg
+related: []
+notes: |
+  Released Nov 23 2026. Standalone build lives at public/project-previews/sol.html (single file, three.js bundled).
+  How-to reel: public/videos/sol-how-to.mp4 (9:16).
+---
+
+## How to play
+
+- **Tap or click either side** to turn it that way.
+- **Hold ← or →** on a keyboard to spin it up.
+- **Five quick taps** light it up: ten seconds of fire. Keep steering while it burns.
+- It watches your cursor. Space pauses, R resets. Sound and calm motion sit top right.
+
+## What I built
+
+Twelve arms, each hand holding a different gesture, around a face whose eyes follow you and blink. All of it is built from code with three.js geometry; no imported models.
+
+The spin runs on its own small physics model: drag, torque, speed caps and a turbo mode, stepped at 120 Hz so it feels the same on any screen.
+
+Every sound is made live with Web Audio: a thump on each tap, and a roar with a laugh while it burns.
+
+No WebGL2? It falls back to a flat canvas version of the same sculpture.
