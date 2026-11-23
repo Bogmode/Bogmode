@@ -1,0 +1,8 @@
+.play { height: 100dvh; display: grid; grid-template-rows: auto minmax(0, 1fr); background: #0a0a0b; color: #fff4fd; }
+.bar { display: flex; align-items: center; justify-content: space-between; gap: 20px; padding: 10px 20px; border-bottom: 1px solid #57406a; font-family: var(--font-mono), ui-monospace, monospace; font-size: 11px; letter-spacing: .14em; }
+.bar p { margin: 0; color: #d9c8e3; }
+.back { color: #fff4fd; text-decoration: none; white-space: nowrap; padding: 12px 0; font-family: var(--font-display), sans-serif; font-size: 16px; letter-spacing: 0; }
+.back :global(.cy) { color: #ff9be3; }
+.back:focus-visible { outline: 1px solid #ff9be3; outline-offset: 4px; }
+.frame { width: 100%; height: 100%; border: 0; min-height: 0; display: block; }
+@media (max-width: 600px) { .bar p { display: none; } }

@@ -9,6 +9,7 @@ import ProjectIdentity from "@/components/ProjectIdentity";
 import { CATEGORY_LABEL, STATUS_LABEL } from "@/components/ProjectCard";
 import DivisionBadge from "@/components/DivisionBadge";
 import DivisionPipeline from "@/components/DivisionPipeline";
+import DemoStage from "@/components/DemoStage";
 import { getProjects, getProject, getEcosystem } from "@/lib/content";
 
 export async function generateStaticParams() {
@@ -49,6 +50,9 @@ export default async function ProjectDetail({ params }) {
         {p.role && <p className="project-role">{p.role}</p>}
       </Rise>
       <Rise mode="mount" delay={130}><ProjectIdentity kind={p.slug} title={p.title} division={p.division} banner /></Rise>
+      {p.demo?.kind === "embed" && p.demo.src && (
+        <Rise mode="mount" delay={140}><DemoStage src={p.demo.src} poster={p.demo.poster} title={p.title} fullHref={p.links?.live || undefined} /></Rise>
+      )}
       {links.length > 0 && (
         <Rise mode="mount" delay={150}>
           <div className="hero-actions">
@@ -63,6 +67,13 @@ export default async function ProjectDetail({ params }) {
       )}
       <Rise mode="mount" delay={200}>
         <RichText node={p.body} />
+        {p.links?.video?.endsWith(".mp4") && (
+          <figure className="demo-video">
+            <video src={p.links.video.replace("https://bogmode.ca", "")} controls playsInline preload="metadata" />
+            <figcaption>HOW TO PLAY · 25 SEC</figcaption>
+          </figure>
+        )}
+
         {p.stack?.length > 0 && <div className="chips">{p.stack.map((c) => <span className="chip" key={c}>{c}</span>)}</div>}
         {siblings.length > 0 && (
           <div className="siblings">
