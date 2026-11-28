@@ -1,0 +1,36 @@
+---
+division: lab
+title: Human Fuel
+summary: Food and supplements graded A to D by evidence, with every claim linked to its studies.
+category: interactive
+status: prototype
+featured: false
+order: 15
+year: 2026
+role: Solo — concept, design, build, research pipeline
+stack:
+  - three.js
+  - Python
+  - GitHub Pages
+  - Claude + Codex research agents
+links:
+  live: 'https://bogmode.ca/fuel'
+  repo: 'https://github.com/Bogmode/human-fuel'
+  video: ''
+related:
+  - scales-of-existence
+notes: |
+  Grades are drafts until reviewed. Hosted on GitHub Pages, proxied to bogmode.ca/fuel by a Next rewrite.
+---
+
+## The problem
+
+Most nutrition content either sells something or says "it depends". Neither tells you how strong the evidence actually is.
+
+## What I built
+
+An index of 14 categories — macros, supplements and vitamins. Every claim gets a grade from A to D, a plain-language reason and numbered sources, with study type and industry ties marked on each one. Each category has its own 3D particle form.
+
+## How it runs
+
+One research agent per category writes a structured JSON file. Every uncertain citation gets checked against PubMed, a script builds the site, and I assign the final grades.
